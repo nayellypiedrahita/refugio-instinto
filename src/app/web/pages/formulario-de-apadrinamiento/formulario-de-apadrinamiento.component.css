@@ -1,0 +1,98 @@
+.container-navbar h1{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.container-navbar h3 {
+    font-size: 16px;
+  height: 20px;
+  margin-bottom: 10px; 
+  line-height: 1.5;
+  color: #c7a17a;
+  cursor: pointer;
+  margin-top: 20px;
+  padding-left: 50px;
+  width: 20px;
+  padding-left: 50px;
+  margin-left: 30px; 
+    margin-top: 20px; 
+	width: fit-content;
+}
+
+.container-navbar h3:hover {
+    font-size: 1.8rem;
+}
+
+.container-navbar a {
+  text-decoration: none;
+}
+
+.carta {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+
+  .checkbox-group{
+      border: solid 1px #cccccc;
+      border-radius: 3px;
+      padding: 7px;
+    
+  }
+  
+  form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+
+  form input[type="text"],
+  form input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+ 
+  .checkbox-group {
+    margin-top: 5px;
+  }
+
+  .checkbox-group label {
+    display: inline;
+    padding-right: 10px;
+
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    margin-right: 20px;
+    
+  }
+
+  p {
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+    input[type="submit"]:hover {    
+    background-color: #333333; 
+}

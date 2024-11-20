@@ -1,0 +1,59 @@
+.parrafo h1{
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.negrilla{
+    font-weight: bold;
+}
+
+
+.parrafo{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    padding-left: 50px;
+}
+   
+.parrafo ul li{
+    margin: 0px 35px;
+    
+}
+
+.parrafo ul{
+    padding: 25px;
+}
+
+.parrafo h2{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.parrafo p{
+    margin: 20px;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.boton button{
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    background-color: black;
+    width: 150px;
+    align-self: center;
+    border-radius: 25px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.1)
+}

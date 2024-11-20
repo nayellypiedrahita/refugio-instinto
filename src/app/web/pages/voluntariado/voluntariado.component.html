@@ -1,0 +1,138 @@
+<section id="about">
+    <div class="container">
+        <h2>¿Eres amante de los animales y quieres ayudar? </h2>
+        <p>Buscamos voluntarios apasionados para unirse a nuestra causa en Fundación Instinto.</p>
+    </div>
+</section>
+
+ <section id="gallery">
+    <div class="container">
+        <div class="slider">
+            <button class="prev" (click)="changeSlide(-1)">&#10094;</button>
+
+            <div class="slides">
+
+                <div class="slide">
+                    <img src="assets/paseo_peludito.jpeg.jpg" alt="paseo_peludito">
+                    <h2 class="img_description">Paseador de perros:</h2>
+                    <p>¡Conviértete en el héroe de un perro! Brinda amor y ejercicio a nuestros amigos peludos mientras paseas por el refugio.</p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/limpiar_arenero.jpeg.jpg" alt="Limpiar_arenero">x
+                    <h2 class="img_description">Hada Gatuna:</h2>
+                    <p>¡Acomoda a nuestros felinos! Mantén limpias y acogedoras las áreas donde descansan y juegan nuestros adorables gatos.</p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/Aseo_peluditos.jpeg.jpg" alt="Aseo_peliditos">
+                    <h2 class="img_description">héroe del baño</h2>
+                    <p>¡Manten a nuestros amigos del refugio limpios </p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/Alimentar.jpeg.jpg" alt="Alimentar">
+                    <h2 class="img_description">Chef animal: </h2>
+                    <p> Prepara con cariño la comida de nuestros peludos amigos, asegurando una alimentación nutritiva y deliciosa.</p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/Adopta.jpeg.jpg" alt="Adopta">
+                    <h2 class="img_description">Embajador de adopciones: </h2>
+                    <p> ¡Ayuda a encontrar hogares para nuestros peludos! Participa en campañas de adopción, promoviendo la responsabilidad y el amor por los animales.</p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/limpieza_jaulas.jpeg.jpg" alt="Limpieza_de_jaulas">
+                    <h2 class="img_description">Héroe de la limpieza: </h2>
+                    <p> ¡Mantén nuestro refugio impecable! Limpia jaulas, áreas comunes y espacios exteriores para garantizar un ambiente higiénico para nuestros animales.</p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/Voluntariado_virtual.jpeg.jpg" alt="Voluntariado_virtual">
+                    <h2 class="img_description">Voluntario virtual: </h2>
+                    <p> ¡Ayuda desde donde estés! Colabora con tareas administrativas, traducción, diseño o creación de contenido desde la comodidad de tu hogar.</p>
+                </div>
+
+                <div class="slide">
+                    <img src="assets/Recaudacion_fondos.jpeg.jpg" alt="Recaudacion_fondos">
+                    <h2 class="img_description">Angel recaudador: </h2>
+                    <p> ¡Sé parte de la solución! Recauda fondos para apoyar la alimentación, cuidado y bienestar de nuestros animales.</p>
+                </div>  
+                
+            </div>
+            <button class="next" (click)="changeSlide(0)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+<section id="volunteer">
+    <div class="container">
+        <h2>Únete como Voluntario</h2>
+        <div class="form">
+            <form action="#" method="post">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required placeholder="Nombre...">
+                
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required placeholder="Apellido...">
+
+                <label for="numero">Numero de celular:</label>
+                <input type="text" id="numero" name="numero" required placeholder="WhatsApp...">
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Email...">
+                <h3>
+                    Elige la labor que deseas hacer como voluntariado
+                </h3>
+                <div class="container contain-checks">
+                    <div class="option">
+                        <label for="paseador"> Paseador de perros</label>
+                        <input type="checkbox" id="paseador" name="paseador" value="paseador">
+                    </div>
+                    <div class="option">
+                        <label for="gatos"> Hada Gatuna</label>
+                        <input type="checkbox" id="gatos" name="gatos" value="gatos">
+                    </div>
+                    
+                    <div class="option">
+                        <label for="baño"> Heroe del baño</label>
+                        <input type="checkbox" id="baño" name="baño" value="baño">
+                    </div>
+                    
+                    <div class="option">
+                        <label for="chef"> Chef animal</label>
+                        <input type="checkbox" id="chef" name="chef" value="chef">
+                    </div>
+
+                    <div class="option">
+                        <label for="chef"> Chef animal</label>
+                        <input type="checkbox" id="chef" name="chef" value="chef">
+                    </div>
+                    
+                    <div class="option">
+                        <label for="adopciones"> Embajador de adopciones</label>
+                        <input type="checkbox" id="adopciones" name="adopciones" value="adopciones">
+                    </div>
+                    
+                    <div class="option">
+                        <label for="Limpieza"> Heroe de la limpieza</label>
+                        <input type="checkbox" id="Limpieza" name="Limpieza" value="Limpieza">
+                    </div>
+                    
+                    <div class="option">
+                        <label for="Volunatario"> Voluntario virtual</label>
+                        <input type="checkbox" id="Volunatario" name="Volunatario" value="Volunatario">
+                    </div>
+                    
+                    <div class="option">
+                        <label for="Recaudacion"> Angel recaudador</label>
+                        <input type="checkbox" id="Recaudacion" name="Recaudacion" value="Recaudacion">
+                    </div>                      
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

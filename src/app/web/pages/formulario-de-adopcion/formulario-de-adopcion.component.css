@@ -1,0 +1,138 @@
+.tittle h3 {
+    font-size: 16px;
+  height: 20px;
+  margin-bottom: 10px; 
+  line-height: 1.5;
+  color: #c7a17a;
+  cursor: pointer;
+  margin-top: 20px;
+  padding-left: 50px;
+  width: 20px;
+  padding-left: 50px;
+  margin-left: 30px; 
+    margin-top: 20px; 
+	width: fit-content;
+}
+
+.tittle h3:hover {
+    font-size: 1.8rem;
+}
+
+.tittle {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.navbar container {
+    padding: 1rem 2rem;
+}
+
+.navbar .fa-bars {
+    cursor: pointer;
+    display: block;
+    color: #fff;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.container12 {
+    margin: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.container-wrapper {
+    position: relative;
+}
+
+
+a.hover-text {
+    text-decoration: none; /* Elimina la línea subrayada */
+    color: inherit; /* Mantiene el color del texto del enlace */
+}
+.container12 {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #555;
+}
+
+  .controls {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+ .controls select {
+   
+    margin: 10px 0; 
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px ;
+    box-sizing: border-box;
+	gap: 70px;
+  }
+
+  .controls select, .controls button {
+	margin: 10px 10px; 
+}
+
+  .controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #c7a17a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .form button:hover {
+    background-color: #ce9964;
+  }

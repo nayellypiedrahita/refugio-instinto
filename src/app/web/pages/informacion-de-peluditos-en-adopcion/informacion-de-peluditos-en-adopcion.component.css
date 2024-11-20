@@ -1,0 +1,87 @@
+.wrapper {
+    margin: 50px auto;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center; /* Centra el contenido */
+}
+
+
+.img {
+    border: 3px solid #2b2b2b;
+    border-radius: 10px;
+    width: 400px;
+    height: 400px;
+    margin-right: 30px; /* Espacio entre imagen y texto */
+    
+}
+
+.text-box1 {
+    margin-left: 30px; /* Mueve el contenedor hacia la derecha */
+	margin-top: 20px; /* Mueve el contenedor hacia abajo */
+	width: fit-content;
+
+}
+
+
+.text-box h2 {
+    font-size: 42px;
+    margin-bottom: 1px; /* Espacio debajo del título */
+    color: #2b2b2b; /* Color del título */
+}
+
+
+
+.text-box p {
+    font-size: 18px;
+    line-height: 1.5; /* Mejora la legibilidad del párrafo */
+    text-align: justify; /* Justifica el texto */
+}
+
+
+
+.text-box1 h3 {
+    font-size: 16px;
+	height: 20px;
+    margin-bottom: 10px; /* Espacio debajo del título */
+    color: #2b2b2b; /* Color del título */
+	line-height: 1.5;
+	color: #c7a17a;
+	cursor: pointer;
+}
+
+.text-box1 .hover-text h3:hover {
+    font-size: 1.8rem;
+  }
+
+.hover-text{
+	text-decoration: none;
+}
+
+.fa-chevron-left{
+color:#c7a17a 
+}
+
+.button a {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    background-color: black;
+    width: 150px;
+    align-self: center;
+    border-radius: 25px;
+    margin-top: 30px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button a:hover {
+    transform: scale(1.1)
+}
+
+.button a{
+    display: flex;
+    justify-content: center;
+    
+}

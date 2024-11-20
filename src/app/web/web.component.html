@@ -1,0 +1,37 @@
+<div class="container-hero">
+    <div class="container hero">
+        <div class="customer-support">
+        </div>
+
+        <div class="container-logo">
+            <i class="fa-solid fas fa-paw"></i>
+            <h1 class="logo"><a href="/">Fundacion Instinto</a></h1>
+        </div>
+
+        <div class="container-user">
+            <a routerLink="/admin/login">
+                <i class="fa-solid fa-user"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-navbar">
+        <nav class="navbar container" id="myTopnav">
+            <i class="fa-solid fa-bars" onclick="myFunction()"></i>
+            <ul class="menu">
+                <a routerLink="/web/home" routerLinkActive="menu_active"><i class="fa-solid fa-house"></i></a>
+                <li><a routerLink="/web/nosotros" routerLinkActive="menu_active">Nosotros</a></li>
+                <li><a routerLink="/web/donaciones" routerLinkActive="menu_active">Donaciones </a></li>
+                <li><a routerLink="/web/adopta-un-peludito" routerLinkActive="menu_active">Adopta un peludito</a></li>
+                <li><a routerLink="/web/apadrina-un-peludito" routerLinkActive="menu_active">Apadrina un peludito</a></li>
+                <li><a routerLink="/web/voluntariado" routerLinkActive="menu_active">Voluntariado</a></li>
+                <li><a routerLink="/web/testimonios-de-peluditos" routerLinkActive="menu_active">Testimonios de Adoptados</a></li>
+                <li><a routerLink="#" routerLinkActive="menu_active">Noticias</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>
+

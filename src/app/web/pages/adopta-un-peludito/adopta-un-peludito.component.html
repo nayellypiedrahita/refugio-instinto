@@ -1,0 +1,40 @@
+<section class="banner">
+    <div class="content-banner">
+
+    </div>
+</section>
+<section>
+    <div class="controls">
+        <select id="select1">
+            <option value="" disabled selected>Tamaño</option>
+            <option value="grande">Grande</option>
+            <option value="pequeno">Pequeño</option>
+            <option value="mediano">Mediano</option>
+        </select>
+
+        <select id="select2">
+            <option value="" disabled selected>Edad</option>
+            <option value="opcionA">3 meses</option>
+            <option value="opcionA">1 Año</option>
+            <option value="opcionB">2 Años</option>
+            <option value="opcionC">3 Años</option>
+        </select>
+
+        <button>Buscar</button>
+    </div>
+
+
+    <div class="container1" id="listado_peluditos">
+        <div class='box' *ngFor="let mascota of mascotas">
+            <div class='img'>
+                <img src="{{ mascota.imagenes[0] }}"  alt=''>
+                <a href='/web/informacion-de-peluditos-en-adopcion/{{mascota.idMascota}}' ><div class='hover-text'><i class='fa-solid fas fa-paw'></i> Ver peludito</div></a>
+            </div>
+            <div class='details'>
+                <div class='name'>{{ mascota.nombre }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

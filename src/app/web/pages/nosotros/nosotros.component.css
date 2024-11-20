@@ -1,0 +1,33 @@
+.padre {
+	background-color: #f9f5f0;
+}
+
+.contenedor {
+    display: flex;
+	align-items: center;
+}
+
+.contenedor p  {
+	font-size: 20px;
+	padding: 30px 30px 30px 60px ;
+	margin: 10px 10px 100px 30px;
+	vertical-align: middle;
+	
+}
+
+.contenedor img {
+	margin-top: 60px;
+	max-height: 507px;
+}
+
+.text1 h1 {
+    text-align: center;
+    padding: 25px;
+    font-size: 30px;
+	padding: 20px;
+}
+
+.text1 p {
+    font-size: 20px;
+    margin: 0 50px;
+}
