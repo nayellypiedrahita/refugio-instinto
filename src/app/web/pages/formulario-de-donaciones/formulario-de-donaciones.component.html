@@ -1,10 +1,10 @@
 <div class="tittle">
          <h1>Formulario de donaciones</h1>
-         <a class="hover-text" href="index.html"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
+         <a class="hover-text" routerLink="/web/donaciones-especie"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
 </div>
 
 <div class="carta">
-    <form>
+    <form (submit)="toSolicitudEnviada()">
       <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo">
       
@@ -42,13 +42,15 @@
         <input type="checkbox" id="vehicle9" name="vehicle9" value="Jaulas y transportadoras">
         <label for="vehicle9">Jaulas y transportadoras</label>
       </div>
+
       <label for="otro">Otro:</label>
       <input type="text" id="otro" name="otro" placeholder="Otro...">
-      <input type="submit" value="Enviar">
+
+      <input type="submit" value="Enviar" >
 
     </form> 
 </div>
 
-<app-footer></app-footer>
+
 
 

@@ -1,9 +1,15 @@
 <div class="father">
-    <h2>DONACIONES EN ESPECIE</h2>
-    <p>
+    <div class="text-box1">
+        <a class="hover-text" routerLink="/web/donaciones"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
+    </div>
+    
+    <h1>DONACIONES EN ESPECIE</h1>
+    <h4>
         Tu donación de artículos para mascotas puede transformar vidas.<br>
         Ayúdanos a rescatar y tratar a nuestros amigos peludos heridos y abandonados.
-    </p>
+    </h4>
+        
+    
     <div class="grid-container">
         <div class="grid-item">
             <img src="assets/alimento para gatos_donaciones en especie.pgn.jpg" alt="Alimento para gatos">
@@ -42,9 +48,13 @@
             <div class="caption">Jaulas y transportadoras</div>
         </div>
     </div>
+
+    <div class="gallery">
+        <button (click)="toFormularioDeDonaciones()">Donar aqui</button>
+    </div>
+
 </div>
 
  
 
 
-<app-footer></app-footer>

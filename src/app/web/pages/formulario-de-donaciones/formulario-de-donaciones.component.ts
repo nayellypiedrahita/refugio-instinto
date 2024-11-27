@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-de-donaciones',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './formulario-de-donaciones.component.css'
 })
 export class FormularioDeDonacionesComponent {
+
+  constructor(
+    private router: Router
+  ){
+
+  }
+
+  toSolicitudEnviada(){
+    this.router.navigate(["/web/solicitud-enviada"]);
+  }
 
 }
