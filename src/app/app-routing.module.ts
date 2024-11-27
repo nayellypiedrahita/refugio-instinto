@@ -43,9 +43,9 @@ const routes: Routes = [
       { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent }
     ]
   },
+  { path: "login", component: LoginComponent },
   {
     path: "admin", component: AdministradorComponent, children: [
-      { path: "login", component: LoginComponent },
       { path: "home", component: AdminHomeComponent }
     ]
   },
