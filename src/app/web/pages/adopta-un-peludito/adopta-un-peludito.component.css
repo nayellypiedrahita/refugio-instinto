@@ -79,6 +79,13 @@
 	justify-content: center;
 	grid-template-columns: repeat(3, 1fr);
   }
+
+  .container1 .loading {	
+	font-size: 5rem;
+	color: #c7a17a;
+	margin-top: 50px;
+	margin-bottom: 80px;
+  }
   
   .container1 .box {
 	display: flex;

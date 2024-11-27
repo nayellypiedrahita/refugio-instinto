@@ -6,6 +6,13 @@
     justify-content: center; /* Centra el contenido */
 }
 
+.wrapper .loading {
+    font-size: 10rem;
+	color: #c7a17a;
+	margin-top: 50px;
+	margin-bottom: 80px;
+}
+
 
 .img {
     border: 3px solid #2b2b2b;

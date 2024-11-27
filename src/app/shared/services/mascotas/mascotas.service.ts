@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { collection, collectionData, CollectionReference, doc, Firestore, getDoc, getDocs } from '@angular/fire/firestore';
 import { from, map, Observable, of } from 'rxjs';
-import { Mascotas } from '../model/mascotas';
+import { Mascotas } from '../../model/mascotas';
 
 @Injectable({
   providedIn: 'root'

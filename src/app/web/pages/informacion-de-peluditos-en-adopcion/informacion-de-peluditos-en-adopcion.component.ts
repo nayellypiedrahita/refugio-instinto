@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Mascotas } from '../../../shared/model/mascotas';
-import { MascotasService } from '../../../shared/services/mascotas.service';
+import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
 
 @Component({
   selector: 'app-informacion-de-peluditos-en-adopcion',
@@ -12,14 +12,15 @@ export class InformacionDePeluditosEnAdopcionComponent implements OnInit {
 
   idMascota: string | null = null;
   mascota: Mascotas = {} as Mascotas;
+  loadingMascota: boolean = false;
   private mascotaService: MascotasService = inject(MascotasService);
 
   constructor(
-    private router: ActivatedRoute,
-    private service: MascotasService
+    private router: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.loadingMascota = true;
     const mascotaId = this.router.snapshot.paramMap.get('idMascota');
     this.idMascota = mascotaId;
     if (mascotaId) {
@@ -29,6 +30,7 @@ export class InformacionDePeluditosEnAdopcionComponent implements OnInit {
         } else {
           alert("NO SE ENCONTRO LA MASCOTA");
         }
+        this.loadingMascota = false;
       });
     }
     

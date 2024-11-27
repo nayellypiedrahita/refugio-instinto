@@ -84,9 +84,13 @@ label {
 input[type="text"], input[type="email"], input[type="tel"], select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+.error-msg {
+    margin-bottom: 15px;
+    color: red;
 }
 .btn {
     display: block;
@@ -136,3 +140,15 @@ input[type="text"], input[type="email"], input[type="tel"], select {
   .form button:hover {
     background-color: #ce9964;
   }
+
+  .container-loading {
+    display: flex;
+    justify-content: center;
+  }
+
+  .loading {
+    font-size: 10rem;
+	color: #c7a17a;
+	margin-top: 50px;
+	margin-bottom: 80px;
+}

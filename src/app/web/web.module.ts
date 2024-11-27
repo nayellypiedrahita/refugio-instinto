@@ -19,6 +19,7 @@ import { InformacionDePeluditosEnAdopcionComponent } from './pages/informacion-d
 import { TuImagenHaSidoEnviadaComponent } from './pages/tu-imagen-ha-sido-enviada/tu-imagen-ha-sido-enviada.component';
 import { SolicitudEnviadaComponent } from './pages/solicitud-enviada/solicitud-enviada.component';
 import { FormularioDeApadrinamientoComponent } from './pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { FormularioDeApadrinamientoComponent } from './pages/formulario-de-apadr
   ],
   imports: [
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     WebComponent

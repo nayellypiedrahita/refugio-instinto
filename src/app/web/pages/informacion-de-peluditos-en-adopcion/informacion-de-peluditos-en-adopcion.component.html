@@ -5,21 +5,26 @@
 </div>
 
 <div class="wrapper" id="info_peludito">
-    <img src="{{ mascota.imagenes[0] }}" alt="" class="img">
-    <div class="text-box">
-        <h2>{{ mascota.nombre }}</h2>
-        <p>
-            Edad: {{ mascota.edad }} <br>
-            Sexo: Macho <br>
-            Raza: {{ mascota.raza }} <br>
-            esterilizado: {{ mascota.esterilizada ? "Si" : "No" }} <br>
-            <br>
-            {{ mascota.historia }}
-        </p>
+    <ng-container *ngIf="loadingMascota">
+        <i class="fa-solid fa-spinner fa-spin loading"></i>
+    </ng-container>
+    <ng-container *ngIf="!loadingMascota">
+        <img src="{{ mascota.imagenes[0] }}" alt="" class="img">
+        <div class="text-box">
+            <h2>{{ mascota.nombre }}</h2>
+            <p>
+                Edad: {{ mascota.edad }} <br>
+                Sexo: Macho <br>
+                Raza: {{ mascota.raza }} <br>
+                esterilizado: {{ mascota.esterilizada ? "Si" : "No" }} <br>
+                <br>
+                {{ mascota.historia }}
+            </p>
 
-        <div class="button">
-             <a routerLink="/web/formulario-de-adopcion/{{ idMascota }}">Adoptar</a>
+            <div class="button">
+                <a routerLink="/web/formulario-de-adopcion/{{ idMascota }}">Adoptar</a>
+            </div>
+        
         </div>
-       
-    </div>
+    </ng-container>
 </div>
