@@ -1,8 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { AdministradorModule } from '../administrador.module';
-import { collection, collectionData, CollectionReference, Firestore, getDocs, query, Query, QuerySnapshot, where } from '@angular/fire/firestore';
-import { map, Observable } from 'rxjs';
-import { Admin } from '../model/admin';
+import { collection, CollectionReference, Firestore, getDocs, query, Query, QuerySnapshot, where } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: AdministradorModule

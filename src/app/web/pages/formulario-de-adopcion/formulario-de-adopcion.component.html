@@ -4,35 +4,67 @@
 </div>
 
   <div class="container12">
-    <form (submit)="solicitudAdopcion()">
+    <ng-container *ngIf="loadingForm">
+      <div class="container-loading">
+        <i class="fa-solid fa-spinner fa-spin loading"></i>
+      </div>
+    </ng-container>
+    <form (submit)="solicitudAdopcion()" [formGroup]="adopcionForm" *ngIf="!loadingForm">
 
-        <label for="email">Nombre Completo:</label>
-        <input type="text" id="Nombre" name="Nombre" placeholder="Nombre Completo...">
+        <label for="email">Nombre Completo: *</label>
+        <input type="text" id="Nombre" placeholder="Nombre Completo..." formControlName="nombre">
+        <div class="error-msg">
+          <p *ngIf="this.adopcionForm.controls['nombre'].touched && this.adopcionForm.controls['nombre'].errors && this.adopcionForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
+          <p *ngIf="this.adopcionForm.controls['nombre'].touched && this.adopcionForm.controls['nombre'].errors && this.adopcionForm.controls['nombre'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+        </div>
 
-        <label for="tipo-documento">Tipo y número de documento:</label>
+        <label for="tipo-documento">Tipo y número de documento: *</label>
         <div class="documento-container">
-            <select id="tipo-documento" name="tipo-documento">
-                <option value="dni">Documento Nacional de Identidad (DNI)</option>
-                <option value="pasaporte">Pasaporte</option>
-                <option value="cedula">Cédula de ciudadanía</option>
+            <select id="tipo-documento" formControlName="tipoDocumento">
+                <option value="ninguno">Tipo documento...</option>
+                <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                <option value="Pasaporte">Pasaporte</option>
             </select>
-            <input type="text" id="numero-documento" name="numero-documento" placeholder="Número de documento">
+            <div class="error-msg">
+              <p *ngIf="this.adopcionForm.controls['tipoDocumento'].touched && this.adopcionForm.controls['tipoDocumento'].errors && this.adopcionForm.controls['tipoDocumento'].errors!['required']">El campo tipo de documento es obligatorio</p>
+            </div>
+            <input type="text" id="numero-documento" placeholder="Número de documento" formControlName="numeroDocumento">
+            <div class="error-msg">
+              <p *ngIf="this.adopcionForm.controls['numeroDocumento'].touched && this.adopcionForm.controls['numeroDocumento'].errors && this.adopcionForm.controls['numeroDocumento'].errors!['required']">El campo numero de documento es obligatorio</p>
+              <p *ngIf="this.adopcionForm.controls['numeroDocumento'].touched && this.adopcionForm.controls['numeroDocumento'].errors && this.adopcionForm.controls['numeroDocumento'].errors!['pattern']">El campo numero de documento solo acepta números</p>
+            </div>
         </div>
     
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" placeholder="Correo Electrónico...">
+        <label for="email">Correo electrónico: *</label>
+        <input type="email" id="email" placeholder="Correo Electrónico..." formControlName="correo">
+        <div class="error-msg">
+          <p *ngIf="this.adopcionForm.controls['correo'].touched && this.adopcionForm.controls['correo'].errors && this.adopcionForm.controls['correo'].errors!['required']">El campo correo de documento es obligatorio</p>
+          <p *ngIf="this.adopcionForm.controls['correo'].touched && this.adopcionForm.controls['correo'].errors && this.adopcionForm.controls['correo'].errors!['email']">Este campo no parece un correo</p>
+        </div>
 
-        <label for="telefono">Número celular:</label>
-        <input type="tel" id="telefono" name="telefono" placeholder="Número celular...">
+        <label for="telefono">Número celular: *</label>
+        <input type="tel" id="telefono" placeholder="Número celular..." formControlName="celular">
+        <div class="error-msg">
+          <p *ngIf="this.adopcionForm.controls['celular'].touched && this.adopcionForm.controls['celular'].errors && this.adopcionForm.controls['celular'].errors!['required']">El campo telefono es obligatorio</p>
+          <p *ngIf="this.adopcionForm.controls['celular'].touched && this.adopcionForm.controls['celular'].errors && this.adopcionForm.controls['celular'].errors!['pattern']">El campo telefono solo acepta numeros</p>
+        </div>
 
-        <label for="ciudad">Ciudad:</label>
-        <input type="text" id="ciudad" name="ciudad" placeholder="Ciudad...">
+        <label for="departamento">Departamento: *</label>
+        <select formControlName="departamento">
+          <option value="ninguno">Departamento...</option>
+          <option *ngFor="let departamento of departamentos" value="{{ departamento.idDepartamento }}">{{ departamento.nombre }}</option>
+        </select>
+        <div class="error-msg">
+          <p *ngIf="this.adopcionForm.controls['departamento'].touched && this.adopcionForm.controls['departamento'].errors && this.adopcionForm.controls['departamento'].errors!['required']">El campo departamento es obligatorio</p>
+        </div>
 
-        <label for="departamento">Departamento:</label>
-        <input type="text" id="departamento" name="departamento" placeholder="Departamento...">
+        <label for="ciudad">Ciudad: *</label>
+        <input type="text" id="ciudad" placeholder="Ciudad..." formControlName="ciudad">
+        <div class="error-msg">
+          <p *ngIf="this.adopcionForm.controls['ciudad'].touched && this.adopcionForm.controls['ciudad'].errors && this.adopcionForm.controls['ciudad'].errors!['required']">El campo ciudad es obligatorio</p>
+          <p *ngIf="this.adopcionForm.controls['ciudad'].touched && this.adopcionForm.controls['ciudad'].errors && this.adopcionForm.controls['ciudad'].errors!['pattern']">El campo nombre solo acepta de 3 a 50 letras</p>
+        </div>
 
         <button type="submit" class="btn">Siguiente</button>
     </form>
 </div>
-
-<app-footer></app-footer>

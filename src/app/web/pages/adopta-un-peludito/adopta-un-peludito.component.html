@@ -25,15 +25,20 @@
 
 
     <div class="container1" id="listado_peluditos">
-        <div class='box' *ngFor="let mascota of mascotas">
-            <div class='img'>
-                <img src="{{ mascota.imagenes[0] }}"  alt=''>
-                <a href='/web/informacion-de-peluditos-en-adopcion/{{mascota.idMascota}}' ><div class='hover-text'><i class='fa-solid fas fa-paw'></i> Ver peludito</div></a>
+        <ng-container *ngIf="loadingMascotas">
+            <i class="fa-solid fa-spinner fa-spin loading"></i>
+        </ng-container>
+        <ng-container *ngIf="!loadingMascotas">
+            <div class='box' *ngFor="let mascota of mascotas">
+                <div class='img'>
+                    <img src="{{ mascota.imagenes[0] }}"  alt=''>
+                    <a href='/web/informacion-de-peluditos-en-adopcion/{{mascota.idMascota}}' ><div class='hover-text'><i class='fa-solid fas fa-paw'></i> Ver peludito</div></a>
+                </div>
+                <div class='details'>
+                    <div class='name'>{{ mascota.nombre }}</div>
+                </div>
             </div>
-            <div class='details'>
-                <div class='name'>{{ mascota.nombre }}</div>
-            </div>
-        </div>
+        </ng-container>
     </div>
 </section>
 
