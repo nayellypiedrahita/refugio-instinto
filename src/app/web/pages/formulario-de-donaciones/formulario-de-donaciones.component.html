@@ -4,17 +4,25 @@
 </div>
 
 <div class="carta">
-    <form (submit)="toSolicitudEnviada()">
+    <form (submit)="toSolicitudEnviada()" [formGroup]="donacionForm" *ngIf="!loadingForm">
       <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" formControlName="nombreCompleto">
+      <div class="error-msg">
+        <p *ngIf="this.donacionForm.controls['nombreCompleto'].touched && this.donacionForm.controls['nombreCompleto'].errors && this.donacionForm.controls['nombreCompleto'].errors!['required']">El campo nombre es obligatorio</p>
+        <p *ngIf="this.donacionForm.controls['nombreCompleto'].touched && this.donacionForm.controls['nombreCompleto'].errors && this.donacionForm.controls['nombreCompleto'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+      </div>
       
       <label for="numeroc">Número de celular:</label>
-      <input type="tel" id="numeroc" name="numeroc" placeholder="WhatsApp">
+      <input type="tel" id="numeroc" name="numeroc" placeholder="WhatsApp" formControlName="numeroCelular">
+      <div class="error-msg">
+        <p *ngIf="this.donacionForm.controls['numeroCelular'].touched && this.donacionForm.controls['numeroCelular'].errors && this.donacionForm.controls['numeroCelular'].errors!['required']">El campo numero de celular es obligatorio</p>
+        <p *ngIf="this.donacionForm.controls['numeroCelular'].touched && this.donacionForm.controls['numeroCelular'].errors && this.donacionForm.controls['numeroCelular'].errors!['pattern']">El campo numero de celular solo acepta numero</p>
+      </div>
 
-      <p>Donación:</p>
+      <p class="donacion">Donación:</p>
       
       <div class="checkbox-group" >
-        <p>Elige el artículo que quieras donar:</p><br>
+        <p class="donacion">Elige el artículo que quieras donar:</p><br>
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Alimento para gatos">
         <label for="vehicle1">Alimento para gatos</label><br>
 
@@ -44,7 +52,10 @@
       </div>
 
       <label for="otro">Otro:</label>
-      <input type="text" id="otro" name="otro" placeholder="Otro...">
+      <input type="text" id="otro" name="otro" placeholder="Otro..." formControlName="otro">
+      <div class="error-msg">
+        <p *ngIf="this.donacionForm.controls['otro'].touched && this.donacionForm.controls['otro'].errors && this.donacionForm.controls['otro'].errors!['required']">El campo otro es obligatorio</p>
+      </div>
 
       <input type="submit" value="Enviar" >
 

@@ -65,8 +65,8 @@
 
 
 a.hover-text {
-    text-decoration: none; /* Elimina la línea subrayada */
-    color: inherit; /* Mantiene el color del texto del enlace */
+    text-decoration: none; 
+    color: inherit; 
 }
 .container12 {
     max-width: 500px;
