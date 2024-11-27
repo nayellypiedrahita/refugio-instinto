@@ -7,8 +7,8 @@ import { DonacionesComponent } from './web/pages/donaciones/donaciones.component
 import { AdoptaUnPeluditoComponent } from './web/pages/adopta-un-peludito/adopta-un-peludito.component';
 import { VoluntariadoComponent } from './web/pages/voluntariado/voluntariado.component';
 import { AdministradorComponent } from './administrador/administrador.component';
-import { LoginComponent } from './administrador/login/login.component';
-import { AdminHomeComponent } from './administrador/admin-home/admin-home.component';
+import { LoginComponent } from './administrador/pages/login/login.component';
+import { AdminHomeComponent } from './administrador/pages/admin-home/admin-home.component';
 import { DonacionesEspecieComponent } from './web/pages/donaciones-especie/donaciones-especie.component';
 import { TestimoniosDePeluditosComponent } from './web/pages/testimonios-de-peluditos/testimonios-de-peluditos.component';
 import { DonacionesMonetariasComponent } from './web/pages/donaciones-monetarias/donaciones-monetarias.component';

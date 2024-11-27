@@ -1,0 +1,11 @@
+.title-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #f0e1d3;
+    padding: 10px;
+}
+
+.title-container h1 {
+    font-size: 3rem;
+}

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { AdminService } from '../services/admin.service';
+import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, of, tap } from 'rxjs';

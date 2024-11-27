@@ -12,7 +12,7 @@
 
 .hero {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	padding: 2rem 0;
 }
@@ -33,6 +33,23 @@
 	font-size: 3rem;
 	text-transform: uppercase;
 	letter-spacing: 1px;
+}
+
+.container-user {
+	display: flex;
+	gap: 1rem;
+	cursor: pointer;
+}
+
+.container-user .fa-user {
+	font-size: 3rem;
+	color: white;
+}
+
+.container-user .fa-basket-shopping {
+	font-size: 3rem;
+	color: var(--primary-color);
+	padding-left: 1rem;
 }
 
 main {
@@ -93,5 +110,6 @@ aside .main-nav li input:checked + label + ul {
 }
 
 .container-content {
+    width: 100%;
     padding: 20px;
 }
