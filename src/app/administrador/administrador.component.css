@@ -1,0 +1,97 @@
+.container {
+	max-width: 120rem;
+	margin: 0 auto;
+}
+
+
+/*HEADER*/
+
+.container-hero {
+	background-color: #cca27a;
+}
+
+.hero {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem 0;
+}
+
+.container-logo {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.container-logo i {
+	font-size: 3rem;
+}
+
+.container-logo h1 a {	
+	text-decoration: none;
+	color: #000;
+	font-size: 3rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+main {
+    display: flex;
+}
+
+aside .side-nav {
+    width: 250px;
+}
+
+aside ul {
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+aside .main-nav {
+    background-color: #fff0e2;
+    height: 90vh;
+}
+
+aside .main-nav li label {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    padding-right: 30px;
+    background-color: #fff0e2;
+    border-bottom: 2px solid white;
+}
+
+aside .main-nav li label .arrow { 
+    display: inline-block;
+    transition: transform 0.3s ease;
+    font-size: 12px;
+    transform: rotate(90deg);
+}
+
+
+aside .main-nav li .nav-child {
+    display: none;
+}
+
+aside .main-nav li .nav-child li {
+    padding: 10px 30px;
+    background-color: #fff9f3;
+}
+
+aside .main-nav li input:checked + label {
+    font-weight: 500;
+}
+
+aside .main-nav li input:checked + label .arrow {
+    transform: rotate(0deg);
+}
+
+aside .main-nav li input:checked + label + ul {
+    display: block;
+}
+
+.container-content {
+    padding: 20px;
+}

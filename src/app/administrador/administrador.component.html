@@ -1,1 +1,47 @@
-<router-outlet></router-outlet>
+<div class="container-hero">
+    <div class="container hero">
+        <div class="customer-support">
+        </div>
+
+        <div class="container-logo">
+            <i class="fa-solid fas fa-paw"></i>
+            <h1 class="logo"><a href="/">Fundacion Instinto</a></h1>
+        </div>
+    </div>
+</div>
+<main>
+    <aside>
+        <div class="side-nav">
+            <ul class="main-nav">
+                <li>
+                    <input type="checkbox" id="mascotas" hidden>
+                    <label for="mascotas">MASCOTAS <span class="arrow">▶</span></label>
+                    <ul class="nav-child">
+                        <li>Bajo cuidado</li>
+                        <li>Adopciones</li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="donaciones" hidden>
+                    <label for="donaciones">DONACIONES <span class="arrow">▶</span></label>
+                    <ul class="nav-child">
+                        <li>Comprobantes de pago</li>
+                        <li>Solicitudes en especie</li>
+                    </ul>
+                </li>
+                <li>
+                    <input type="checkbox" id="solicitudes" hidden>
+                    <label for="solicitudes">SOLICITUDES <span class="arrow">▶</span></label>
+                    <ul class="nav-child">
+                        <li>Adopción</li>
+                        <li>Voluntariado</li>
+                        <li>Apadrinamiento</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="container-content">
+        <router-outlet></router-outlet>
+    </div>
+</main>
