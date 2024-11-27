@@ -74,7 +74,7 @@ aside .main-nav li label {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px;
     padding-right: 30px;
     background-color: #fff0e2;
     border-bottom: 2px solid white;
@@ -92,13 +92,18 @@ aside .main-nav li .nav-child {
     display: none;
 }
 
-aside .main-nav li .nav-child li {
-    padding: 10px 30px;
+aside .main-nav li .nav-child a li {
+    padding: 15px 30px;
     background-color: #fff9f3;
 }
 
+aside .main-nav li .nav-child a {
+    text-decoration: none;
+    color: #000;
+}
+
 aside .main-nav li input:checked + label {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 aside .main-nav li input:checked + label .arrow {
