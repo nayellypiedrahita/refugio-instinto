@@ -4,7 +4,10 @@
 </div>
 
 <div class="carta">
-    <form (submit)="toSolicitudEnviada()" [formGroup]="donacionForm" *ngIf="!loadingForm">
+  <div class="loading-container" *ngIf="loadingForm">
+    <i class="fa-solid fa-spinner fa-spin loading"></i>
+  </div>
+  <form (submit)="toSolicitudEnviada()" [formGroup]="donacionForm" *ngIf="!loadingForm">
       <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" formControlName="nombreCompleto">
       <div class="error-msg">
@@ -23,31 +26,31 @@
       
       <div class="checkbox-group" >
         <p class="donacion">Elige el artículo que quieras donar:</p><br>
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="Alimento para gatos">
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Alimento para gatos" formControlName="alimentoGatos">
         <label for="vehicle1">Alimento para gatos</label><br>
 
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="Alimento para perros">
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Alimento para perros" formControlName="alimentoPerros">
         <label for="vehicle2">Alimento para perros</label><br>
 
-        <input type="checkbox" id="vehicle3" name="vehicle3" value="Peine o cepillo">
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Peine o cepillo" formControlName="peine">
         <label for="vehicle3">Peine o cepillo</label><br>
 
-        <input type="checkbox" id="vehicle4" name="vehicle4" value="Medicamentos veterinarios">
+        <input type="checkbox" id="vehicle4" name="vehicle4" value="Medicamentos veterinarios" formControlName="medicamentos">
         <label for="vehicle4">Medicamentos veterinarios</label><br>
 
-        <input type="checkbox" id="vehicle5" name="vehicle5" value="Camas y mantas">
+        <input type="checkbox" id="vehicle5" name="vehicle5" value="Camas y mantas" formControlName="camas">
         <label for="vehicle5">Camas y mantas</label><br>
 
-        <input type="checkbox" id="vehicle6" name="vehicle6" value="Arena para gatos">
+        <input type="checkbox" id="vehicle6" name="vehicle6" value="Arena para gatos" formControlName="arena">
         <label for="vehicle6">Arena para gatos</label><br>
 
-        <input type="checkbox" id="vehicle7" name="vehicle7" value="Collares y correas">
+        <input type="checkbox" id="vehicle7" name="vehicle7" value="Collares y correas" formControlName="collares">
         <label for="vehicle7">Collares y correas</label><br>
 
-        <input type="checkbox" id="vehicle8" name="vehicle8" value="Productos de limpieza">
+        <input type="checkbox" id="vehicle8" name="vehicle8" value="Productos de limpieza" formControlName="limpieza">
         <label for="vehicle8">Productos de limpieza</label><br>
 
-        <input type="checkbox" id="vehicle9" name="vehicle9" value="Jaulas y transportadoras">
+        <input type="checkbox" id="vehicle9" name="vehicle9" value="Jaulas y transportadoras" formControlName="jaulas">
         <label for="vehicle9">Jaulas y transportadoras</label>
       </div>
 
@@ -59,7 +62,7 @@
 
       <input type="submit" value="Enviar" >
 
-    </form> 
+    </form>
 </div>
 
 

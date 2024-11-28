@@ -145,7 +145,7 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     display: flex;
     justify-content: center;
   }
-
+  
   .loading {
     font-size: 10rem;
 	color: #c7a17a;
