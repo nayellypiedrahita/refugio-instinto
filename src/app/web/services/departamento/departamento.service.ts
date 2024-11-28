@@ -1,13 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { collection, collectionData, CollectionReference, Firestore, getDocs } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 import { Departamento } from '../../model/departamento';
 import { WebModule } from '../../web.module';
 
 @Injectable({
   providedIn: WebModule
 })
-export class UbicacionService {
+export class DepartamentoService {
 
   private firestore: Firestore = inject(Firestore);
   private departamentosCollection: CollectionReference;
