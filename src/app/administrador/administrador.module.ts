@@ -6,6 +6,9 @@ import { AppRoutingModule } from '../app-routing.module';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TitleComponent } from './components/title/title.component';
+import { TestimoniosAdminComponent } from './pages/testimonios-admin/testimonios-admin.component';
+import { ActualizarTestimoniosComponent } from './pages/actualizar-testimonios/actualizar-testimonios.component';
+import { AceptarAgregarTestimonioComponent } from './pages/aceptar-agregar-testimonio/aceptar-agregar-testimonio.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +16,9 @@ import { TitleComponent } from './components/title/title.component';
     LoginComponent,
     AdminHomeComponent,
     TitleComponent,
+    TestimoniosAdminComponent,
+    ActualizarTestimoniosComponent,
+    AceptarAgregarTestimonioComponent,
   ],
   imports: [
     CommonModule,

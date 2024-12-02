@@ -22,6 +22,9 @@ import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicit
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 import { AuthGuard } from './administrador/guards/auth.guard';
+import { TestimoniosAdminComponent } from './administrador/pages/testimonios-admin/testimonios-admin.component';
+import { ActualizarTestimoniosComponent } from './administrador/pages/actualizar-testimonios/actualizar-testimonios.component';
+import { AceptarAgregarTestimonioComponent } from './administrador/pages/aceptar-agregar-testimonio/aceptar-agregar-testimonio.component';
 
 
 const routes: Routes = [
@@ -51,6 +54,9 @@ const routes: Routes = [
   {
     path: "admin", component: AdministradorComponent, canActivateChild: [ AuthGuard ], children: [
       { path: "home", component: AdminHomeComponent },
+      { path: "testimonios-admin", component: TestimoniosAdminComponent },
+      { path: "actualizar-testimonios", component: ActualizarTestimoniosComponent },
+      { path: "aceptar-agregar-testimonios", component: AceptarAgregarTestimonioComponent },  
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },
