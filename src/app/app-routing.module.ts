@@ -21,6 +21,7 @@ import { TuImagenHaSidoEnviadaComponent } from './web/pages/tu-imagen-ha-sido-en
 import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicitud-enviada.component';
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
+import { AuthGuard } from './administrador/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -42,13 +43,15 @@ const routes: Routes = [
       { path: 'tu-imagen-ha-sido-enviada', component: TuImagenHaSidoEnviadaComponent },
       { path: 'solicitud-enviada', component: SolicitudEnviadaComponent },
       { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent },
-      { path: 'comprobante-donacion', component: ComprobanteDonacionComponent }
+      { path: 'comprobante-donacion', component: ComprobanteDonacionComponent },
+      { path: '**', pathMatch: 'full', redirectTo: '/web/home' }
     ]
   },
   { path: "login", component: LoginComponent },
   {
-    path: "admin", component: AdministradorComponent, children: [
-      { path: "home", component: AdminHomeComponent }
+    path: "admin", component: AdministradorComponent, canActivateChild: [ AuthGuard ], children: [
+      { path: "home", component: AdminHomeComponent },
+      { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: '/web/home' }

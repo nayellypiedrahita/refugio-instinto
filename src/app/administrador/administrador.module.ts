@@ -12,12 +12,12 @@ import { TitleComponent } from './components/title/title.component';
     AdministradorComponent,
     LoginComponent,
     AdminHomeComponent,
-    TitleComponent
+    TitleComponent,
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule
-  ]
+  ],
 })
 export class AdministradorModule { }
