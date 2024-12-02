@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donaciones-monetarias',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './donaciones-monetarias.component.css'
 })
 export class DonacionesMonetariasComponent {
+
+  constructor(
+    private router: Router
+  ) {}
+
+  toComprobanteDonacion() {
+    this.router.navigate(["/web/comprobante-donacion"]);
+  }
 
 }

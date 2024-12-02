@@ -16,7 +16,7 @@ export class FormularioDeAdopcionComponent implements OnInit {
   idMascota: string | null = null;
   departamentos: Departamento[] = [];
   adopcionForm: FormGroup = new FormGroup({
-    nombre: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{5,50}')]),
+    nombre: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{3,50}')]),
     tipoDocumento: new FormControl('ninguno', [Validators.required, this.emptySelect()]),
     numeroDocumento: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")]),
     correo: new FormControl("", [Validators.required, Validators.email]),

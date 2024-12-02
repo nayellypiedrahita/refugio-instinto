@@ -20,6 +20,7 @@ import { InformacionDePeluditosEnAdopcionComponent } from './web/pages/informaci
 import { TuImagenHaSidoEnviadaComponent } from './web/pages/tu-imagen-ha-sido-enviada/tu-imagen-ha-sido-enviada.component';
 import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicitud-enviada.component';
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
+import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
       { path: 'informacion-de-peluditos-en-adopcion/:idMascota', component: InformacionDePeluditosEnAdopcionComponent },
       { path: 'tu-imagen-ha-sido-enviada', component: TuImagenHaSidoEnviadaComponent },
       { path: 'solicitud-enviada', component: SolicitudEnviadaComponent },
-      { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent }
+      { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent },
+      { path: 'comprobante-donacion', component: ComprobanteDonacionComponent }
     ]
   },
   { path: "login", component: LoginComponent },

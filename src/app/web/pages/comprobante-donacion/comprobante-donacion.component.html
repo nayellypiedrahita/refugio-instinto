@@ -1,0 +1,19 @@
+<div class="container-comprobante">
+    <h1><i class="fa-solid fas fa-paw"></i> ! IMPORTANTE ¡ <i class="fa-solid fas fa-paw"></i></h1>
+    <p>Es importante que, si realizas tu donación por transferencia, nos envíes una foto del comprobante de que la transferencia se ha realizado con éxito. Esto permitirá que nuestra fundación pueda verificar y registrar tu donación adecuadamente.</p>
+    <div class="loading" *ngIf="loading">
+        <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+    </div>
+    <div class="content" *ngIf="!loading">
+        <input type="file" #fileInput hidden (change)="fileSelected($event)" multiple="false">
+        <div class="image-container" (click)="fileInput.click()">
+            <img [src]="this.base64" alt="" *ngIf="selectedImage">
+            <i class="fa-regular fa-image fa-2xl"></i>
+            <p>Subir Imagen</p>
+        </div>
+    </div>
+    <div class="buttons" *ngIf="!loading">
+        <button (click)="quitarImagen()">Eliminar</button>
+        <button (click)="enviarDonacionMonetaria()">Enviar</button>
+    </div>
+</div>
