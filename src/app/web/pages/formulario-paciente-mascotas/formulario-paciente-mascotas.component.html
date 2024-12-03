@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Instinto - Mascotas</title>
+</head>
+<body>
+    <main>
+        <section class="mascotas-form">
+            <form>
+                <div class="row">
+                    <div class="column">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" >
+                        </div>
+                        <div class="form-group">
+                            <label for="raza">Raza</label>
+                            <input type="text" id="raza" >
+                        </div>
+                        <div class="form-group">
+                            <label for="edad">Meses, años</label>
+                            <input type="text" id="edad" >
+                        </div>
+                        <div class="form-group">
+                            <label for="sexo">Sexo</label>
+                            <input type="text" id="sexo">
+                        </div>
+                        <div class="form-group">
+                            <label for="esterilizada">Esterilizada</label>
+                            <select id="esterilizada">
+                                <option>Sí</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado urgencia</label>
+                            <select id="estado">
+                                <option>Estado crítico</option>
+                                <option>Moderado</option>
+                                <option>Estable</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="form-group">
+                            <label for="fecha">Fecha registro</label>
+                            <input type="date" id="fecha" value="2024-11-10">
+                        </div>
+                        <div class="form-group">
+                            <label for="condiciones">Condiciones especiales</label>
+                            <input type="text" id="condiciones" >
+                        </div>
+                        <div class="form-group">
+                            <label for="tamaño">Tamaño</label>
+                            <input type="text" id="tamaño" >
+                        </div>
+                        <div class="form-group">
+                            <label for="historia">Historia</label>
+                            <textarea id="historia" rows="4" ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen">
+                                <img src="assets/IMAGENESS.png" alt="" class="preview-image">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit">HECHO</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
+

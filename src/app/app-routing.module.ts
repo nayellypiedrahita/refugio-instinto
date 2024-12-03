@@ -8,7 +8,6 @@ import { AdoptaUnPeluditoComponent } from './web/pages/adopta-un-peludito/adopta
 import { VoluntariadoComponent } from './web/pages/voluntariado/voluntariado.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { LoginComponent } from './administrador/pages/login/login.component';
-import { AdminHomeComponent } from './administrador/pages/admin-home/admin-home.component';
 import { DonacionesEspecieComponent } from './web/pages/donaciones-especie/donaciones-especie.component';
 import { TestimoniosDePeluditosComponent } from './web/pages/testimonios-de-peluditos/testimonios-de-peluditos.component';
 import { DonacionesMonetariasComponent } from './web/pages/donaciones-monetarias/donaciones-monetarias.component';
@@ -20,6 +19,11 @@ import { InformacionDePeluditosEnAdopcionComponent } from './web/pages/informaci
 import { TuImagenHaSidoEnviadaComponent } from './web/pages/tu-imagen-ha-sido-enviada/tu-imagen-ha-sido-enviada.component';
 import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicitud-enviada.component';
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
+import { PerfilDelPacienteComponent } from './administrador/pages/perfil-del-paciente/perfil-del-paciente.component';
+import { AdminHomeComponent } from './administrador/pages/admin-home/admin-home.component';
+import { FormularioPacienteMascotasComponent } from './web/pages/formulario-paciente-mascotas/formulario-paciente-mascotas.component';
+import { BajoCuidadoComponent } from './administrador/pages/bajo-cuidado/bajo-cuidado.component';
+import { AdopcionesComponent } from './administrador/pages/adopciones/adopciones.component';
 
 
 const routes: Routes = [
@@ -40,13 +44,18 @@ const routes: Routes = [
       { path: 'informacion-de-peluditos-en-adopcion/:idMascota', component: InformacionDePeluditosEnAdopcionComponent },
       { path: 'tu-imagen-ha-sido-enviada', component: TuImagenHaSidoEnviadaComponent },
       { path: 'solicitud-enviada', component: SolicitudEnviadaComponent },
-      { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent }
+      { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent },
+      { path: "formulario-paciente-mascotas", component: FormularioPacienteMascotasComponent}
     ]
   },
   { path: "login", component: LoginComponent },
   {
     path: "admin", component: AdministradorComponent, children: [
-      { path: "home", component: AdminHomeComponent }
+      { path: "home", component: AdminHomeComponent },
+      { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
+      { path: "bajo-cuidado", component: BajoCuidadoComponent},
+      { path: "adopciones", component: AdopcionesComponent}
+      
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: '/web/home' }

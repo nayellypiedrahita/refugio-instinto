@@ -20,6 +20,7 @@ import { TuImagenHaSidoEnviadaComponent } from './pages/tu-imagen-ha-sido-enviad
 import { SolicitudEnviadaComponent } from './pages/solicitud-enviada/solicitud-enviada.component';
 import { FormularioDeApadrinamientoComponent } from './pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormularioPacienteMascotasComponent } from './pages/formulario-paciente-mascotas/formulario-paciente-mascotas.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     InformacionDePeluditosEnAdopcionComponent,
     TuImagenHaSidoEnviadaComponent,
     SolicitudEnviadaComponent,
-    FormularioDeApadrinamientoComponent
+    FormularioDeApadrinamientoComponent,
+    FormularioPacienteMascotasComponent
   ],
   imports: [
     AppRoutingModule,
