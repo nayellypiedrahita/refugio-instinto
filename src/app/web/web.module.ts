@@ -21,6 +21,7 @@ import { SolicitudEnviadaComponent } from './pages/solicitud-enviada/solicitud-e
 import { FormularioDeApadrinamientoComponent } from './pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioPacienteMascotasComponent } from './pages/formulario-paciente-mascotas/formulario-paciente-mascotas.component';
+import { ComprobanteDonacionComponent } from './pages/comprobante-donacion/comprobante-donacion.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { FormularioPacienteMascotasComponent } from './pages/formulario-paciente
     TuImagenHaSidoEnviadaComponent,
     SolicitudEnviadaComponent,
     FormularioDeApadrinamientoComponent,
-    FormularioPacienteMascotasComponent
+    FormularioPacienteMascotasComponent,
+    ComprobanteDonacionComponent
   ],
   imports: [
     AppRoutingModule,

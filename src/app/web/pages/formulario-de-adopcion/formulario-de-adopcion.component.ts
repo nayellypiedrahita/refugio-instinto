@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UbicacionService } from '../../services/ubicacion/ubicacion.service';
 import { Departamento } from '../../model/departamento';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
 import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
+import { DepartamentoService } from '../../services/departamento/departamento.service';
 
 @Component({
   selector: 'app-formulario-de-adopcion',
@@ -16,7 +16,7 @@ export class FormularioDeAdopcionComponent implements OnInit {
   idMascota: string | null = null;
   departamentos: Departamento[] = [];
   adopcionForm: FormGroup = new FormGroup({
-    nombre: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{5,50}')]),
+    nombre: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{3,50}')]),
     tipoDocumento: new FormControl('ninguno', [Validators.required, this.emptySelect()]),
     numeroDocumento: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")]),
     correo: new FormControl("", [Validators.required, Validators.email]),
@@ -26,7 +26,7 @@ export class FormularioDeAdopcionComponent implements OnInit {
   });
   loadingForm: boolean = false;
 
-  private departamentoService: UbicacionService = inject(UbicacionService);
+  private departamentoService: DepartamentoService = inject(DepartamentoService);
   private solicitudAdopcionService: SolicitudAdopcionService = inject(SolicitudAdopcionService);
 
   constructor(

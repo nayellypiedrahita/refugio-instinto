@@ -3,6 +3,9 @@ import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, of, tap } from 'rxjs';
+import { signOut } from '@angular/fire/auth';
+import * as CryptoJS from 'crypto-js';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +38,8 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       const usuario = this.form.controls['usuario'].value;
       const clave = this.form.controls['clave'].value;
-      this.adminService.login({ usuario, clave }).then((response) => {
+
+      this.adminService.login({ usuario, clave: clave }).then((response) => {
         if (response) {
           this.router.navigate(["/admin/home"]);
         } else {

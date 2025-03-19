@@ -24,6 +24,8 @@ import { AdminHomeComponent } from './administrador/pages/admin-home/admin-home.
 import { FormularioPacienteMascotasComponent } from './web/pages/formulario-paciente-mascotas/formulario-paciente-mascotas.component';
 import { BajoCuidadoComponent } from './administrador/pages/bajo-cuidado/bajo-cuidado.component';
 import { AdopcionesComponent } from './administrador/pages/adopciones/adopciones.component';
+import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
+import { AuthGuard } from './administrador/guards/auth.guard';
 
 
 const routes: Routes = [
@@ -45,17 +47,19 @@ const routes: Routes = [
       { path: 'tu-imagen-ha-sido-enviada', component: TuImagenHaSidoEnviadaComponent },
       { path: 'solicitud-enviada', component: SolicitudEnviadaComponent },
       { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent },
-      { path: "formulario-paciente-mascotas", component: FormularioPacienteMascotasComponent}
+      { path: "formulario-paciente-mascotas", component: FormularioPacienteMascotasComponent},
+      { path: 'comprobante-donacion', component: ComprobanteDonacionComponent },
+      { path: '**', pathMatch: 'full', redirectTo: '/web/home' }
     ]
   },
   { path: "login", component: LoginComponent },
   {
-    path: "admin", component: AdministradorComponent, children: [
+    path: "admin", component: AdministradorComponent, canActivateChild: [ AuthGuard ], children: [
       { path: "home", component: AdminHomeComponent },
       { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
       { path: "bajo-cuidado", component: BajoCuidadoComponent},
-      { path: "adopciones", component: AdopcionesComponent}
-      
+      { path: "adopciones", component: AdopcionesComponent},
+      { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: '/web/home' }

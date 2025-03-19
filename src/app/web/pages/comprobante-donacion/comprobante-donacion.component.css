@@ -1,0 +1,95 @@
+.container-comprobante {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 50px;
+}
+
+.container-comprobante h1{
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.container-comprobante p{
+    max-width: 500px;
+    align-self: center;
+    font-size: 2rem;
+}
+
+.container-comprobante h1, p{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image-container {
+    max-width: 500px;
+    width: 400px;
+    min-width: 200px;
+    background-color: #B7B4B1;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    border-radius: 10%;
+    cursor: pointer;
+    border: 4px black dotted;
+    position: relative;
+}
+
+.image-container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10%;
+    object-fit: cover;
+}
+
+.image-container i {
+    font-size: 5rem;
+    margin-bottom: 50px;
+}
+
+.image-container p {
+    margin: 0px;
+    cursor: default;
+}
+
+.buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+button{
+	padding: 15px;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    background-color: black;
+    width: 150px;
+    align-self: center;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 0px 30px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.loading i {
+    font-size: 5rem;
+    color: #c7a17a;
+}

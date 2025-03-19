@@ -24,6 +24,6 @@ import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule
-  ]
+  ],
 })
 export class AdministradorModule { }

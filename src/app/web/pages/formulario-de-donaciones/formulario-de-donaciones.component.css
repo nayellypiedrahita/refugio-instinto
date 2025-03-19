@@ -94,3 +94,15 @@
 input[type="submit"]:hover {
 background-color: #333333; 
 }
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+}
+
+.loading {
+  font-size: 10rem;
+color: #c7a17a;
+margin-top: 50px;
+margin-bottom: 80px;
+}
