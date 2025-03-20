@@ -12,27 +12,36 @@
     <div class="header">Detalle</div>
     <div class="content">
       <div class="text-box1">
-        <a href="/admin/comprobantes-y-pasarelas" class="hover-text">
-            <h3><i class="fa-solid fa-chevron-left"></i> Volver</h3>
+        <a routerLink="/admin/comprobantes-y-pasarelas" class="hover-text">
+          <h3><i class="fa-solid fa-chevron-left"></i> Volver</h3>
         </a>
-    </div>
+      </div>
       <div class="box">
         <p><strong>Numero de comprobante:</strong>278988767</p>
         <p><strong>Fecha de Pago:</strong>2022-02-12</p>
         <p><strong>Hora de Pago:</strong>1:30 pm</p>
       </div>
-
       <div class="trash-container">
         <div class="trash">
-          <a href="/admin/Eliminar" class="hover-text">
-          <i class="fa-solid fa-trash"></i>
-         </a>
+          <a (click)="$event.preventDefault(); mostrarDialogo()" class="hover-text">
+            <i class="fa-solid fa-trash"></i>
+          </a>
         </div> 
+      </div>      
+    </div>
+    <div class="donation">Monto Pagado: $100.000</div>
+  </div>
+  
+  <div class="dialog-container" *ngIf="mostrarAlerta">
+    <div class="dialog-box">
+      <div class="dialog-header">¿Está seguro que quiere eliminar esta comprobante?</div>
+      <div class="dialog-actions">
+        <button class="cancel-button" (click)="cerrarDialogo()">Cancelar</button>
+        <button class="accept-button" (click)="eliminarSolicitud()">Aceptar</button>
       </div>
     </div>
-    <div class="donation">Monto Pagado: $100.000
-    </div>
   </div>
+  
 </body>
 </html>
 

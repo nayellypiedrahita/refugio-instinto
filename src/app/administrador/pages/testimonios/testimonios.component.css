@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 
-/* Estilos generales */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@
 
 html {
 	font-family: 'Poppins', sans-serif;
-}
+} 
 
 header {
     background-color: #CCA27A;
@@ -20,14 +20,14 @@ header {
     align-items: center;
     padding: 10px 20px;
     width: 100%;
-    gap: 10px; /* Espacio entre el logo y el título */
+    gap: 10px;
 }
 
 .title {
     text-decoration: none;
     color: #000;
     text-transform: uppercase;
-    margin-left: 10px; /* Añadir margen izquierdo al título */
+    margin-left: 10px;
 }
 
 .logo {
@@ -35,11 +35,11 @@ header {
     align-items: center;
     justify-content: center;
     flex-grow: 1;
-    margin-right: 10px; /* Añadir margen derecho al logo */
+    margin-right: 10px; 
 }
 
 .logo i {
-    font-size: 30px; /* Aumenta el tamaño del ícono */
+    font-size: 30px; 
 }
 
 .paw-icon {
@@ -61,7 +61,7 @@ header {
     background-color: #FFF0E2;
     width: 220px;
     padding-top: 20px;
-    margin-right: 20px; /* Separa el sidebar del cuadro */
+    margin-right: 20px;
 }
 
 .sidebar nav ul {
@@ -132,19 +132,19 @@ main {
   font-size: 18px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-left: 10px; /* Menor espacio para acercarlo más al sidebar */
-  margin-top: 10px; /* Separación de la parte superior */
-  margin-bottom: 20px; /* Separación de la parte inferior */
-  width: calc(100% - 10px); /* Ajusta el espacio restante para el cuadro */
+  margin-left: 10px; 
+  margin-top: 10px; 
+  margin-bottom: 20px; 
+  width: calc(100% - 10px); 
 }
 
 
 .content-container2 {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Alinea al inicio para pegarlo al sidebar */
+    align-items: center; 
     justify-content: flex-start;
-    gap: 10px; /* Espacio entre elementos */
+    gap: 10px; 
     padding: 2px 0;
 }
 
@@ -152,19 +152,19 @@ main {
 .search-bar {
     display: flex;
     align-items: center;
-    justify-content: center; /* Asegura que el contenido esté centrado horizontalmente */
+    justify-content: center; 
     gap: 10px;
     padding: 10px;
     background-color: #FFF9F3;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: fit-content;
-    margin: 0 auto; /* Centra el elemento dentro de su contenedor padre */
+    margin: 0 auto; 
 }
 #estado-selector {
     padding: 8px;
     border-radius: 4px;
-    border: 1px solid #CCA27A; /* Color similar al esquema */
+    border: 1px solid #CCA27A; 
     font-size: 14px;
   }
   
@@ -179,125 +179,125 @@ main {
   }
   
   #buscar-btn:hover {
-    background-color: #b39266; /* Cambia ligeramente el color al pasar el mouse */
+    background-color: #b39266; 
   }
 
   .image-container {
     display: flex;
-    justify-content: center; /* Centra las imágenes horizontalmente */
-    gap: 70px; /* Espacio entre imágenes */
-    margin-top: 20px; /* Separación con el buscador */
+    justify-content: center; 
+    gap: 70px; 
+    margin-top: 20px; 
   }
   
   .image-item {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra cada elemento (imagen y cuadro con texto) */
-    gap: 10px; /* Espacio entre la imagen y el cuadro */
+    align-items: center; 
+    gap: 10px; 
   }
   
   .image-container img {
     width: 100px;
     height: 100px;
-    border-radius: 50%; /* Hace las imágenes circulares */
+    border-radius: 50%; 
     object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    border: 2px solid #CCA27A; /* Bordes decorativos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border: 2px solid #CCA27A; 
   }
   
   .color-box {
-    width: 100px; /* Ajusta el tamaño del cuadro */
+    width: 100px; 
     height: 30px;
-    background-color: #FFF9F3; /* Mismo color que el buscador */
+    background-color: #FFF9F3; 
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     display: flex;
-    align-items: center; /* Centra el texto verticalmente */
-    justify-content: center; /* Centra el texto horizontalmente */
+    align-items: center; 
+    justify-content: center;
     font-size: 14px;
-    color: #333; /* Color del texto */
+    color: #333; 
     font-weight: bold;
     text-align: center;
-    gap: 5px; /* Espacio entre el círculo y el texto */
+    gap: 5px; 
   }
   
   .add-image-button {
-    position: fixed; /* Fija el botón en la pantalla */
-    bottom: 20px; /* Distancia desde la parte inferior */
-    right: 20px; /* Distancia desde la parte derecha */
-    width: 60px; /* Tamaño del círculo */
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    width: 60px; 
     height: 60px;
-    background-color: #CCA27A; /* Color de fondo */
-    color: white; /* Color del símbolo "+" */
-    border-radius: 50%; /* Hace el botón circular */
+    background-color: #CCA27A; 
+    color: white; 
+    border-radius: 50%; 
     display: flex;
-    justify-content: center; /* Centra el símbolo horizontalmente */
-    align-items: center; /* Centra el símbolo verticalmente */
-    font-size: 30px; /* Tamaño del símbolo "+" */
+    justify-content: center; 
+    align-items: center;
+    font-size: 30px; 
     font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    transition: transform 0.3s ease, background-color 0.3s ease; 
   }
   
   .add-image-button:hover {
-    background-color: #b39266; /* Cambia ligeramente el color al pasar el mouse */
-    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    background-color: #b39266; 
+    transform: scale(1.1); 
   }
 
 
   .Amarillo-circle {
-    width: 10px; /* Tamaño del círculo */
+    width: 10px; 
     height: 10px;
-    background-color:#FAC710; /* Color rojo */
-    border-radius: 50%; /* Hace el círculo */
-    flex-shrink: 0; /* Evita que el círculo cambie de tamaño */
+    background-color:#FAC710; 
+    border-radius: 50%; 
+    flex-shrink: 0; 
   }
 
   .Verde-circle {
-    width: 10px; /* Tamaño del círculo */
+    width: 10px; 
     height: 10px;
-    background-color: #8FD14F; /* Color rojo */
-    border-radius: 50%; /* Hace el círculo */
-    flex-shrink: 0; /* Evita que el círculo cambie de tamaño */
+    background-color: #8FD14F; 
+    border-radius: 50%; 
+    flex-shrink: 0;
   }
 
-/* Contenedor para los botones de acción */
+
 .action-buttons {
-    position: fixed; /* Fija los botones en la pantalla */
-    bottom: 20px; /* Distancia desde la parte inferior */
-    right: 20px; /* Distancia desde la parte derecha */
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
     display: flex;
-    gap: 10px; /* Espacio entre los botones */
+    gap: 10px;
   }
   
-  /* Botones individuales */
+  
   .action-button {
     width: 50px;
     height: 50px;
-    background-color: #CCA27A; /* Color de fondo */
-    color: white; /* Color del ícono */
-    border-radius: 8px; /* Botones con bordes redondeados */
+    background-color: #CCA27A; 
+    color: white; 
+    border-radius: 8px;
     display: flex;
-    justify-content: center; /* Centra el ícono horizontalmente */
-    align-items: center; /* Centra el ícono verticalmente */
-    font-size: 20px; /* Tamaño del ícono */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para los botones */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Transiciones suaves */
+    justify-content: center; 
+    align-items: center; 
+    font-size: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    transition: transform 0.3s ease, background-color 0.3s ease; 
   }
   
-  /* Cambios de color al pasar el mouse */
+ 
   .action-button:hover {
-    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+    transform: scale(1.1);
   }
   
   .action-button.delete:hover {
-    background-color: #D9534F; /* Rojo para eliminar */
+    background-color: #D9534F; 
   }
   
   .action-button.edit:hover {
-    background-color: #5BC0DE; /* Azul para editar */
+    background-color: #5BC0DE; 
   }
   
 .container1 {
@@ -338,7 +338,7 @@ main {
   }
   
   .container1 .box .details {
-    width: 60%; /* Ajusta el ancho según lo necesario */
+    width: 60%; 
   }
   .container1 .box .img .hover-text {
     position: absolute;

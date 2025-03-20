@@ -1,0 +1,50 @@
+
+<h1>ARTÍCULOS DE DONACIÓN</h1>
+<div class="text-box1">
+    <a href="/admin/comprobantes-y-pasarelas" class="hover-text">
+        <h3><i class="fa-solid fa-chevron-left"></i> Volver</h3>
+    </a>
+</div>
+<div class="container">
+    
+  <div class="input-group">
+      <h2>PayPal:</h2>
+      <input type="text" value="refugioinstintor7@gmail.com" disabled>
+      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+  </div>
+
+  <div class="input-group">
+      <h2>Nequi o Daviplata:</h2>
+      <input type="text" value="3206981098" disabled>
+      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+  </div>
+  <div class="input-group">
+    <h2>Cta ahorros de davivienda:</h2>
+    <input type="text" value="3206981098" disabled>
+    <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+</div>
+<div class="input-group">
+    <h2>Cta ahorros de Bancolombia:</h2>
+    <input type="text" value="3206981098" disabled>
+    <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+</div>
+  <input type="checkbox" id="toggleCheckbox">
+        
+    
+  <div class="input-group" id="newItemGroup">
+      <h2>Nombre de la cuenta:</h2>
+      <input type="text" placeholder="Numero de la cuenta">
+      <button class="status-button rechazado"  (click)="cambiarEstadoBoton($event)">Deshabilitado</button>  
+  </div>
+
+  <div class="button-container">
+      <label for="toggleCheckbox" class="round-button">+</label>
+  </div>
+
+  <div class="alerta" [ngStyle]="{ 'display': mostrarAlerta ? 'block' : 'none' }">
+    <h1>🎉 ¡Artículo creado exitosamente!</h1>
+  </div>
+
+  <button class="add-button" (click)="cambiarEstadoAlerta()">HECHO</button> 
+</div>
+

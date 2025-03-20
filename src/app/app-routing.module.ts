@@ -8,7 +8,6 @@ import { AdoptaUnPeluditoComponent } from './web/pages/adopta-un-peludito/adopta
 import { VoluntariadoComponent } from './web/pages/voluntariado/voluntariado.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { LoginComponent } from './administrador/pages/login/login.component';
-import { AdminHomeComponent } from './administrador/pages/admin-home/admin-home.component';
 import { DonacionesEspecieComponent } from './web/pages/donaciones-especie/donaciones-especie.component';
 import { TestimoniosDePeluditosComponent } from './web/pages/testimonios-de-peluditos/testimonios-de-peluditos.component';
 import { DonacionesMonetariasComponent } from './web/pages/donaciones-monetarias/donaciones-monetarias.component';
@@ -20,15 +19,23 @@ import { InformacionDePeluditosEnAdopcionComponent } from './web/pages/informaci
 import { TuImagenHaSidoEnviadaComponent } from './web/pages/tu-imagen-ha-sido-enviada/tu-imagen-ha-sido-enviada.component';
 import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicitud-enviada.component';
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
+import { PerfilDelPacienteComponent } from './administrador/pages/perfil-del-paciente/perfil-del-paciente.component';
+import { AdminHomeComponent } from './administrador/pages/admin-home/admin-home.component';
+import { FormularioPacienteMascotasComponent } from './web/pages/formulario-paciente-mascotas/formulario-paciente-mascotas.component';
+import { BajoCuidadoComponent } from './administrador/pages/bajo-cuidado/bajo-cuidado.component';
+import { AdopcionesComponent } from './administrador/pages/adopciones/adopciones.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 import { AuthGuard } from './administrador/guards/auth.guard';
 import { SolicitudEnEspecieComponent } from './administrador/pages/solicitud-en-especie/solicitud-en-especie.component';
 import { ArticulosDeDonacionComponent } from './administrador/pages/articulos-de-donacion/articulos-de-donacion.component';
 import { DetalleComponent } from './administrador/pages/detalle/detalle.component';
 import { ComprobantesYPasarelasComponent } from './administrador/pages/comprobantes-y-pasarelas/comprobantes-y-pasarelas.component';
-import { EliminarComponent } from './administrador/pages/eliminar/eliminar.component';
 import { DetalleComprobantesComponent } from './administrador/pages/detalle-comprobantes/detalle-comprobantes.component';
 import { TestimoniosComponent } from './administrador/pages/testimonios/testimonios.component';
+import { PasarelasComponent } from './administrador/pages/pasarelas/pasarelas.component';
+
+
+
 const routes: Routes = [
   { 
     path: 'web', component: WebComponent, children: [
@@ -48,6 +55,7 @@ const routes: Routes = [
       { path: 'tu-imagen-ha-sido-enviada', component: TuImagenHaSidoEnviadaComponent },
       { path: 'solicitud-enviada', component: SolicitudEnviadaComponent },
       { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent },
+      { path: "formulario-paciente-mascotas", component: FormularioPacienteMascotasComponent},
       { path: 'comprobante-donacion', component: ComprobanteDonacionComponent },
       { path: '**', pathMatch: 'full', redirectTo: '/web/home' }
     ]
@@ -59,10 +67,13 @@ const routes: Routes = [
       { path: "solicitud-en-especie", component: SolicitudEnEspecieComponent }, 
       { path: "articulos-de-donacion", component: ArticulosDeDonacionComponent },  
       { path: "comprobantes-y-pasarelas", component: ComprobantesYPasarelasComponent },  
-      { path: "Detalle", component: DetalleComponent },   
-      { path: "Eliminar", component:EliminarComponent,},  
+      { path: "Detalle", component: DetalleComponent },    
       { path: "Detalle-Comprobantes", component:DetalleComprobantesComponent,},
       { path: "Testimonios", component:TestimoniosComponent,},   
+      { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
+      { path: "bajo-cuidado", component: BajoCuidadoComponent},
+      { path: "Pasarelas", component: PasarelasComponent},
+      { path: "adopciones", component: AdopcionesComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

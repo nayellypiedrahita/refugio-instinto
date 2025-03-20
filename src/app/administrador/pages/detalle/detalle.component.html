@@ -23,18 +23,28 @@
         <p><strong>Hora: </strong> 1:30 pm</p>
       </div>
 
-      <div class="trash-container">
+      < <div class="trash-container">
         <div class="trash">
-          <a href="/admin/Eliminar" class="hover-text">
-          <i class="fa-solid fa-trash"></i>
-         </a>
+          <a (click)="$event.preventDefault(); mostrarDialogo()" class="hover-text">
+            <i class="fa-solid fa-trash"></i>
+          </a>
         </div> 
-      </div>
+      </div>      
     </div>
     <div class="donation">Donación: <br>
       Otro: Ladrillos y cemento para la construcción del refugio.
     </div>
   </div>
+  
+  <div class="dialog-container" *ngIf="mostrarAlerta">
+    <div class="dialog-box">
+      <div class="dialog-header">¿Está seguro que quiere eliminar esta solicitud?</div>
+      <div class="dialog-actions">
+        <button class="cancel-button" (click)="cerrarDialogo()">Cancelar</button>
+        <button class="accept-button" (click)="eliminarSolicitud()">Aceptar</button>
+      </div>
+    </div>
+</div>
 </body>
 </html>
 

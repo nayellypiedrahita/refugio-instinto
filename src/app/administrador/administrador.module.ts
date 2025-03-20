@@ -9,10 +9,14 @@ import { TitleComponent } from './components/title/title.component';
 import { SolicitudEnEspecieComponent } from './pages/solicitud-en-especie/solicitud-en-especie.component';
 import { DetalleComponent } from './pages/detalle/detalle.component';
 import { ComprobantesYPasarelasComponent } from './pages/comprobantes-y-pasarelas/comprobantes-y-pasarelas.component';
-import { EliminarComponent } from './pages/eliminar/eliminar.component';
 import { ArticulosDeDonacionComponent } from './pages/articulos-de-donacion/articulos-de-donacion.component';
 import { DetalleComprobantesComponent } from './pages/detalle-comprobantes/detalle-comprobantes.component';
 import { TestimoniosComponent } from './pages/testimonios/testimonios.component';
+import { PerfilDelPacienteComponent } from './pages/perfil-del-paciente/perfil-del-paciente.component';
+import { BajoCuidadoComponent } from './pages/bajo-cuidado/bajo-cuidado.component';
+import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
+import { PasarelasComponent } from './pages/pasarelas/pasarelas.component';
+
 
 @NgModule({
   declarations: [
@@ -23,10 +27,13 @@ import { TestimoniosComponent } from './pages/testimonios/testimonios.component'
     SolicitudEnEspecieComponent,
     DetalleComponent,
     ComprobantesYPasarelasComponent,
-    EliminarComponent,
     ArticulosDeDonacionComponent,
     DetalleComprobantesComponent,
-    TestimoniosComponent
+    TestimoniosComponent,
+    PerfilDelPacienteComponent,
+    BajoCuidadoComponent,
+    AdopcionesComponent,
+    PasarelasComponent
   ],
   imports: [
     CommonModule,

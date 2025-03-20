@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './detalle-comprobantes.component.css'
 })
 export class DetalleComprobantesComponent {
+  mostrarAlerta: boolean = false;
 
+  mostrarDialogo() {
+    this.mostrarAlerta = true;
+  }
+
+  cerrarDialogo() {
+    this.mostrarAlerta = false;
+  }
+
+  eliminarSolicitud() {
+    alert('Solicitud eliminada correctamente.');
+    this.cerrarDialogo();
+  }
 }

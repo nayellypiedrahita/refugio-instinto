@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrl: './detalle.component.css'
 })
 export class DetalleComponent {
+  mostrarAlerta: boolean = false;
 
+  mostrarDialogo() {
+    this.mostrarAlerta = true;
+  }
+
+  cerrarDialogo() {
+    this.mostrarAlerta = false;
+  }
+
+  eliminarSolicitud() {
+    alert('Solicitud eliminada correctamente.');
+    this.cerrarDialogo();
+  }
 }
