@@ -22,8 +22,13 @@ import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicit
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 import { AuthGuard } from './administrador/guards/auth.guard';
-
-
+import { SolicitudEnEspecieComponent } from './administrador/pages/solicitud-en-especie/solicitud-en-especie.component';
+import { ArticulosDeDonacionComponent } from './administrador/pages/articulos-de-donacion/articulos-de-donacion.component';
+import { DetalleComponent } from './administrador/pages/detalle/detalle.component';
+import { ComprobantesYPasarelasComponent } from './administrador/pages/comprobantes-y-pasarelas/comprobantes-y-pasarelas.component';
+import { EliminarComponent } from './administrador/pages/eliminar/eliminar.component';
+import { DetalleComprobantesComponent } from './administrador/pages/detalle-comprobantes/detalle-comprobantes.component';
+import { TestimoniosComponent } from './administrador/pages/testimonios/testimonios.component';
 const routes: Routes = [
   { 
     path: 'web', component: WebComponent, children: [
@@ -51,6 +56,13 @@ const routes: Routes = [
   {
     path: "admin", component: AdministradorComponent, canActivateChild: [ AuthGuard ], children: [
       { path: "home", component: AdminHomeComponent },
+      { path: "solicitud-en-especie", component: SolicitudEnEspecieComponent }, 
+      { path: "articulos-de-donacion", component: ArticulosDeDonacionComponent },  
+      { path: "comprobantes-y-pasarelas", component: ComprobantesYPasarelasComponent },  
+      { path: "Detalle", component: DetalleComponent },   
+      { path: "Eliminar", component:EliminarComponent,},  
+      { path: "Detalle-Comprobantes", component:DetalleComprobantesComponent,},
+      { path: "Testimonios", component:TestimoniosComponent,},   
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

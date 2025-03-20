@@ -9,9 +9,10 @@ import { environment } from '../environments/environment';
 import { AdministradorModule } from './administrador/administrador.module';
 
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

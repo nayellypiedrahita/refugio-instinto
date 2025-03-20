@@ -1,0 +1,65 @@
+
+
+<h1>ARTÍCULOS DE DONACIÓN</h1>
+<div class="text-box1">
+    <a href="/admin/solicitud-en-especie" class="hover-text">
+        <h3><i class="fa-solid fa-chevron-left"></i> Volver</h3>
+    </a>
+</div>
+<div class="container">
+    
+  <div class="input-group">
+      <h2>Artículo:</h2>
+      <input type="text" value="Alimento para gatos." disabled>
+      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+  </div>
+
+  <!-- Artículo 2 -->
+  <div class="input-group">
+      <h2>Artículo:</h2>
+      <input type="text" value="Alimento para perros." disabled>
+      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+  </div>
+  <div class="input-group">
+    <h2>Artículo:</h2>
+    <input type="text" value="Alimento para perros." disabled>
+    <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+</div>
+<div class="input-group">
+    <h2>Artículo:</h2>
+    <input type="text" value="Alimento para perros." disabled>
+    <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+</div>
+  <!-- Artículo 3 -->
+  <div class="input-group">
+      <h2>Artículo:</h2>
+      <input type="text" value="Desparasitador." disabled>
+      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+  </div>
+
+  <!-- Artículo 4 -->
+  <div class="input-group">
+      <h2>Artículo:</h2>
+      <input type="text" value="Ladrillos para el Refugio." disabled>
+      <button class="status-button rechazado" (click)="cambiarEstadoBoton($event)">Deshabilitado</button>
+  </div>
+
+  <input type="checkbox" id="toggleCheckbox">
+        
+    
+  <div class="input-group" id="newItemGroup">
+      <h2>Nuevo Artículo:</h2>
+      <input type="text" placeholder="Ingrese el nuevo artículo">
+      <button class="status-button rechazado"  (click)="cambiarEstadoBoton($event)">Deshabilitado</button>  
+  </div>
+
+  <div class="button-container">
+      <label for="toggleCheckbox" class="round-button">+</label>
+  </div>
+
+  <div class="alerta" [ngStyle]="{ 'display': mostrarAlerta ? 'block' : 'none' }">
+    <h1>🎉 ¡Artículo creado exitosamente!</h1>
+  </div>
+
+  <button class="add-button" (click)="cambiarEstadoAlerta()">HECHO</button> 
+</div>

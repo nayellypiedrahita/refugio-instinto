@@ -67,6 +67,7 @@ h4{text-align: center;
     max-width: 80%; 
     margin: 0 auto; 
     padding: 20px;
+    text-align: center;
 }
 
 .gallery img {
@@ -79,9 +80,18 @@ h4{text-align: center;
 
 .card {
     cursor: pointer;
+    margin-bottom: 40px; 
 }
 
 .card img{
     width: 150px;
     object-fit: contain;
 }
+
+.card .img-fixed {
+    width: 200px;  /* Ancho fijo */
+    height: 200px; /* Alto fijo */
+    object-fit: cover; /* Ajusta sin deformar */
+    border-radius: 10px; /* Opcional: bordes redondeados */
+  }
+  

@@ -29,16 +29,19 @@
                         <a href="#">
                             <li>Adopciones</li>
                         </a>
+                        <a routerLink="/admin/Testimonios" routerLinkActive="menu_active">
+                            <li>Testimonios</li>
+                        </a>
                     </ul>
                 </li>
                 <li>
                     <input type="checkbox" id="donaciones" hidden>
                     <label for="donaciones">DONACIONES <span class="arrow">▶</span></label>
                     <ul class="nav-child">
-                        <a href="#">
+                        <a routerLink="/admin/comprobantes-y-pasarelas" routerLinkActive="menu_active">
                             <li>Comprobantes de pago</li>
                         </a>
-                        <a href="#">
+                        <a routerLink="/admin/solicitud-en-especie" routerLinkActive="menu_active">
                             <li>Solicitudes en especie</li>
                         </a>
                     </ul>
@@ -58,7 +61,19 @@
                         </a>
                     </ul>
                 </li>
-            </ul>
+            
+
+            <li>
+                <input type="checkbox" id="Papelera" hidden>
+                <label for="Papelera">PAPELERA <span class="arrow">▶</span></label>
+                <ul class="nav-child">
+                    <a >
+                        <li>Comprobantes de pago</li>
+                    </a>
+
+                </ul>
+            </li>
+        </ul>
         </div>
     </aside>
     <div class="container-content">
