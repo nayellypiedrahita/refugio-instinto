@@ -6,6 +6,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TitleComponent } from './components/title/title.component';
+import { ContratoAdminComponent } from './pages/contrato-admin/contrato-admin.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,8 @@ import { TitleComponent } from './components/title/title.component';
     LoginComponent,
     AdminHomeComponent,
     TitleComponent,
+    ContratoAdminComponent,
+    
   ],
   imports: [
     CommonModule,

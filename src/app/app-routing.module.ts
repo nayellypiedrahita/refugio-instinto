@@ -22,6 +22,7 @@ import { SolicitudEnviadaComponent } from './web/pages/solicitud-enviada/solicit
 import { FormularioDeApadrinamientoComponent } from './web/pages/formulario-de-apadrinamiento/formulario-de-apadrinamiento.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 import { AuthGuard } from './administrador/guards/auth.guard';
+import { ContratoAdminComponent } from './administrador/pages/contrato-admin/contrato-admin.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,9 @@ const routes: Routes = [
   {
     path: "admin", component: AdministradorComponent, canActivateChild: [ AuthGuard ], children: [
       { path: "home", component: AdminHomeComponent },
+      { path: "contrato-admin", component: ContratoAdminComponent },
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
+
     ]
   },
   { path: '**', pathMatch: 'full', redirectTo: '/web/home' }

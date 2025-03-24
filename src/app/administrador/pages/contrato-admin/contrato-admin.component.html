@@ -1,0 +1,31 @@
+<body>
+    <div class="header">FUNDACIÓN INSTINTO</div>
+    
+    <div class="text-box1">
+        <a href="/admin/solicitud-en-especie" class="hover-text">
+            <h3><i class="fa-solid fa-chevron-left"></i> Volver</h3>
+        </a>
+    </div>
+
+   
+
+    <div class="container">
+        <img src="c:\Users\DELL\Downloads\image_png.png" alt="" class="contract-img">
+        <div class="content" *ngIf="!loading">
+            <input type="file" #fileInput hidden (change)="fileSelected($event)" multiple="false">
+            <div class="image-container" (click)="fileInput.click()">
+                <img [src]="this.base64" alt="" *ngIf="selectedImage">
+                <i class="fa-regular fa-image fa-2xl"></i>
+                <p>Subir PDF</p>
+            </div>
+        </div>
+        <div class="buttons" *ngIf="!loading">
+         
+        </div>
+        <p>Solo se puede un archivo PDF</p>
+        <button class="button">ACTUALIZAR CONTRATO</button>
+    </div>
+
+
+
+
