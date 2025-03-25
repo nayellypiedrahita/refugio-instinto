@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Rescate</title>
+  <style>
+  
+
+  body {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  margin: 0; 
+}
+
+.form-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+}
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+      color: #fff;
+      background-color: #c28e6a; 
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #007bff;
+    }
+
+    .form-group textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    .form-group .file-upload {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      border: 2px dashed #ddd;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      transition: border-color 0.3s;
+    }
+
+    .form-group .file-upload:hover {
+      border-color: #007bff;
+    }
+
+    .form-group .file-upload input {
+      display: none;
+    }
+
+    .form-group button {
+      background: #000000;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .form-group button:hover {
+      background: #000000;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 80px;
+      max-height: 150px;
+      margin: 10px auto;
+      object-fit: cover;
+    }
+
+    
+    .file-upload-container {
+      grid-column: 2;
+    }
+    .green-dot {
+    color: green;
+  }
+
+  
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Mascotas</h2>
+    <form>
+      <div class="form-columns">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Manzanita" required>
+        </div>
+
+        <div class="form-group">
+          <label for="raza">Raza</label>
+          <input type="text" id="raza" placeholder="Criolla">
+        </div>
+
+        <div class="form-group">
+          <label for="edad">Meses/años</label>
+          <input type="text" id="edad" placeholder="1 mes">
+        </div>
+
+        <div class="form-group">
+          <label for="sexo">Sexo</label>
+          <select id="sexo">
+            <option value="Hembra">Hembra</option>
+            <option value="Macho">Macho</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="esterilizada">Esterilizada</label>
+          <select id="esterilizada">
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="estado-urgencia">Estado de urgencia</label>
+          <select id="estado-urgencia">
+            <option value="critico">&#x1F534; Estado crítico</option>
+            <option value="urgente">&#x1F535;Estado urgente</option>
+            <option value="leve"> &#x1F7E1; Estado leve</option>
+            <option value="disponible">&#x1F7E2; Disponible</option>
+            <option value="adoptado"> &#x1F7E0;Adoptado</option>
+          </select>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="fecha-registro">Fecha de registro</label>
+          <input type="date" id="fecha-registro">
+        </div>
+
+        <div class="form-group">
+          <label for="condiciones">Condiciones especiales</label>
+          <select id="sexo">
+            <option>Si</option>
+            <option>No</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+          <label for="tamaño">Tamaño</label>
+          <select id="tamano">
+            <option>Pequeño</option>
+            <option>Mediano</option>
+            <option>Grande</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+          <label for="historia">Historia</label>
+          <textarea id="historia" placeholder="Breve descripción del animal..."></textarea>
+        </div>
+
+        <div class="form-group file-upload-container">
+          <label>Agregar imagen</label>
+          <div class="file-upload">
+            <input type="file" id="imagen">
+            <img src="\assets\image.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">HECHO</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

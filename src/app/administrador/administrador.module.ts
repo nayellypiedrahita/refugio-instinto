@@ -16,6 +16,7 @@ import { PerfilDelPacienteComponent } from './pages/perfil-del-paciente/perfil-d
 import { BajoCuidadoComponent } from './pages/bajo-cuidado/bajo-cuidado.component';
 import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
 import { PasarelasComponent } from './pages/pasarelas/pasarelas.component';
+import { MascotaFormComponent } from './pages/mascota-form/mascota-form.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { PasarelasComponent } from './pages/pasarelas/pasarelas.component';
     PerfilDelPacienteComponent,
     BajoCuidadoComponent,
     AdopcionesComponent,
-    PasarelasComponent
+    PasarelasComponent,
+    MascotaFormComponent
   ],
   imports: [
     CommonModule,

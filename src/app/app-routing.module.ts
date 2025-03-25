@@ -33,7 +33,7 @@ import { ComprobantesYPasarelasComponent } from './administrador/pages/comproban
 import { DetalleComprobantesComponent } from './administrador/pages/detalle-comprobantes/detalle-comprobantes.component';
 import { TestimoniosComponent } from './administrador/pages/testimonios/testimonios.component';
 import { PasarelasComponent } from './administrador/pages/pasarelas/pasarelas.component';
-
+import { MascotaFormComponent } from './administrador/pages/mascota-form/mascota-form.component';
 
 
 const routes: Routes = [
@@ -74,6 +74,7 @@ const routes: Routes = [
       { path: "bajo-cuidado", component: BajoCuidadoComponent},
       { path: "Pasarelas", component: PasarelasComponent},
       { path: "adopciones", component: AdopcionesComponent},
+      { path: "form", component: MascotaFormComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },
