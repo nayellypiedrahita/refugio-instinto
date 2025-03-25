@@ -26,7 +26,9 @@ import { BajoCuidadoComponent } from './administrador/pages/bajo-cuidado/bajo-cu
 import { AdopcionesComponent } from './administrador/pages/adopciones/adopciones.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 import { AuthGuard } from './administrador/guards/auth.guard';
-
+import { PapeleraComponent } from './administrador/pages/papelera/papelera.component';
+import { PapeleraDeComprobantesComponent } from './administrador/pages/papelera-de-comprobantes/papelera-de-comprobantes.component';
+import { PapeleraAdopcionComponent } from './administrador/pages/papelera-adopcion/papelera-adopcion.component';
 
 const routes: Routes = [
   { 
@@ -48,7 +50,7 @@ const routes: Routes = [
       { path: 'solicitud-enviada', component: SolicitudEnviadaComponent },
       { path: 'formulario-de-apadrinamiento', component: FormularioDeApadrinamientoComponent },
       { path: "formulario-paciente-mascotas", component: FormularioPacienteMascotasComponent},
-      { path: 'comprobante-donacion', component: ComprobanteDonacionComponent },
+      { path: 'comprobante-donacion', component: ComprobanteDonacionComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/web/home' }
     ]
   },
@@ -59,6 +61,9 @@ const routes: Routes = [
       { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
       { path: "bajo-cuidado", component: BajoCuidadoComponent},
       { path: "adopciones", component: AdopcionesComponent},
+      { path: "Papelera", component: PapeleraComponent},
+      { path: "Comprobantes", component: PapeleraDeComprobantesComponent},
+      { path: "papelera-adopcion", component: PapeleraAdopcionComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

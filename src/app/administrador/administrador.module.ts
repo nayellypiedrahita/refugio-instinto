@@ -9,6 +9,10 @@ import { TitleComponent } from './components/title/title.component';
 import { PerfilDelPacienteComponent } from './pages/perfil-del-paciente/perfil-del-paciente.component';
 import { BajoCuidadoComponent } from './pages/bajo-cuidado/bajo-cuidado.component';
 import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
+import { PapeleraComponent } from './pages/papelera/papelera.component';
+import { PapeleraDeComprobantesComponent } from './pages/papelera-de-comprobantes/papelera-de-comprobantes.component';
+import { PapeleraAdopcionComponent } from './pages/papelera-adopcion/papelera-adopcion.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
     TitleComponent,
     PerfilDelPacienteComponent,
     BajoCuidadoComponent,
-    AdopcionesComponent
+    AdopcionesComponent,
+    PapeleraComponent,
+    PapeleraDeComprobantesComponent,
+    PapeleraAdopcionComponent
   ],
   imports: [
     CommonModule,
