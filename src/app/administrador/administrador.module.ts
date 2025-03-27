@@ -17,6 +17,8 @@ import { BajoCuidadoComponent } from './pages/bajo-cuidado/bajo-cuidado.componen
 import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
 import { PasarelasComponent } from './pages/pasarelas/pasarelas.component';
 import { MascotaFormComponent } from './pages/mascota-form/mascota-form.component';
+import { ListadoMascotasComponent } from './components/listado-mascotas/listado-mascotas.component';
+import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-mascotas.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { MascotaFormComponent } from './pages/mascota-form/mascota-form.componen
     BajoCuidadoComponent,
     AdopcionesComponent,
     PasarelasComponent,
-    MascotaFormComponent
+    MascotaFormComponent,
+    ListadoMascotasComponent,
+    VerTodasMascotasComponent
   ],
   imports: [
     CommonModule,

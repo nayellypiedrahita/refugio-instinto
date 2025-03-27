@@ -1,0 +1,23 @@
+
+<div class="search-bar">
+    <select id="estado-selector">
+        <option value="">Estado</option>
+        <option value="critico">Estado crítico</option>
+        <option value="disponible">Estado disponible</option>
+    </select>
+    <button id="buscar-btn">Buscar</button>
+</div>
+    
+<div class="image-container">
+    <div class="loading" *ngIf="loading">
+        <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+    </div>
+    <ng-container *ngIf="!loading">
+        <div class="image-item" *ngFor="let mascota of mascotas">
+            <img src="{{ mascota.imagenes[0] }}" alt="Imagen">
+            <div class="color-box">
+                <span class="Amarillo-circle"></span> {{ mascota.nombre }}
+            </div>
+        </div>
+    </ng-container>
+</div>

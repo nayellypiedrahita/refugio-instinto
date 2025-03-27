@@ -1,0 +1,14 @@
+#buscar-btn {
+    padding: 8px 12px;
+    background-color: #CCA27A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+  }
+  
+  #buscar-btn:hover {
+    background-color: #b39266; 
+  }

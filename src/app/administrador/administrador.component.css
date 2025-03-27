@@ -92,14 +92,14 @@ aside .main-nav li .nav-child {
     display: none;
 }
 
-aside .main-nav li .nav-child a li {
+aside .main-nav li .nav-child li {
     padding: 15px 30px;
     background-color: #fff9f3;
+    cursor: pointer;
 }
 
-aside .main-nav li .nav-child a {
-    text-decoration: none;
-    color: #000;
+aside .main-nav li .nav-child li:hover {
+    background-color: white;
 }
 
 aside .main-nav li input:checked + label {
@@ -117,4 +117,8 @@ aside .main-nav li input:checked + label + ul {
 .container-content {
     width: 100%;
     padding: 20px;
+}
+
+.menu_active {
+    background-color: white !important;
 }

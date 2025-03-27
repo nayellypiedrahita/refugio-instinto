@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { DonacionMonetariaService } from '../../../shared/services/donacion-monetaria/donacion-monetaria.service';
 import { DonacionMonetaria } from '../../../shared/model/donacion-monetaria';
 import { from, groupBy, map, mergeMap, toArray } from 'rxjs';
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -41,6 +41,11 @@ export class ComprobantesYPasarelasComponent implements OnInit {
   }
 
   mostrarDetalleComprobante(base64: string) {
+    Swal.fire({
+      html: `<img src="'+base64+'"${base64} style="max-width: 700px; max-height: 700px; object-fit: cover">`,
+      width: 750,
+      confirmButtonText: 'Cerrar'
+    });
   }
 
 }

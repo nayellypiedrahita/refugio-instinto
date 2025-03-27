@@ -16,7 +16,7 @@
             <ng-container *ngFor="let grupoDonaciones of comprobantesDonacionAgrupoados">
                 <div class="date-box">{{ grupoDonaciones.fecha.toString() }}</div>
                 <ul>
-                    <li *ngFor="let donacion of grupoDonaciones.donaciones; let i = index" (click)="mostrarDetalleComprobante('')"><span class="list-number">{{ i+1 }}.</span> N. {{ donacion.consecutivo }}</li>
+                    <li *ngFor="let donacion of grupoDonaciones.donaciones; let i = index" (click)="mostrarDetalleComprobante(donacion.base64)"><span class="list-number">{{ i+1 }}.</span> N. {{ donacion.consecutivo }}</li>
                 </ul>
             </ng-container>
         </ng-container>

@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { collection, collectionData, CollectionReference, doc, Firestore, getDoc, getDocs } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, CollectionReference, doc, Firestore, getDoc, getDocs, query, where } from '@angular/fire/firestore';
 import { from, map, Observable, of } from 'rxjs';
 import { Mascotas } from '../../model/mascotas';
 
@@ -15,19 +15,23 @@ export class MascotasService {
     this.mascotasCollection = collection(this.firestore, 'mascotas');
   }
 
-  getMascotas(): Observable<Mascotas[]> {
-    return from(getDocs(this.mascotasCollection))
+  getMascotas(estados: string[]): Observable<Mascotas[]> {
+    return from(getDocs(query(this.mascotasCollection, where('estado', 'in', estados)) ))
       .pipe(
         map((snapshot) => snapshot.docs.map((element) => {
           const datosMascota = element.data();
           return {
             idMascota: element.id,
             nombre: datosMascota['nombre'],
+            raza: datosMascota['raza'],
             edad: datosMascota['edad'],
+            sexo: datosMascota['sexo'],
             esterilizada: datosMascota['esterilizada'],
+            estado: datosMascota['estado'],
+            condiciones: datosMascota['condiciones'],
+            tamano: datosMascota['tamano'],
             historia: datosMascota['historia'],
             imagenes: datosMascota['imagenes'],
-            raza: datosMascota['raza']
           } as Mascotas;
         })
       )
@@ -40,13 +44,21 @@ export class MascotasService {
       return {
         idMascota: element.id,
         nombre: datosMascota['nombre'],
+        raza: datosMascota['raza'],
         edad: datosMascota['edad'],
+        sexo: datosMascota['sexo'],
         esterilizada: datosMascota['esterilizada'],
+        estado: datosMascota['estado'],
+        condiciones: datosMascota['condiciones'],
+        tamano: datosMascota['tamano'],
         historia: datosMascota['historia'],
         imagenes: datosMascota['imagenes'],
-        raza: datosMascota['raza']
       } as Mascotas;
     }));
+  }
+
+  addMascotas(mascota: Mascotas) {
+    return addDoc(this.mascotasCollection, mascota);
   }
 
 }

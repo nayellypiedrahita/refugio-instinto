@@ -1,0 +1,134 @@
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0; 
+  }
+  
+  .form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+  }
+  
+      .form-container h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        text-align: center;
+        color: #fff;
+        background-color: #c28e6a; 
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+  
+      .form-columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+  
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+  
+      .form-group input, 
+      .form-group select, 
+      .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+  
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: #007bff;
+      }
+  
+      .form-group textarea {
+        resize: none;
+        height: 80px;
+      }
+  
+      .form-group .file-upload {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        border: 2px dashed #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        color: #888;
+        font-size: 14px;
+        transition: border-color 0.3s;
+      }
+  
+      .form-group .file-upload:hover {
+        border-color: #007bff;
+      }
+  
+      .form-group .file-upload input {
+        display: none;
+      }
+  
+      .form-group button {
+        background: #000000;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 15px;
+      }
+  
+      .form-group button:hover {
+        background: #000000;
+      }
+  
+      img {
+        display: block;
+        width: 100%;
+        max-width: 80px;
+        max-height: 150px;
+        margin: 10px auto;
+        object-fit: cover;
+      }
+  
+      
+      .file-upload-container {
+        grid-column: 2;
+      }
+      .green-dot {
+      color: green;
+    }
+
+
+.error-msg {
+    font-size: 1rem;
+    color: red;
+}
+
+
+.loading {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  margin: 40px 0px;
+  color: #c7a17a;
+}

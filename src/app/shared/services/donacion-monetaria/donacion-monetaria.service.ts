@@ -18,7 +18,6 @@ export class DonacionMonetariaService {
 
   async addDonacion(base64: string) {
     const donacionesTodas: DonacionMonetaria[] = await lastValueFrom(this.getDonaciones());
-    console.log(donacionesTodas.length++);
     const newDonacion: DonacionMonetaria = {
       consecutivo: donacionesTodas.length++,
       base64,

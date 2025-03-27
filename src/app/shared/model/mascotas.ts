@@ -1,9 +1,13 @@
 export interface Mascotas {
-    idMascota: string,
+    idMascota?: string,
     nombre: string,
-    edad: string,
     raza: string,
+    edad: string,
+    sexo: string;
     esterilizada: boolean,
+    estado: string,
+    condiciones: string,
+    tamano: string,
     historia: string,
     imagenes: string[],
 }

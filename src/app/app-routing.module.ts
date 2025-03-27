@@ -34,6 +34,7 @@ import { DetalleComprobantesComponent } from './administrador/pages/detalle-comp
 import { TestimoniosComponent } from './administrador/pages/testimonios/testimonios.component';
 import { PasarelasComponent } from './administrador/pages/pasarelas/pasarelas.component';
 import { MascotaFormComponent } from './administrador/pages/mascota-form/mascota-form.component';
+import { VerTodasMascotasComponent } from './administrador/pages/ver-todas-mascotas/ver-todas-mascotas.component';
 
 
 const routes: Routes = [
@@ -67,14 +68,15 @@ const routes: Routes = [
       { path: "solicitud-en-especie", component: SolicitudEnEspecieComponent }, 
       { path: "articulos-de-donacion", component: ArticulosDeDonacionComponent },  
       { path: "comprobantes-y-pasarelas", component: ComprobantesYPasarelasComponent },  
-      { path: "Detalle", component: DetalleComponent },    
-      { path: "Detalle-Comprobantes", component:DetalleComprobantesComponent,},
-      { path: "Testimonios", component:TestimoniosComponent,},   
+      { path: "detalle", component: DetalleComponent },    
+      { path: "detalle-Comprobantes", component:DetalleComprobantesComponent,},
+      { path: "testimonios", component:TestimoniosComponent,},   
       { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
       { path: "bajo-cuidado", component: BajoCuidadoComponent},
       { path: "Pasarelas", component: PasarelasComponent},
       { path: "adopciones", component: AdopcionesComponent},
-      { path: "form", component: MascotaFormComponent},
+      { path: "add-mascota", component: MascotaFormComponent},
+      { path: "ver-todas-mascotas", component: VerTodasMascotasComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },
