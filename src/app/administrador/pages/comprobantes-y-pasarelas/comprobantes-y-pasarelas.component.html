@@ -9,17 +9,12 @@
     <div class="header">COMPROBANTES Y PASARELAS DE PAGO</div>
     <div class="container">
         <div class="donation-box">Comprobantes de pago</div>
-        <div class="date-box">2022-02-12</div>
-        <ul>
-            <li><span class="list-number">1.</span> N. 278988767.</li>
-            <li><span class="list-number">2.</span><a routerLink="/admin/Detalle-Comprobantes" routerLinkActive="menu_active">N. 234864256.</a></li>
-        </ul>
-        <div class="date-box">2022-05-12</div>
-        <ul>
-            <li><span class="list-number">1.</span> N. 275390743.</li>
-            <li><span class="list-number">2.</span> N. 238044324.</li>
-            <li><span class="list-number">3.</span> N. 875322002.</li>
-        </ul>
+        <ng-container *ngFor="let grupoDonaciones of comprobantesDonacionAgrupoados">
+            <div class="date-box">{{ grupoDonaciones.fecha.toString() }}</div>
+            <ul>
+                <li *ngFor="let donacion of grupoDonaciones.donaciones; let i = index" (click)="mostrarDetalleComprobante('')"><span class="list-number">{{ i+1 }}.</span> N. {{ donacion.consecutivo }}</li>
+            </ul>
+        </ng-container>
         <div class="button-container">
             <a routerLink="/admin/Pasarelas" routerLinkActive="menu_active"  class="button"  href="" class="button">PASARELA</a>
         </div>

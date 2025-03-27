@@ -1,6 +1,7 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DonacionMonetariaService } from '../../../shared/services/donacion-monetaria/donacion-monetaria.service';
 import { Router } from '@angular/router';
+import { DonacionMonetaria } from '../../../shared/model/donacion-monetaria';
 
 @Component({
   selector: 'app-comprobante-donacion',
@@ -51,7 +52,7 @@ export class ComprobanteDonacionComponent {
       return;
     }
     this.loading = true;
-    this.donacionMonetariaService.addDonacion({ base64: this.base64 }).then(response => {
+    this.donacionMonetariaService.addDonacion(this.base64).then(response => {
       if (response) {
         this.router.navigate(["/web/tu-imagen-ha-sido-enviada"]);
         this.loading = false;

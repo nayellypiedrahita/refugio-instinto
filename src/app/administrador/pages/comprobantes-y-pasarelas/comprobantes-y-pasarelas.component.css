@@ -20,6 +20,8 @@
 .donation-box {
     background-color: #CCA27A;
     color: black;
+    font-size: 1.8rem;
+    font-weight: 500;
 }
 .date-box {
     color: black;
@@ -32,8 +34,10 @@ ul {
 li {
     background: #FFF9F3;
     padding: 10px;
+    padding-left: 30px;
     color: black;
     text-decoration: none;
+    font-weight: 500;
 }
 .button {
     background-color: #c28e6a;
