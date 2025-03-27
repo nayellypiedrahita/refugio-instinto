@@ -12,10 +12,16 @@ import swal from 'sweetalert2';
 })
 export class ComprobantesYPasarelasComponent implements OnInit {
   
+  mostrarLoading: boolean = false;
   comprobantesDonacionAgrupoados: { fecha: string; donaciones: DonacionMonetaria[] }[] = [];
   private donacionMonetariaService: DonacionMonetariaService = inject(DonacionMonetariaService);
 
   ngOnInit(): void {
+    this.getDonacionesMonetarias();
+  }
+
+  getDonacionesMonetarias() {
+    this.mostrarLoading = true;
     this.donacionMonetariaService.getDonaciones()
       .pipe(
         mergeMap(donaciones => from(donaciones)),
@@ -30,6 +36,7 @@ export class ComprobantesYPasarelasComponent implements OnInit {
       )
       .subscribe((donacionesResponse) => {
         this.comprobantesDonacionAgrupoados  = donacionesResponse;
+        this.mostrarLoading = false;
       });
   }
 
