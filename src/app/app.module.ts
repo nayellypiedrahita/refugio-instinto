@@ -7,7 +7,7 @@ import { FirestoreModule, getFirestore, provideFirestore } from '@angular/fire/f
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { AdministradorModule } from './administrador/administrador.module';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { AdministradorModule } from './administrador/administrador.module';
     AppRoutingModule,
     WebModule,
     AdministradorModule,
-    FirestoreModule
+    FirestoreModule,
+    FormsModule 
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
