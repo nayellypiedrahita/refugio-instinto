@@ -29,6 +29,9 @@ import { AuthGuard } from './administrador/guards/auth.guard';
 import { PapeleraComponent } from './administrador/pages/papelera/papelera.component';
 import { PapeleraDeComprobantesComponent } from './administrador/pages/papelera-de-comprobantes/papelera-de-comprobantes.component';
 import { PapeleraAdopcionComponent } from './administrador/pages/papelera-adopcion/papelera-adopcion.component';
+import { PapeleraEspecieComponent } from './administrador/pages/papelera-especie/papelera-especie.component';
+import { PapeleraVoluntariadoComponent } from './administrador/pages/papelera-voluntariado/papelera-voluntariado.component';
+import { PapeleraaApadrinamientoComponent } from './administrador/pages/papeleraa-apadrinamiento/papeleraa-apadrinamiento.component';
 
 const routes: Routes = [
   { 
@@ -64,6 +67,9 @@ const routes: Routes = [
       { path: "Papelera", component: PapeleraComponent},
       { path: "Comprobantes", component: PapeleraDeComprobantesComponent},
       { path: "papelera-adopcion", component: PapeleraAdopcionComponent},
+      { path: "papelera-especie", component: PapeleraEspecieComponent},
+      { path: "papelera-voluntariado", component: PapeleraVoluntariadoComponent},
+      { path: "papelera-apadrinamiento", component: PapeleraaApadrinamientoComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

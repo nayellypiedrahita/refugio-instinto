@@ -12,6 +12,10 @@ import { AdopcionesComponent } from './pages/adopciones/adopciones.component';
 import { PapeleraComponent } from './pages/papelera/papelera.component';
 import { PapeleraDeComprobantesComponent } from './pages/papelera-de-comprobantes/papelera-de-comprobantes.component';
 import { PapeleraAdopcionComponent } from './pages/papelera-adopcion/papelera-adopcion.component';
+import { PapeleraEspecieComponent } from './pages/papelera-especie/papelera-especie.component';
+import { PapeleraVoluntariadoComponent } from './pages/papelera-voluntariado/papelera-voluntariado.component';
+import { PapeleraaApadrinamientoComponent } from './pages/papeleraa-apadrinamiento/papeleraa-apadrinamiento.component';
+import { PapeleraAdopcionesComponent } from './pages/papelera-adopciones/papelera-adopciones.component';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { PapeleraAdopcionComponent } from './pages/papelera-adopcion/papelera-ad
     AdopcionesComponent,
     PapeleraComponent,
     PapeleraDeComprobantesComponent,
-    PapeleraAdopcionComponent
+    PapeleraAdopcionComponent,
+    PapeleraEspecieComponent,
+    PapeleraVoluntariadoComponent,
+    PapeleraaApadrinamientoComponent,
+    PapeleraAdopcionesComponent
   ],
   imports: [
     CommonModule,
