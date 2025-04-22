@@ -1,23 +1,35 @@
-
 <div class="search-bar">
-    <select id="estado-selector">
-        <option value="">Estado</option>
-        <option value="critico">Estado crítico</option>
-        <option value="disponible">Estado disponible</option>
+    <select id="estado-selector" [(ngModel)]="estadoSeleccionado">
+      <option value="">Estado</option>
+      <option value="critico">Estado crítico</option>
+      <option value="disponible">Estado disponible</option>
+      <option value="leve">Estado leve</option>
     </select>
-    <button id="buscar-btn">Buscar</button>
-</div>
-    
-<div class="image-container">
+    <button id="buscar-btn" (click)="buscarMascotas()">Buscar</button> 
+  </div>
+  
+  <div class="image-container">
     <div class="loading" *ngIf="loading">
-        <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+      <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
     </div>
+  
     <ng-container *ngIf="!loading">
-        <div class="image-item" *ngFor="let mascota of mascotas">
-            <img src="{{ mascota.imagenes[0] }}" alt="Imagen">
-            <div class="color-box">
-                <span class="Amarillo-circle"></span> {{ mascota.nombre }}
-            </div>
+      <div class="image-item" *ngFor="let mascota of mascotasFiltradas">
+        <img [src]="mascota.imagenes[0]" alt="Imagen" />
+        <div class="color-box">
+          <span 
+            class="estado-circle" 
+            [ngClass]="{
+              'rojo': mascota.estado === 'critico',
+              'azul': mascota.estado === 'urgente',
+              'cyan': mascota.estado === 'leve',
+              'verde': mascota.estado === 'disponible',
+              'amarillo': mascota.estado === 'adoptado'
+            }">
+          </span> 
+          {{ mascota.nombre }}
         </div>
+      </div>
     </ng-container>
-</div>
+  </div>
+  

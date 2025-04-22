@@ -9,10 +9,19 @@
         </div>
 
         <div class="container-user">
-            <a (click)="logout()">
-                <i class="fa-solid fa-user"></i>
+            <a (click)="openLogoutConfirmation()">
+              <i class="fa-solid fa-user"></i>
             </a>
-        </div>
+          </div>
+          
+          <div *ngIf="showModal" class="modal">
+            <div class="modal-content">
+              <p>¿Quieres cerrar sesión?</p>
+              <button (click)="logout()">Sí</button>
+              <button (click)="closeModal()">No</button>
+            </div>
+          </div>
+          
     </div>
 </div>
 <main>

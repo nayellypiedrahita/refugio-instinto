@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Mascotas } from '../../../shared/model/mascotas';
 
 @Component({
@@ -14,4 +14,19 @@ export class ListadoMascotasComponent {
   @Input({ required: true })
   loading: boolean = false;
 
+  estadoSeleccionado: string = '';
+  
+
+  estadoFiltrado: string = '';
+
+
+  buscarMascotas(): void {
+    this.estadoFiltrado = this.estadoSeleccionado;  
+  }
+
+ 
+  get mascotasFiltradas(): Mascotas[] {
+    if (!this.estadoFiltrado) return this.mascotas;  
+    return this.mascotas.filter(m => m.estado === this.estadoFiltrado);  
+  }
 }

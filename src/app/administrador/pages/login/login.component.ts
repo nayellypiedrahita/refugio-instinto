@@ -14,6 +14,11 @@ import { environment } from '../../../../environments/environment';
 })
 export class LoginComponent implements OnInit {
 
+
+  focusNext(nextInput: HTMLInputElement) {
+    nextInput.focus();
+  }
+  
   mostrarErrorLogin: boolean = false;
   loading: boolean = false;
   errorMsg: string = '';

@@ -1,15 +1,10 @@
 <main>
     <div class="contenedor__todo">
         <div class="caja__trasera">
-            <div class="caja__trasera-login">
-                <h3>¿Ya tienes una cuenta?</h3>
-                <p>Inicia sesión para entrar en la página</p>
-                <button id="btn__iniciar-sesion">Iniciar Sesión</button>
-            </div>
             <div class="caja__trasera-register">
-                <h3>¿Aún no tienes una cuenta?</h3>
-                <p>Regístrate para que puedas iniciar sesión</p>
-                <button id="btn__registrarse">Regístrarse</button>
+                <h3>¡Este acceso es solo <br> para  administradores!</h3>
+                <p>El inicio de sesion es unico <br> para el administrador</p>
+                <button id="btn__registrarse"  routerLink="/web/Home" routerLinkActive="menu_active">Regresar</button>
             </div>
         </div>
 
@@ -24,37 +19,15 @@
                 <div *ngIf="!loading">
                     <p class="sesion_error" *ngIf="mostrarErrorLogin">{{ errorMsg }}</p>
                     <div>
-                        <input type="text" placeholder="Usuario" formControlName="usuario">
+                        <input type="text" placeholder="Usuario" formControlName="usuario" #usuarioInput (keydown.enter)="focusNext(claveInput)">
                         <p class="error-msg" *ngIf="form.controls['usuario'].touched && form.controls['usuario'].errors && form.controls['usuario'].errors!['required']">Este campo es requerido.</p>
                         <p class="error-msg" *ngIf="form.controls['usuario'].touched && form.controls['usuario'].errors && form.controls['usuario'].errors!['pattern']">Este campo es alfanumerico.</p>
                     </div>
                     <div>
-                        <input type="password" placeholder="Contraseña" formControlName="clave">
+                        <input type="password" placeholder="Contraseña" formControlName="clave" #claveInput (keydown.enter)="login()">
                         <p class="error-msg" *ngIf="form.controls['clave'].touched && form.controls['clave'].errors && form.controls['clave'].errors!['required']">Este campo es requerido.</p>
                     </div>
                     <button type="button" (click)="login()">Entrar</button>
-                </div>
-            </form>
-
-            <!--Register-->
-            <form action="" class="formulario__register" id="form1">
-                <h2>Regístrarse</h2>
-                <div id="step1">
-                    <input type="text" id="tipoDocumento" placeholder="Tipo de documento">
-                    <input type="email" id="numeroDocumento" placeholder="Número documento">
-                    <input type="text" id="nombre" placeholder="Nombre">
-                    <input type="password" id="apellido" placeholder="Apellido">
-                    <input type="password" id="fechaNacimiento" placeholder="Fecha Nacimiento">
-                    <button type="button" onclick="guardarDatos()">Siguiente</button>
-                </div>
-                <div id="step2" style="display: none;">
-                    <input type="text" id="Municipio" placeholder="Municipio">
-                    <input type="number" id="Direccion_de_Residencia" placeholder="Direccion de Residencia">
-                    <input type="number" id="numeroCelular" placeholder="Número de Celular">
-                    <input type="email" id="correoElectronico" placeholder="Correo Electrónico" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.com" required>
-                    <input type="password" id="Contraseña" placeholder="Contraseña">
-                    <button type="button" onclick="regresar()">Regresar</button>
-                    <button type="submit">Registrarse</button>
                 </div>
             </form>
         </div>

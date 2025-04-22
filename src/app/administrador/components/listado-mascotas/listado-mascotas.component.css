@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-    gap: 10px;
-    padding: 10px;
-    background-color: #FFF9F3;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    margin: 0 auto; 
-}
-#estado-selector {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #CCA27A; 
-    font-size: 14px;
+  .search-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      gap: 10px;
+      padding: 10px;
+      background-color: #FFF9F3;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: fit-content;
+      margin: 0 auto; 
+  }
+  #estado-selector {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #CCA27A; 
+      font-size: 14px;
   }
   
   #buscar-btn {
@@ -35,21 +35,24 @@
 
   .image-container {
     display: flex;
-    justify-content: center; 
-    gap: 70px; 
-    margin-top: 20px; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
   }
   
   .image-item {
+    flex: 0 0 calc(25% - 70px);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    gap: 10px; 
+    align-items: center;
+    margin-top: 20px;
   }
-  
+
   .image-container img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
@@ -114,11 +117,41 @@
   }
   
 
-.loading {
+  .loading {
   padding: 20px;
   display: flex;
   justify-content: center;
   font-size: 50px;
   margin: 40px 0px;
   color: #c7a17a;
-}
+  }
+
+
+  .estado-circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+
+  .rojo {
+    background-color: red;
+  }
+
+  .azul {
+    background-color: #3b3bbf; 
+  }
+
+  .cyan {
+    background-color: #00d4d4; 
+  }
+
+  .verde {
+    background-color: #79d70f; 
+  }
+
+  .amarillo {
+    background-color: #fdd835;
+  }

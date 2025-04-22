@@ -19,6 +19,7 @@ import { PasarelasComponent } from './pages/pasarelas/pasarelas.component';
 import { MascotaFormComponent } from './pages/mascota-form/mascota-form.component';
 import { ListadoMascotasComponent } from './components/listado-mascotas/listado-mascotas.component';
 import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-mascotas.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -44,7 +45,9 @@ import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-
   imports: [
     CommonModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule 
+
   ],
 })
 export class AdministradorModule { }

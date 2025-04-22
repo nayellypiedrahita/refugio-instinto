@@ -12,11 +12,29 @@ export class AdministradorComponent {
   router: Router = inject(Router);
   adminService: AdminService = inject(AdminService); 
 
+  showModal: boolean = false;
+
   constructor() {}
 
-  logout() {
-    this.adminService.logout();
-    this.router.navigate(["/login"]);
+ 
+  openLogoutConfirmation(): void {
+    this.showModal = true; 
   }
 
+  
+  closeModal(): void {
+    this.showModal = false; 
+  }
+
+ 
+  logout(): void {
+   
+    this.adminService.logout();
+    
+   
+    this.router.navigate(["/Home"]);
+    
+    
+    this.showModal = false; 
+  }
 }
