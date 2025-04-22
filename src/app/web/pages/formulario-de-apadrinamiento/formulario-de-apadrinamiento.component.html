@@ -2,25 +2,33 @@
     <h1>Formulario de Apadrinamiento</h1>
     <a class="hover-text" href="web/texto-apadrinar"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
 <div class="carta">
-    <form>
+    <form [formGroup]="apadrinamientoForm" (submit)="solicitudApadrinamiento()">
       <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo...">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo..." formControlName="nombre">
+      <div class="error-msg">
+        <p *ngIf="this.apadrinamientoForm.controls['nombre'].touched && this.apadrinamientoForm.controls['nombre'].errors && this.apadrinamientoForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
+        <p *ngIf="this.apadrinamientoForm.controls['nombre'].touched && this.apadrinamientoForm.controls['nombre'].errors && this.apadrinamientoForm.controls['nombre'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+      </div>
 
-      <label for="correo">Cprreo Electronico:</label>
-      <input type="tel" id="correo" name="correo" placeholder="Correo Electronico...">
-      
+      <label for="correo">Correo Electronico:</label>
+      <input type="tel" id="correo" name="correo" placeholder="Correo Electronico..." formControlName="email">
+      <div class="error-msg">
+        <p *ngIf="this.apadrinamientoForm.controls['email'].touched && this.apadrinamientoForm.controls['email'].errors && this.apadrinamientoForm.controls['email'].errors!['required']">El campo email es obligatorio</p>
+        <p *ngIf="this.apadrinamientoForm.controls['email'].touched && this.apadrinamientoForm.controls['email'].errors && this.apadrinamientoForm.controls['email'].errors!['email']">El email no es correcto</p>
+      </div>
       <label for="numeroc">Número de celular:</label>
-      <input type="tel" id="numeroc" name="numeroc" placeholder="WhatsApp...">
+      <input type="tel" id="numeroc" name="numeroc" placeholder="WhatsApp..." formControlName="celular">
+      <div class="error-msg">
+        <p *ngIf="this.apadrinamientoForm.controls['celular'].touched && this.apadrinamientoForm.controls['celular'].errors && this.apadrinamientoForm.controls['celular'].errors!['required']">El campo celular es obligatorio</p>
+        <p *ngIf="this.apadrinamientoForm.controls['celular'].touched && this.apadrinamientoForm.controls['celular'].errors && this.apadrinamientoForm.controls['celular'].errors!['pattern']">El campo celular solo acepta numeros</p>
+      </div>
 
       <p>Deseo recibir actualizaciones y noticias de la fundacion:</p><br>
 
       <div class="checkbox-group" >
 
         <label for="vehicle1">Si</label>
-        <input type="checkbox" id="vehicle1" name="vehicle1" value="si">
-       
-        <label for="vehicle2">No</label>
-        <input type="checkbox" id="vehicle2" name="vehicle2" value="no"><br>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="si" formControlName="notificacion">
         
       </div>
       <input type="submit" value="Siguiente">
