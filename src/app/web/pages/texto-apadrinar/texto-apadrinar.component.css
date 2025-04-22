@@ -57,3 +57,27 @@
 button:hover {
     transform: scale(1.1)
 }
+
+.text-box1 h3 {
+    font-size: 16px;
+    height: 20px;
+    margin-bottom: 10px; 
+    line-height: 1.5;
+    color: #c7a17a;
+    cursor: pointer;
+    margin-top: 20px;
+    padding-left: 50px;
+    width: 20px;
+    padding-left: 50px;
+    margin-left: 30px; 
+      margin-top: 20px; 
+      width: fit-content;
+}
+
+.text-box1 .hover-text h3:hover {
+    font-size: 1.8rem;
+}
+
+.hover-text{
+	text-decoration: none;
+}
