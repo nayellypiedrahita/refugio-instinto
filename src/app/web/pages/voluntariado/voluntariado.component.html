@@ -73,15 +73,31 @@
             <form [formGroup]="voluntariadoForm" (submit)="solicitudVoluntariado()">
                 <label for="name">Nombre:</label>
                 <input type="text" id="name" name="name" placeholder="Nombre..." formControlName="nombre">
+                <div class="error-msg">
+                    <p *ngIf="this.voluntariadoForm.controls['nombre'].touched && this.voluntariadoForm.controls['nombre'].errors && this.voluntariadoForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
+                    <p *ngIf="this.voluntariadoForm.controls['nombre'].touched && this.voluntariadoForm.controls['nombre'].errors && this.voluntariadoForm.controls['nombre'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+                </div>
                 
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" name="apellido" placeholder="Apellido..." formControlName="apellido">
+                <div class="error-msg">
+                    <p *ngIf="this.voluntariadoForm.controls['apellido'].touched && this.voluntariadoForm.controls['apellido'].errors && this.voluntariadoForm.controls['apellido'].errors!['required']">El campo apellido es obligatorio</p>
+                    <p *ngIf="this.voluntariadoForm.controls['apellido'].touched && this.voluntariadoForm.controls['apellido'].errors && this.voluntariadoForm.controls['apellido'].errors!['pattern']">El campo apellido solo acepta de 5 a 50 letras</p>
+                </div>
 
                 <label for="numero">Numero de celular:</label>
                 <input type="text" id="numero" name="numero" placeholder="WhatsApp..." formControlName="celular">
+                <div class="error-msg">
+                    <p *ngIf="this.voluntariadoForm.controls['celular'].touched && this.voluntariadoForm.controls['celular'].errors && this.voluntariadoForm.controls['celular'].errors!['required']">El campo celular es obligatorio</p>
+                    <p *ngIf="this.voluntariadoForm.controls['celular'].touched && this.voluntariadoForm.controls['celular'].errors && this.voluntariadoForm.controls['celular'].errors!['pattern']">El campo celular solo acepta de 5 a 50 letras</p>
+                </div>
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" placeholder="Email..." formControlName="email">
+                <div class="error-msg">
+                    <p *ngIf="this.voluntariadoForm.controls['email'].touched && this.voluntariadoForm.controls['email'].errors && this.voluntariadoForm.controls['email'].errors!['required']">El campo email es obligatorio</p>
+                    <p *ngIf="this.voluntariadoForm.controls['email'].touched && this.voluntariadoForm.controls['email'].errors && this.voluntariadoForm.controls['email'].errors!['email']">El email no es correcto</p>
+                </div>
                 <h3>
                     Elige la labor que deseas hacer como voluntariado
                 </h3>

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SolicitudVoluntariadoService } from '../../../shared/services/solicitud-voluntariado/solicitud-voluntariado.service';
+import { SolicitudVoluntariado } from '../../../shared/model/solicitud-voluntariado';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-voluntariado',
@@ -24,6 +27,11 @@ export class VoluntariadoComponent implements OnInit {
     voluntarioVirtual: new FormControl(''),
     angelRecaudador: new FormControl(''), 
   });
+  private solicitudVoluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
+
+  constructor(
+    private router: Router
+  ){}
 
   ngOnInit(): void {
     this.javascript();
@@ -32,6 +40,65 @@ export class VoluntariadoComponent implements OnInit {
 
   solicitudVoluntariado() {
     if (!this.voluntariadoForm.invalid) {
+      const nombre = this.voluntariadoForm.controls['nombre'].value;
+      const apellido = this.voluntariadoForm.controls['apellido'].value;
+      const celular = this.voluntariadoForm.controls['celular'].value;
+      const email = this.voluntariadoForm.controls['email'].value;
+      const paseadorPerros = this.voluntariadoForm.controls['paseadorPerros'].value;
+      const hadaGatuna = this.voluntariadoForm.controls['hadaGatuna'].value;
+      const heroeBaño = this.voluntariadoForm.controls['heroeBaño'].value;
+      const chefAnimal = this.voluntariadoForm.controls['chefAnimal'].value;
+      const embajadorAdopciones = this.voluntariadoForm.controls['embajadorAdopciones'].value;
+      const heroeLimpieza = this.voluntariadoForm.controls['heroeLimpieza'].value;
+      const voluntarioVirtual = this.voluntariadoForm.controls['voluntarioVirtual'].value;
+      const angelRecaudador = this.voluntariadoForm.controls['angelRecaudador'].value;
+
+      const actividades: string[] = [];
+
+      if (paseadorPerros) {
+        actividades.push('paseadorPerros');
+      }
+      if (hadaGatuna) {
+        actividades.push('hadaGatuna');
+      }
+      if (heroeBaño) {
+        actividades.push('heroeBaño');
+      }
+      if (chefAnimal) {
+        actividades.push('chefAnimal');
+      }
+      if (embajadorAdopciones) {
+        actividades.push('embajadorAdopciones');
+      }
+      if (heroeLimpieza) {
+        actividades.push('heroeLimpieza');
+      }
+      if (voluntarioVirtual) {
+        actividades.push('voluntarioVirtual');
+      }
+      if (angelRecaudador) {
+        actividades.push('angelRecaudador');
+      }
+
+      if (actividades.length == 0) {
+        // Mostrar error para que seleccione como minimo un articulo
+        alert("Debes seleccionar al menos 1 articulo o especificar otro.");
+        return;
+      }
+
+      const solicitudVoluntariado: SolicitudVoluntariado = {
+        nombre,
+        apellido,
+        celular,
+        email,
+        actividades
+      };
+
+      this.solicitudVoluntariadoService.addSolicitudVoluntariado(solicitudVoluntariado).then(response => {
+        if(response) {
+          this.router.navigate(["/web/solicitud-enviada"]);
+        }
+      });
       
     }
   }
