@@ -22,7 +22,7 @@ import { FormularioDeApadrinamientoComponent } from './pages/formulario-de-apadr
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormularioPacienteMascotasComponent } from './pages/formulario-paciente-mascotas/formulario-paciente-mascotas.component';
 import { ComprobanteDonacionComponent } from './pages/comprobante-donacion/comprobante-donacion.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import { ComprobanteDonacionComponent } from './pages/comprobante-donacion/compr
   imports: [
     AppRoutingModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule 
   ],
   exports: [
     WebComponent
