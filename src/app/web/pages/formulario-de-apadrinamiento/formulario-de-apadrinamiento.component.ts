@@ -18,7 +18,7 @@ export class FormularioDeApadrinamientoComponent {
     celular: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
     notificacion: new FormControl(''),
   });
-
+  loading: boolean = false;
   private solicitudApadrinamientoservice:SolicitudApadrinamientoService = inject(SolicitudApadrinamientoService);
 
  
@@ -28,6 +28,7 @@ export class FormularioDeApadrinamientoComponent {
   }
 solicitudApadrinamiento(){
 if (!this.apadrinamientoForm.invalid){
+  this.loading = true;
   const nombre = this.apadrinamientoForm.controls['nombre'].value;
   const email = this.apadrinamientoForm.controls['email'].value;
   const celular = this.apadrinamientoForm.controls['celular'].value;
@@ -43,6 +44,7 @@ if (!this.apadrinamientoForm.invalid){
   this.solicitudApadrinamientoservice.addSolicitudapadrinamiento(solicitudApadrinamiento).then(response => {
     if (response) {
       this.router.navigate(["/web/solicitud-enviada"]);
+      this.loading = false;
     }
   });
 

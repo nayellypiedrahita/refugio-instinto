@@ -1,7 +1,10 @@
 <div class="container-navbar">
     <h1>Formulario de Apadrinamiento</h1>
     <a class="hover-text" href="web/texto-apadrinar"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
-<div class="carta">
+    <div class="loading" *ngIf="loading">
+      <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+    </div>
+<div class="carta" *ngIf="!loading">
     <form [formGroup]="apadrinamientoForm" (submit)="solicitudApadrinamiento()">
       <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo..." formControlName="nombre">

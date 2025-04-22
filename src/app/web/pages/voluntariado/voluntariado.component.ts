@@ -27,6 +27,7 @@ export class VoluntariadoComponent implements OnInit {
     voluntarioVirtual: new FormControl(''),
     angelRecaudador: new FormControl(''), 
   });
+  loading: boolean = false;
   private solicitudVoluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
 
   constructor(
@@ -40,6 +41,7 @@ export class VoluntariadoComponent implements OnInit {
 
   solicitudVoluntariado() {
     if (!this.voluntariadoForm.invalid) {
+      this.loading = true;
       const nombre = this.voluntariadoForm.controls['nombre'].value;
       const apellido = this.voluntariadoForm.controls['apellido'].value;
       const celular = this.voluntariadoForm.controls['celular'].value;
@@ -97,6 +99,7 @@ export class VoluntariadoComponent implements OnInit {
       this.solicitudVoluntariadoService.addSolicitudVoluntariado(solicitudVoluntariado).then(response => {
         if(response) {
           this.router.navigate(["/web/solicitud-enviada"]);
+          this.loading = false;
         }
       });
       

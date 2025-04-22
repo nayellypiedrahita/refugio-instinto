@@ -69,7 +69,10 @@
 <section id="volunteer">
     <div class="container">
         <h2>Únete como Voluntario</h2>
-        <div class="form">
+        <div class="loading" *ngIf="loading">
+            <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+          </div>
+        <div class="form" *ngIf="!loading">
             <form [formGroup]="voluntariadoForm" (submit)="solicitudVoluntariado()">
                 <label for="name">Nombre:</label>
                 <input type="text" id="name" name="name" placeholder="Nombre..." formControlName="nombre">
