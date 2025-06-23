@@ -13,12 +13,7 @@
             <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
         </div>
         <ng-container *ngIf="!mostrarLoading">
-            <ng-container *ngFor="let grupoDonaciones of comprobantesDonacionAgrupoados">
-                <div class="date-box">{{ grupoDonaciones.fecha.toString() }}</div>
-                <ul>
-                    <li *ngFor="let donacion of grupoDonaciones.donaciones; let i = index" (click)="mostrarDetalleComprobante(donacion.base64)"><span class="list-number">{{ i+1 }}.</span> N. {{ donacion.consecutivo }}</li>
-                </ul>
-            </ng-container>
+            <app-lista-acordeon (clickedItem)="mostrarDetalleComprobante($event)"  [datosAgrupados]="comprobantesDonacionAgrupoados"></app-lista-acordeon>
         </ng-container>
         <div class="button-container">
             <a routerLink="/admin/Pasarelas" routerLinkActive="menu_active"  class="button"  href="" class="button">PASARELA</a>

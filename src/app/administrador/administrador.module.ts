@@ -20,6 +20,7 @@ import { MascotaFormComponent } from './pages/mascota-form/mascota-form.componen
 import { ListadoMascotasComponent } from './components/listado-mascotas/listado-mascotas.component';
 import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-mascotas.component';
 import { FormsModule } from '@angular/forms';
+import { ListaAcordeonComponent } from './components/lista-acordeon/lista-acordeon.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     PasarelasComponent,
     MascotaFormComponent,
     ListadoMascotasComponent,
-    VerTodasMascotasComponent
+    VerTodasMascotasComponent,
+    ListaAcordeonComponent
   ],
   imports: [
     CommonModule,

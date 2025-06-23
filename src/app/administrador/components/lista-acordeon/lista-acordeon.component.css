@@ -1,0 +1,65 @@
+
+
+.date-box, ul{
+    margin: 0;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+.date-box label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+ul li {
+    display: none;
+}
+
+.date-box input:checked + label + ul li {
+    display: block;
+}
+
+.date-box input:checked + label {
+    font-weight: 800;
+}
+
+.date-box label .arrow {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    transform: rotate(0deg);
+}
+
+.date-box input:checked + label .arrow {
+    transform: rotate(90deg);
+}
+
+.date-box {
+    color: black;
+    background-color: #FFF0E2;
+}
+.date-box span{
+    margin-left: 1rem;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    background: #FFF9F3;
+    padding: 10px;
+    padding-left: 30px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+.list-number {
+    display: inline-block;
+    width: 20px;
+}

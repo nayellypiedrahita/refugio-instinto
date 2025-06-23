@@ -23,22 +23,6 @@
     font-size: 1.8rem;
     font-weight: 500;
 }
-.date-box {
-    color: black;
-    background-color: #FFF0E2;
-}
-ul {
-    list-style: none;
-    padding: 0;
-}
-li {
-    background: #FFF9F3;
-    padding: 10px;
-    padding-left: 30px;
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-}
 .button {
     background-color: #c28e6a;
     text-align: center;
@@ -52,10 +36,6 @@ li {
 .button-container {
     text-align: right;
     margin-top: 10px;
-}
-.list-number {
-    display: inline-block;
-    width: 20px;
 }
 
 a{

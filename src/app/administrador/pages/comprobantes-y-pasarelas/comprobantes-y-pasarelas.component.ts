@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class ComprobantesYPasarelasComponent implements OnInit {
 
   mostrarLoading: boolean = false;
-  comprobantesDonacionAgrupoados: { fecha: string; donaciones: DonacionMonetaria[] }[] = [];
+  comprobantesDonacionAgrupoados: { fecha: string; items: DonacionMonetaria[] }[] = [];
   private donacionMonetariaService: DonacionMonetariaService = inject(DonacionMonetariaService);
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ComprobantesYPasarelasComponent implements OnInit {
         mergeMap(group => 
           group.pipe(
             toArray(),
-            map(donaciones => ({ fecha: group.key, donaciones: donaciones }))
+            map(donaciones => ({ fecha: group.key, items: donaciones }))
           )
         ),
         toArray()
