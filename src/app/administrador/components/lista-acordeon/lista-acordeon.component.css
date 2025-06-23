@@ -17,6 +17,7 @@
 
 ul li {
     display: none;
+    cursor: pointer;
 }
 
 .date-box input:checked + label + ul li {

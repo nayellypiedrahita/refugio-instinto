@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SolicitudVoluntariadoService } from '../../../shared/services/solicitud-voluntariado/solicitud-voluntariado.service';
 import { SolicitudVoluntariado } from '../../../shared/model/solicitud-voluntariado';
 import { Router } from '@angular/router';
+import { Timestamp } from '@angular/fire/firestore';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-voluntariado',
@@ -93,6 +95,7 @@ export class VoluntariadoComponent implements OnInit {
         apellido,
         celular,
         email,
+        fecha: formatDate(Timestamp.now().toDate(), 'yyyy-MM-dd', 'en-US'),
         actividades
       };
 

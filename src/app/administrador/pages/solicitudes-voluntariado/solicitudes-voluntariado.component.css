@@ -1,0 +1,53 @@
+.header {
+    width: 100%;
+    text-align: center;
+    background-color: #F0E1D3;
+    color: black;
+    padding: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.donation-box, .date-box, ul, .button {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.donation-box {
+    background-color: #CCA27A;
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.button {
+    background-color: #c28e6a;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    margin-top: 10px;
+    border-radius: 50px;
+}
+.button-container {
+    text-align: right;
+    margin-top: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.loading {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    margin: 40px 0px;
+    color: #c7a17a;
+}

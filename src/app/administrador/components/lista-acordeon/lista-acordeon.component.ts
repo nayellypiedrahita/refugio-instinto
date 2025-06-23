@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DonacionMonetaria } from '../../../shared/model/donacion-monetaria';
 
 @Component({
   selector: 'app-lista-acordeon',
@@ -10,7 +9,7 @@ export class ListaAcordeonComponent {
 
 
   @Input({ required: true})
-  datosAgrupados: { fecha: string; items: DonacionMonetaria[] }[] = [];
+  datosAgrupados: { fecha: string; tipo: string; items: any[] }[] = [];
 
   @Output()
   clickedItem: EventEmitter<string> = new EventEmitter();

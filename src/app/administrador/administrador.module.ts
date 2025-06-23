@@ -21,6 +21,7 @@ import { ListadoMascotasComponent } from './components/listado-mascotas/listado-
 import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-mascotas.component';
 import { FormsModule } from '@angular/forms';
 import { ListaAcordeonComponent } from './components/lista-acordeon/lista-acordeon.component';
+import { SolicitudesVoluntariadoComponent } from './pages/solicitudes-voluntariado/solicitudes-voluntariado.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ListaAcordeonComponent } from './components/lista-acordeon/lista-acorde
     MascotaFormComponent,
     ListadoMascotasComponent,
     VerTodasMascotasComponent,
-    ListaAcordeonComponent
+    ListaAcordeonComponent,
+    SolicitudesVoluntariadoComponent
   ],
   imports: [
     CommonModule,

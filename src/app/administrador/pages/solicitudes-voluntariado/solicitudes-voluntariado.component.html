@@ -1,11 +1,11 @@
-<div class="header">COMPROBANTES Y PASARELAS DE PAGO</div>
+<div class="header">SOLICITUDES VOLUNTARIADO</div>
 <div class="container">
     <div class="donation-box">Comprobantes de pago</div>
     <div class="loading" *ngIf="mostrarLoading">
         <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
     </div>
     <ng-container *ngIf="!mostrarLoading">
-        <app-lista-acordeon (clickedItem)="mostrarDetalleComprobante($event)"  [datosAgrupados]="comprobantesDonacionAgrupoados"></app-lista-acordeon>
+        <app-lista-acordeon (clickedItem)="redireccionarADetalle()"  [datosAgrupados]="solicitudesVoluntariado"></app-lista-acordeon>
     </ng-container>
     <div class="button-container">
         <a routerLink="/admin/Pasarelas" routerLinkActive="menu_active"  class="button"  href="" class="button">PASARELA</a>

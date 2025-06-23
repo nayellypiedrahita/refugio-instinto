@@ -6,7 +6,22 @@
             <span class="arrow">▶</span>
         </label>
         <ul>
-            <li *ngFor="let donacion of datos.items; let i = index" (click)="emitirEvento(donacion.base64)"><span class="list-number">{{ i+1 }}.</span> N. {{ donacion.consecutivo }}</li>
+            <ng-container *ngIf="datos.tipo == 'comprobantes-pasarelas'">
+                <ng-container *ngFor="let item of datos.items; let i = index">
+                    <li  (click)="emitirEvento(item?.base64)">
+                        <span class="list-number">{{ i+1 }}.</span>
+                        N. {{ item?.consecutivo }}
+                    </li>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="datos.tipo == 'voluntariado'">
+                <ng-container *ngFor="let item of datos.items; let i = index">
+                    <li  (click)="emitirEvento(item?.nombre)">
+                        <span class="list-number">{{ i+1 }}.</span>
+                        {{ item?.nombre + " " + item?.apellido }}
+                    </li>
+                </ng-container>
+            </ng-container>
         </ul>
     </div>
 </ng-container>
