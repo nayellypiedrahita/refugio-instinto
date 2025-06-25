@@ -16,11 +16,13 @@ export class DonacionMonetariaService {
     this.donacionMonetariaCollection = collection(this.firestore, 'donaciones-monetarias');
   }
 
-  async addDonacion(base64: string) {
+  async addDonacion(base64: string, nombreCompleto: string, whatsapp: number) {
     const donacionesTodas: DonacionMonetaria[] = await lastValueFrom(this.getDonaciones());
     const newDonacion: DonacionMonetaria = {
       consecutivo: donacionesTodas.length++,
       base64,
+      nombreCompleto,
+      whatsapp,
       fecha: formatDate(Timestamp.now().toDate(), 'yyyy-MM-dd', 'en-US')
     };
     return addDoc(this.donacionMonetariaCollection, newDonacion);
@@ -35,6 +37,8 @@ export class DonacionMonetariaService {
             idDonacionMonetaria: element.id,
             consecutivo: datosMascota['consecutivo'],
             base64: datosMascota['base64'],
+            nombreCompleto: datosMascota['nombreCompleto'],
+            whatsapp: datosMascota['whatsapp'],
             fecha: datosMascota['fecha'],
           } as DonacionMonetaria;
         })

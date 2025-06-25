@@ -26,6 +26,7 @@ import { BajoCuidadoComponent } from './administrador/pages/bajo-cuidado/bajo-cu
 import { AdopcionesComponent } from './administrador/pages/adopciones/adopciones.component';
 import { ComprobanteDonacionComponent } from './web/pages/comprobante-donacion/comprobante-donacion.component';
 import { AuthGuard } from './administrador/guards/auth.guard';
+import { PasswordResetGuard } from './administrador/guards/password-reset.guard';
 import { SolicitudEnEspecieComponent } from './administrador/pages/solicitud-en-especie/solicitud-en-especie.component';
 import { ArticulosDeDonacionComponent } from './administrador/pages/articulos-de-donacion/articulos-de-donacion.component';
 import { DetalleComponent } from './administrador/pages/detalle/detalle.component';
@@ -35,6 +36,8 @@ import { TestimoniosComponent } from './administrador/pages/testimonios/testimon
 import { PasarelasComponent } from './administrador/pages/pasarelas/pasarelas.component';
 import { MascotaFormComponent } from './administrador/pages/mascota-form/mascota-form.component';
 import { VerTodasMascotasComponent } from './administrador/pages/ver-todas-mascotas/ver-todas-mascotas.component';
+import { OlvidoSuContrasenaComponent } from './administrador/pages/olvido_su_contrasena/olvido_su_contrasena.component';
+import { ActualizarContrasenaComponent } from './administrador/pages/actualizar_contrasena/actualizar_contrasena.component';
 
 
 const routes: Routes = [
@@ -62,6 +65,12 @@ const routes: Routes = [
     ]
   },
   { path: "login", component: LoginComponent },
+  { path: "olvido-contrasena", component: OlvidoSuContrasenaComponent },
+  { 
+    path: "actualizar-contrasena/:id", 
+    component: ActualizarContrasenaComponent,
+    canActivate: [PasswordResetGuard]
+  },
   {
     path: "admin", component: AdministradorComponent, canActivateChild: [ AuthGuard ], children: [
       { path: "home", component: AdminHomeComponent },

@@ -27,7 +27,12 @@
                         <input type="password" placeholder="Contraseña" formControlName="clave" #claveInput (keydown.enter)="login()">
                         <p class="error-msg" *ngIf="form.controls['clave'].touched && form.controls['clave'].errors && form.controls['clave'].errors!['required']">Este campo es requerido.</p>
                     </div>
-                    <button type="button" (click)="login()">Entrar</button>
+                    <div class="recuperar_clave">
+                        <a routerLink="/olvido-contrasena">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div>
+                        <button type="button" (click)="login()">Entrar</button>
+                    </div>
                 </div>
             </form>
         </div>

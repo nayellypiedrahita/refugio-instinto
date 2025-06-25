@@ -1,0 +1,62 @@
+<main>
+    <div class="contenedor__todo">
+
+        <div class="contenedor__login-register">
+            <form class="formulario__login" [formGroup]="updateForm" (ngSubmit)="onSubmit()" *ngIf="!passwordUpdated">
+                <h2>Nueva Contraseña</h2>
+                <div class="sesion_loading" *ngIf="loading">
+                    <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+                </div>
+                <div *ngIf="!loading">
+                    <div class="form-group">
+                        <input 
+                            type="password" 
+                            placeholder="Nueva contraseña" 
+                            formControlName="nueva_contrasena"
+                            [class.is-invalid]="updateForm.get('nueva_contrasena')?.invalid && updateForm.get('nueva_contrasena')?.touched">
+                        <div class="error-msg" *ngIf="updateForm.get('nueva_contrasena')?.errors?.['required'] && updateForm.get('nueva_contrasena')?.touched">
+                            La contraseña es requerida
+                        </div>
+                        <div class="error-msg" *ngIf="updateForm.get('nueva_contrasena')?.errors?.['minlength']">
+                            La contraseña debe tener al menos 6 caracteres
+                        </div>
+                        <div class="error-msg" *ngIf="updateForm.get('nueva_contrasena')?.errors?.['pattern']">
+                            La contraseña debe contener al menos una mayúscula, una minúscula y un número
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input 
+                            type="password" 
+                            placeholder="Confirmar nueva contraseña" 
+                            formControlName="confirmar_contrasena"
+                            [class.is-invalid]="(updateForm.get('confirmar_contrasena')?.invalid || updateForm.errors?.['mustMatch']) && updateForm.get('confirmar_contrasena')?.touched">
+                        <div class="error-msg" *ngIf="updateForm.get('confirmar_contrasena')?.errors?.['required'] && updateForm.get('confirmar_contrasena')?.touched">
+                            Por favor confirma tu contraseña
+                        </div>
+                        <div class="error-msg" *ngIf="updateForm.errors?.['mustMatch'] && updateForm.get('confirmar_contrasena')?.touched">
+                            Las contraseñas no coinciden
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" [disabled]="updateForm.invalid">
+                            Actualizar Contraseña
+                        </button>
+                    </div>
+
+                    <div class="back-to-login">
+                        <a routerLink="/admin/login">Volver al inicio de sesión</a>
+                    </div>
+                </div>
+            </form>
+
+            <div class="success-message" *ngIf="passwordUpdated">
+                <div class="success-icon">✓</div>
+                <h3>¡Contraseña actualizada!</h3>
+                <p>Tu contraseña ha sido actualizada exitosamente.</p>
+                <button class="btn-back" routerLink="/admin/login">Volver al inicio de sesión</button>
+            </div>
+        </div>
+    </div>
+</main>
