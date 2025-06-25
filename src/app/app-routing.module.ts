@@ -36,6 +36,8 @@ import { PasarelasComponent } from './administrador/pages/pasarelas/pasarelas.co
 import { MascotaFormComponent } from './administrador/pages/mascota-form/mascota-form.component';
 import { VerTodasMascotasComponent } from './administrador/pages/ver-todas-mascotas/ver-todas-mascotas.component';
 import { SolicitudesVoluntariadoComponent } from './administrador/pages/solicitudes-voluntariado/solicitudes-voluntariado.component';
+import { SolicitudApadrinamientoComponent } from './administrador/pages/solicitud-apadrinamiento/solicitud-apadrinamiento.component';
+import { SolicitudAdopcionComponent } from './administrador/pages/solicitud-adopcion/solicitud-adopcion.component';
 
 
 const routes: Routes = [
@@ -79,6 +81,8 @@ const routes: Routes = [
       { path: "add-mascota", component: MascotaFormComponent},
       { path: "ver-todas-mascotas", component: VerTodasMascotasComponent},
       { path: "solicitudes-voluntariado", component: SolicitudesVoluntariadoComponent},
+      { path: "solicitud-apadrinamiento", component: SolicitudApadrinamientoComponent},
+      { path: "solicitudes-adopcion", component: SolicitudAdopcionComponent},
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

@@ -4,4 +4,5 @@ export interface SolicitudApadrinamiento {
     email: string;
     celular: string;
     notificacion: boolean;
+    fecha: string;
 }

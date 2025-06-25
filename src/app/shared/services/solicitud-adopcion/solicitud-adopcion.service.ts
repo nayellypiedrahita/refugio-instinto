@@ -1,6 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { addDoc, collection, CollectionReference, Firestore } from '@angular/fire/firestore';
 import { SolicitudAdopcion } from '../../model/solicitud-adopcion';
+import { getDocs } from '@angular/fire/firestore';
+import { from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,26 @@ export class SolicitudAdopcionService {
   addSolicitudAdopcion(solicitudAdopcion: SolicitudAdopcion) {
     return addDoc(this.solicitudAdopcionCollection, solicitudAdopcion);
   }
-
-
+getSolicitudesAdopcion() {
+  return from(getDocs(this.solicitudAdopcionCollection)).pipe(
+    map(snapshot =>
+      snapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          idSolicitud: doc.id,
+          nombre: data['nombre'],
+          tipoDocumento: data['tipoDocumento'],
+          numeroDocumento: data['numeroDocumento'],
+          correo: data['correo'],
+          celular: data['celular'],
+          ciudad: data['ciudad'],
+          departamento: data['departamento'],
+          mascota: data['mascota'],
+          fecha: data['fecha']
+        } as SolicitudAdopcion;
+      })
+    )
+  );
 }
+}
+

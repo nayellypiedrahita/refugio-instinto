@@ -1,22 +1,39 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, CollectionReference, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, CollectionReference, Firestore, getDocs } from '@angular/fire/firestore';
 import { SolicitudDonaciones } from '../../model/solicitud-donaciones';
+import { from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SolicitudDonacionService {
 
-  private firetsore: Firestore = inject(Firestore);
-  private solicitudDonacionCollection: CollectionReference
+  private firestore: Firestore = inject(Firestore);
+  private solicitudDonacionCollection: CollectionReference;
 
   constructor() {
-    this.solicitudDonacionCollection = collection(this.firetsore, 'solicitudes-donaciones');
-   }
+    this.solicitudDonacionCollection = collection(this.firestore, 'solicitudes-donaciones');
+  }
 
+  addSolicitudDonacion(solicitud: SolicitudDonaciones) {
+    return addDoc(this.solicitudDonacionCollection, solicitud);
+  }
 
-  addSolicitudDonacion(SolicitudDonaciones: SolicitudDonaciones) {
-    return addDoc(this.solicitudDonacionCollection, SolicitudDonaciones);
-  } 
-
+  getSolicitudesDonaciones() {
+    return from(getDocs(this.solicitudDonacionCollection)).pipe(
+      map(snapshot =>
+        snapshot.docs.map(doc => {
+          const data = doc.data();
+          return {
+            idSolicitud: doc.id,
+            nombreCompleto: data['nombreCompleto'],
+            numeroCelular: data['numeroCelular'],
+            articulos: data['articulos'],
+            otro: data['otro'],
+            fecha: data['fecha'],
+          } as SolicitudDonaciones;
+        })
+      )
+    );
+  }
 }

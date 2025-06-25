@@ -38,7 +38,8 @@ if (!this.apadrinamientoForm.invalid){
   nombre,
   email,
   celular,
-  notificacion
+  notificacion,
+  fecha: new Date().toISOString().slice(0, 10)
   };
 
   this.solicitudApadrinamientoservice.addSolicitudapadrinamiento(solicitudApadrinamiento).then(response => {

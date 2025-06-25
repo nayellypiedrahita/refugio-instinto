@@ -1,0 +1,15 @@
+<div class="header">SOLICITUDES DE APADRINAMIENTO</div>
+<div class="container">
+  <div class="donation-box">Listado de solicitudes</div>
+
+  <div class="loading" *ngIf="mostrarLoading">
+    <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+  </div>
+
+  <ng-container *ngIf="!mostrarLoading">
+    <app-lista-acordeon
+      (clickedItem)="redireccionarADetalle()"
+      [datosAgrupados]="solicitudesApadrinamiento">
+    </app-lista-acordeon>
+  </ng-container>
+</div>

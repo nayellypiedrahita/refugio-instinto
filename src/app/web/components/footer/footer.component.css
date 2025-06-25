@@ -207,3 +207,44 @@
         min-width: 150px;
     }
 }
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-icons .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #e0e0e0; 
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.social-icons .icon:hover {
+    transform: scale(1.1);
+    background: #ccc;
+}
+
+
+.icon.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: white;
+}
+
+.icon.whatsapp {
+    background: #25d366;
+    color: white;
+}
+
+.icon.email {
+    background: #0072c6;
+    color: white;
+}

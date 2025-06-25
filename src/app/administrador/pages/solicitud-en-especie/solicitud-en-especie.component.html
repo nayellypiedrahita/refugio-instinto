@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud en Especie</title>
-</head>
-<body>
-    <div class="header">SOLICITUD EN ESPECIE</div>
-    <div class="container">
-        <div class="donation-box">Artículos de donación</div>
-        <div class="date-box">2022-02-12</div>
-        <ul>
-            <li>1. Alimentos para gato.</li>
-            <li><a routerLink="/admin/detalle" routerLinkActive="menu_active">2. Otro.</a></li>
-        </ul>
-        <div class="date-box">2022-05-12</div>
-        <ul>
-            <li>1. Peine o cepillo.</li>
-            <li>2. Medicamentos veterinarios.</li>
-            <li>3. Camas y mantas.</li>
-        </ul>
-        <div class="button-container">
-            <a routerLink="/admin/articulos-de-donacion" routerLinkActive="menu_active"  class="button">PASARELA</a>
-        </div>
-    </div>
-</body>
-</html>
+<div class="header">SOLICITUDES EN ESPECIE</div>
+<div class="container">
+  <div class="donation-box">Comprobantes de artículos donados</div>
+  
+  <div class="loading" *ngIf="mostrarLoading">
+    <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
+  </div>
+
+  <ng-container *ngIf="!mostrarLoading">
+    <app-lista-acordeon
+      (clickedItem)="redireccionarADetalle()"
+      [datosAgrupados]="solicitudesDonaciones">
+    </app-lista-acordeon>
+  </ng-container>
+
+  <div class="button-container">
+    <a routerLink="/admin/Pasarelas" routerLinkActive="menu_active" class="button">PASARELA</a>
+  </div>
+</div>
+

@@ -8,7 +8,7 @@
     <i class="fa-solid fa-spinner fa-spin loading"></i>
   </div>
   <form (submit)="toSolicitudEnviada()" [formGroup]="donacionForm" *ngIf="!loadingForm">
-      <label for="nombre">Nombre completo:</label>
+      <label for="nombre">Nombre completo y Apellidos:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" formControlName="nombreCompleto">
       <div class="error-msg">
         <p *ngIf="this.donacionForm.controls['nombreCompleto'].touched && this.donacionForm.controls['nombreCompleto'].errors && this.donacionForm.controls['nombreCompleto'].errors!['required']">El campo nombre es obligatorio</p>

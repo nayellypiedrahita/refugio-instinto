@@ -84,11 +84,13 @@ export class FormularioDeDonacionesComponent {
       }
 
       const solicitudDonaciones: SolicitudDonaciones = {
-        nombreCompleto,
-        numeroCelular,
-        articulos,
-        otro,
-      };
+  nombreCompleto,
+  numeroCelular,
+  articulos,
+  otro,
+  fecha: new Date().toISOString().slice(0, 10)
+};
+
 
       this.solicitudDonacionService.addSolicitudDonacion(solicitudDonaciones).then(response => {
         if(response) {

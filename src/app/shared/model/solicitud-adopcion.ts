@@ -8,4 +8,5 @@ export interface SolicitudAdopcion {
     ciudad: string;
     departamento: string;
     mascota: string;
+    fecha: string;
 }

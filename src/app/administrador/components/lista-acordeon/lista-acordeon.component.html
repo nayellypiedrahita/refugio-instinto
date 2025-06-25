@@ -22,6 +22,35 @@
                     </li>
                 </ng-container>
             </ng-container>
+
+   <ng-container *ngIf="datos.tipo == 'donaciones'">
+  <ng-container *ngFor="let item of datos.items; let i = index">
+    <li (click)="emitirEvento(item?.nombreCompleto)">
+      <span class="list-number">{{ i + 1 }}.</span>
+      <strong> {{ item?.nombreCompleto }}</strong><br>
+    </li>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="datos.tipo == 'apadrinamiento'">
+  <ng-container *ngFor="let item of datos.items; let i = index">
+    <li (click)="emitirEvento(item?.nombre)">
+      <span class="list-number">{{ i + 1 }}.</span>
+      <strong> {{ item?.nombre }}</strong><br>
+    </li>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="datos.tipo == 'adopcion'">
+  <ng-container *ngFor="let item of datos.items; let i = index">
+    <li (click)="emitirEvento(item?.nombre)">
+      <span class="list-number">{{ i + 1 }}.</span>
+      <strong> {{ item?.nombre }}</strong><br>
+    </li>
+  </ng-container>
+</ng-container>
+
+
         </ul>
     </div>
 </ng-container>

@@ -6,7 +6,7 @@
     </div>
 <div class="carta" *ngIf="!loading">
     <form [formGroup]="apadrinamientoForm" (submit)="solicitudApadrinamiento()">
-      <label for="nombre">Nombre completo:</label>
+      <label for="nombre">Nombre completo y Apellidos:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo..." formControlName="nombre">
       <div class="error-msg">
         <p *ngIf="this.apadrinamientoForm.controls['nombre'].touched && this.apadrinamientoForm.controls['nombre'].errors && this.apadrinamientoForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
