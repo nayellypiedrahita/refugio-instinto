@@ -19,6 +19,8 @@ import { PasarelasComponent } from './pages/pasarelas/pasarelas.component';
 import { MascotaFormComponent } from './pages/mascota-form/mascota-form.component';
 import { ListadoMascotasComponent } from './components/listado-mascotas/listado-mascotas.component';
 import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-mascotas.component';
+import { OlvidoSuContrasenaComponent } from './pages/olvido_su_contrasena/olvido_su_contrasena.component';
+import { ActualizarContrasenaComponent } from './pages/actualizar_contrasena/actualizar_contrasena.component';
 import { FormsModule } from '@angular/forms';
 import { ListaAcordeonComponent } from './components/lista-acordeon/lista-acordeon.component';
 import { SolicitudesVoluntariadoComponent } from './pages/solicitudes-voluntariado/solicitudes-voluntariado.component';
@@ -48,14 +50,15 @@ import { SolicitudAdopcionComponent } from './pages/solicitud-adopcion/solicitud
     ListaAcordeonComponent,
     SolicitudesVoluntariadoComponent,
     SolicitudApadrinamientoComponent,
-    SolicitudAdopcionComponent
+    SolicitudAdopcionComponent,
+    OlvidoSuContrasenaComponent,
+    ActualizarContrasenaComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule 
-
   ],
 })
 export class AdministradorModule { }

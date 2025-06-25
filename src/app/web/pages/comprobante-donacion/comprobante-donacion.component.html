@@ -4,6 +4,36 @@
     <div class="loading" *ngIf="loading">
         <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
     </div>
+
+    <form [formGroup]="donacionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nombreCompleto">Nombre completo</label>
+          <input 
+            id="nombreCompleto"
+            type="text" 
+            class="form-control"
+            formControlName="nombreCompleto" 
+            placeholder="Ingresa tu nombre completo"
+            [class.is-invalid]="donacionForm.get('nombreCompleto')?.invalid && donacionForm.get('nombreCompleto')?.touched">
+          <div class="invalid-feedback" *ngIf="donacionForm.get('nombreCompleto')?.errors?.['required'] && donacionForm.get('nombreCompleto')?.touched">
+            Por favor ingresa tu nombre completo
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input 
+              id="whatsapp"
+              type="text" 
+              class="form-control"
+              formControlName="whatsapp" 
+              placeholder="Ingresa tu número de WhatsApp"
+              [class.is-invalid]="donacionForm.get('whatsapp')?.invalid && donacionForm.get('whatsapp')?.touched">
+            <div class="invalid-feedback" *ngIf="donacionForm.get('whatsapp')?.errors?.['required'] && donacionForm.get('whatsapp')?.touched">
+              Por favor ingresa tu número de WhatsApp
+            </div>
+          </div>
+          
     <div class="content" *ngIf="!loading">
         <input type="file" #fileInput hidden (change)="fileSelected($event)" multiple="false">
         <div class="image-container" (click)="fileInput.click()">
@@ -12,8 +42,10 @@
             <p>Subir Imagen</p>
         </div>
     </div>
+
     <div class="buttons" *ngIf="!loading">
         <button (click)="quitarImagen()">Eliminar</button>
-        <button (click)="enviarDonacionMonetaria()">Enviar</button>
+        <button type="submit">Enviar</button>
     </div>
+</form>
 </div>

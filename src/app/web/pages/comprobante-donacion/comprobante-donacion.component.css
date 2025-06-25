@@ -25,6 +25,54 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para el formulario */
+form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-control {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 22px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+    text-align: left;
+}
+
+/* Estilo para los placeholders */
+.form-control::placeholder {
+    text-align: left;
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 5%;
+    font-size: 1.1em;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
 }
 
 .image-container {
@@ -43,6 +91,7 @@
     cursor: pointer;
     border: 4px black dotted;
     position: relative;
+    margin-top: 20px;
 }
 
 .image-container img {
