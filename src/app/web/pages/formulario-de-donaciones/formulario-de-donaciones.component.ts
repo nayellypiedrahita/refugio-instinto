@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SolicitudDonaciones } from '../../../shared/model/solicitud-donaciones';
-import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
 import { SolicitudDonacionService } from '../../../shared/services/solicitud-donacion/solicitud-donacion.service';
 
 @Component({
