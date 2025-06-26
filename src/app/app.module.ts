@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     WebModule,
     AdministradorModule,
     FirestoreModule,
-    FormsModule 
+    FormsModule,
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
