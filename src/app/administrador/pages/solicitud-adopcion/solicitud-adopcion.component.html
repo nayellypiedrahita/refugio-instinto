@@ -8,8 +8,10 @@
 
   <ng-container *ngIf="!mostrarLoading">
     <app-lista-acordeon
-      (clickedItem)="redireccionarADetalle()"
-      [datosAgrupados]="solicitudesAdopcion">
-    </app-lista-acordeon>
+  (clickedItem)="redireccionarADetalle($event)"
+  [datosAgrupados]="solicitudesAdopcion">
+</app-lista-acordeon>
+
+
   </ng-container>
 </div>

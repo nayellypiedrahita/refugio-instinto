@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
 import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
 import { from, groupBy, map, mergeMap, toArray } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitud-adopcion',
@@ -49,7 +50,9 @@ export class SolicitudAdopcionComponent implements OnInit {
       });
   }
 
-  redireccionarADetalle() {
-    console.log("Detalle de solicitud de adopción");
-  }
+constructor(private router: Router) {}
+
+redireccionarADetalle(item: any) {
+  this.router.navigate(['admin/detalles'], { state: { solicitud: item } });
+}
 }

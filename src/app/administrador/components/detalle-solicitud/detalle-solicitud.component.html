@@ -1,0 +1,38 @@
+<ng-container *ngFor="let datos of datosAgrupados">
+  <ng-container *ngIf="datos.tipo === 'adopcion'">
+    <ng-container *ngFor="let item of datos.items">
+
+      <div class="container">
+        <div class="header">Detalle de Solicitud</div>
+
+        <div class="content">
+         
+
+          <div class="box">
+            <p><strong>Nombre:</strong> {{ item.nombre }}</p>
+            <p><strong>Tipo de Documento:</strong> {{ item.tipoDocumento }}</p>
+            <p><strong>Correo:</strong> {{ item.correo }}</p>
+            <p><strong>Celular:</strong> {{ item.celular }}</p>
+            <p><strong>Ciudad:</strong> {{ item.ciudad }}</p>
+            <p><strong>Departamento:</strong> {{ item.departamento }}</p>
+            <p><strong>Mascota:</strong> {{ item.mascota }}</p>
+            <p><strong>Fecha:</strong> {{ item.fecha }}</p>
+          </div>
+
+          <div class="trash-container">
+            <div class="trash" (click)="emitirEvento(item)">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="donation">
+          Donación: <br>
+          Otro: Información adicional si aplica...
+        </div>
+      </div>
+
+    </ng-container>
+  </ng-container>
+</ng-container>
+

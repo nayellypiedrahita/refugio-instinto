@@ -26,6 +26,7 @@ import { ListaAcordeonComponent } from './components/lista-acordeon/lista-acorde
 import { SolicitudesVoluntariadoComponent } from './pages/solicitudes-voluntariado/solicitudes-voluntariado.component';
 import { SolicitudApadrinamientoComponent } from './pages/solicitud-apadrinamiento/solicitud-apadrinamiento.component';
 import { SolicitudAdopcionComponent } from './pages/solicitud-adopcion/solicitud-adopcion.component';
+import { DetalleSolicitudComponent } from './components/detalle-solicitud/detalle-solicitud.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { SolicitudAdopcionComponent } from './pages/solicitud-adopcion/solicitud
     SolicitudApadrinamientoComponent,
     SolicitudAdopcionComponent,
     OlvidoSuContrasenaComponent,
-    ActualizarContrasenaComponent
+    ActualizarContrasenaComponent,
+    DetalleSolicitudComponent
   ],
   imports: [
     CommonModule,

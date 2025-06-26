@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
+import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle',
@@ -6,18 +9,23 @@ import { Component } from '@angular/core';
   styleUrl: './detalle.component.css'
 })
 export class DetalleComponent {
-  mostrarAlerta: boolean = false;
+  
+ solicitud: SolicitudAdopcion | null = null;
 
-  mostrarDialogo() {
-    this.mostrarAlerta = true;
-  }
-
-  cerrarDialogo() {
-    this.mostrarAlerta = false;
-  }
-
-  eliminarSolicitud() {
-    alert('Solicitud eliminada correctamente.');
-    this.cerrarDialogo();
-  }
+get solicitudAgrupada() {
+  return this.solicitud ? [{
+    fecha: this.solicitud.fecha,
+    tipo: 'adopcion',
+    items: [this.solicitud]
+  }] : [];
 }
+
+ngOnInit(): void {
+  this.solicitud = history.state?.solicitud || null;
+}
+
+
+}
+
+ 
+

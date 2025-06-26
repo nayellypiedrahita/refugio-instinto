@@ -8,6 +8,12 @@ import { from, map } from 'rxjs';
   providedIn: 'root'
 })
 export class SolicitudAdopcionService {
+  eliminarSolicitud(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
+  eliminarMascota(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
 
   private firetsore: Firestore = inject(Firestore);
   private solicitudAdopcionCollection: CollectionReference;

@@ -80,7 +80,7 @@ const routes: Routes = [
       { path: "solicitud-en-especie", component: SolicitudEnEspecieComponent }, 
       { path: "articulos-de-donacion", component: ArticulosDeDonacionComponent },  
       { path: "comprobantes-y-pasarelas", component: ComprobantesYPasarelasComponent },  
-      { path: "detalle", component: DetalleComponent },    
+      { path: "detalles", component: DetalleComponent },    
       { path: "detalle-Comprobantes", component:DetalleComprobantesComponent,},
       { path: "testimonios", component:TestimoniosComponent,},   
       { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
