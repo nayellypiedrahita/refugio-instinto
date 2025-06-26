@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Mascotas } from '../../../shared/model/mascotas';
 import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
 import { ThisReceiver } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-del-paciente',
@@ -16,7 +17,7 @@ export class PerfilDelPacienteComponent {
 
   mascotaservice: MascotasService = inject(MascotasService);
 
-  constructor() {
+  constructor(private route:Router) {
     const mascotastring = sessionStorage.getItem('perfil-paciente');
     const mascota = JSON.parse(mascotastring!) as Mascotas;
     this.mascota=mascota;  
@@ -27,6 +28,8 @@ export class PerfilDelPacienteComponent {
   }
   eliminarmascota (){
     this.mascotaservice.eliminarMascota(this.mascota.idMascota!)
+    sessionStorage.removeItem('perfil-paciente');
+    this.route.navigate(["/admin/ver-todas-mascotas"]);
   }
 
   ocultaralerta(){
