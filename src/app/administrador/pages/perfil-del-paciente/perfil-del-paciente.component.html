@@ -1,35 +1,46 @@
+<app-title titleText="PERFIL PACIENTE"></app-title>
 <div class="content-container2">
     <div class="image-container">
-        <img src="assets/manzanita-patrocina-un-peludito.png" alt="Descripción de la imagen" class="testimonios-image">
+        <img [src]="mascota.imagenes[0]" alt="Descripción de la imagen" class="testimonios-image">
         
         <div class="info-boxes">>
             <div class="info-box">
                 <p>Fecha de registro: 10/11/2024</p>
-                <p>Meses-Años: 1 mes</p>
-                <p>sexo: Hembra</p>
+                <p>Meses-Años: {{ mascota.edad }}</p>
+                <p>sexo: {{mascota.sexo}}</p>
             </div>
             <div class="info-box">
-                <p>Esterilizado: No</p>
-                <p>Tamaño: Mediano</p>
-                <p>Raza: Criollo</p>
+                <p>Esterilizado: {{mascota.esterilizada?"SI":"NO"}}</p>
+                <p>Tamaño: {{mascota.tamano}}</p>
+                <p>Raza: {{mascota.raza}}</p>
             </div>
         </div>
     </div>
     <div class="name-status-container">
-        <p class="pet-name">Manzanita</p>
+        <p class="pet-name">{{mascota.nombre}}</p>
         <div class="status-container">
             <div class="status-circle"></div>
-            <p class="status-text">Estado crítico</p>
+            <p class="status-text">{{mascota.estado}}</p>
         </div>
     </div>
     <div class="info-box2">
-        <p>Manzanita fue encontrada al lado de su madre, fría y sin vida. Débil y deshidratada, lucha por cada respiración. Sus ojitos llenos de miedo buscan una mano que la ayude. Necesita cuidados urgentes y mucho amor para recuperarse. ¡Ayúdanos a darle una segunda oportunidad!</p>
+        <p>{{mascota.historia}}</p>
     </div>
-    </div>
-    <div class="action-buttons">
-        <div class="action-button edit">
-            <i class="fa-solid fa-pen"></i>
-          </div>
-      <div class="action-button delete">
+</div>
+<div class="action-buttons">
+    <button class="action-button edit" routerLink="/admin/add-mascota">
+        <i class="fa-solid fa-pen"></i>
+    </button>
+    <button class="action-button delete" (click)="mostraralerta()">
         <i class="fa-solid fa-trash"></i>
+    </button>
+</div>
+<div class="dialog-container" *ngIf="alertaeliminar">
+    <div class="dialog-box">
+      <div class="dialog-header">¿Está seguro que quiere eliminar esta mascota?</div>
+      <div class="dialog-actions">
+        <button class="cancel-button" routerLink="/admin/ver-todas-mascotas" (click)="eliminarmascota()">CONFIRMAR</button>
+        <button class="accept-button" (click)="ocultaralerta()">CANCELAR</button>
       </div>
+    </div>
+</div>

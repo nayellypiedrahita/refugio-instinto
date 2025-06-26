@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Mascotas } from '../../../shared/model/mascotas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-mascotas',
@@ -19,11 +20,14 @@ export class ListadoMascotasComponent {
 
   estadoFiltrado: string = '';
 
-
+constructor(private route:Router){}
   buscarMascotas(): void {
     this.estadoFiltrado = this.estadoSeleccionado;  
   }
-
+  seleccionarmascota(mascota: Mascotas){ 
+    sessionStorage.setItem('perfil-paciente', JSON.stringify(mascota));
+    this.route.navigate(["/admin/perfil-del-paciente"]);
+  }
  
   get mascotasFiltradas(): Mascotas[] {
     if (!this.estadoFiltrado) return this.mascotas;  

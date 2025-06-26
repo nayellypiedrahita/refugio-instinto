@@ -1,3 +1,4 @@
+
 <div class="search-bar">
     <select id="estado-selector" [(ngModel)]="estadoSeleccionado">
       <option value="">Estado</option>
@@ -14,20 +15,22 @@
     </div>
   
     <ng-container *ngIf="!loading">
-      <div class="image-item" *ngFor="let mascota of mascotasFiltradas">
-        <img [src]="mascota.imagenes[0]" alt="Imagen" />
-        <div class="color-box">
-          <span 
-            class="estado-circle" 
-            [ngClass]="{
-              'rojo': mascota.estado === 'critico',
-              'azul': mascota.estado === 'urgente',
-              'cyan': mascota.estado === 'leve',
-              'verde': mascota.estado === 'disponible',
-              'amarillo': mascota.estado === 'adoptado'
-            }">
-          </span> 
-          {{ mascota.nombre }}
+      <div class="image-item" *ngFor="let mascota of mascotasFiltradas" >
+        <div (click)="seleccionarmascota(mascota)">
+          <img [src]="mascota.imagenes[0]" alt="Imagen" />
+          <div class="color-box">
+            <span 
+              class="estado-circle" 
+              [ngClass]="{
+                'rojo': mascota.estado === 'critico',
+                'azul': mascota.estado === 'urgente',
+                'cyan': mascota.estado === 'leve',
+                'verde': mascota.estado === 'disponible',
+                'amarillo': mascota.estado === 'adoptado'
+              }">
+            </span> 
+            {{ mascota.nombre }}
+          </div>
         </div>
       </div>
     </ng-container>

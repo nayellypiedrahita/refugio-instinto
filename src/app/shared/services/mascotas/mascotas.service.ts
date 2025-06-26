@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, CollectionReference, doc, Firestore, getDoc, getDocs, query, where } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, CollectionReference, deleteDoc, doc, Firestore, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
 import { from, map, Observable, of } from 'rxjs';
 import { Mascotas } from '../../model/mascotas';
 
@@ -60,5 +60,20 @@ export class MascotasService {
   addMascotas(mascota: Mascotas) {
     return addDoc(this.mascotasCollection, mascota);
   }
-
+  
+  async actualizarMascota(mascota:Mascotas , id: string): Promise<boolean> {
+    if (id) {
+      await updateDoc(doc(this.firestore, this.mascotasCollection.path, id), { ...mascota });
+      return true;
+    }
+    return false;
+  }
+  
+  async eliminarMascota(id: string): Promise<boolean> {
+    if (id) {
+      await deleteDoc(doc(this.firestore, this.mascotasCollection.path, id));
+      return true;
+    }
+    return false;
+  }
 }

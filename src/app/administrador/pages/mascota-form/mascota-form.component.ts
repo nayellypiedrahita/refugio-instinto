@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
 import { Mascotas } from '../../../shared/model/mascotas';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './mascota-form.component.html',
   styleUrl: './mascota-form.component.css'
 })
-export class MascotaFormComponent {
+export class MascotaFormComponent implements OnInit {
 
   mascotaForm = new FormGroup({
     'nombre': new FormControl('', [Validators.required]),
@@ -26,7 +26,30 @@ export class MascotaFormComponent {
   loading: boolean = false;
   private mascotasService: MascotasService = inject(MascotasService);
   private router: Router = inject(Router);
+  
+  mascota:Mascotas | null = null;
 
+  
+  
+  ngOnInit(): void {
+    
+    const mascotastring = sessionStorage.getItem('perfil-paciente');
+   
+    if (mascotastring){
+       const mascota = JSON.parse(mascotastring) as Mascotas;
+      this.mascota=mascota; 
+      this.mascotaForm.controls["nombre"].setValue(this.mascota.nombre);
+      this.mascotaForm.controls["raza"].setValue(this.mascota.raza);
+      this.mascotaForm.controls["edad"].setValue(this.mascota.edad);
+      this.mascotaForm.controls["sexo"].setValue(this.mascota.sexo);
+      this.mascotaForm.controls["esterilizada"].setValue(this.mascota.esterilizada ? "Sí": "No");
+      this.mascotaForm.controls["estado"].setValue(this.mascota.estado);
+      this.mascotaForm.controls["condiciones"].setValue(this.mascota.condiciones);
+      this.mascotaForm.controls["tamano"].setValue(this.mascota.tamano);
+      this.mascotaForm.controls["historia"].setValue(this.mascota.historia);
+    }else {this.mascota = null}
+
+  }
 
   imagesSelected(event: any) {
     if (this.imagesBase64.length >= 2) {
@@ -59,7 +82,7 @@ export class MascotaFormComponent {
   }
 
   addMascota() {
-    if (
+      if (
       this.mascotaForm.controls.nombre.value != null &&
       this.mascotaForm.controls.raza.value != null &&
       this.mascotaForm.controls.edad.value != null &&
@@ -69,8 +92,9 @@ export class MascotaFormComponent {
       this.mascotaForm.controls.condiciones.value != null &&
       this.mascotaForm.controls.tamano.value != null &&
       this.mascotaForm.controls.historia.value != null &&
-      !this.mascotaForm.invalid && 
-      this.imagesBase64.length > 0) {
+      !this.mascotaForm.invalid 
+      )
+      {
       this.loading = true;
       const mascota: Mascotas = {
         nombre: this.mascotaForm.controls.nombre.value,
@@ -84,14 +108,28 @@ export class MascotaFormComponent {
         historia: this.mascotaForm.controls.historia.value,
         imagenes: this.imagesBase64,
       }
-
-      this.mascotasService.addMascotas(mascota).then(response => {
-        if (response) {
-          this.router.navigate(["/admin/ver-todas-mascotas"]);
+       if(this.mascota) {
+        mascota.imagenes = this.mascota.imagenes;
+        this.mascotasService.actualizarMascota(mascota, this.mascota.idMascota!).then(response => {
+          sessionStorage.removeItem('perfil-paciente');
+          if (response) {
+            this.router.navigate(["/admin/ver-todas-mascotas"]);
+          }
+          this.loading = false;
+        });
+      } else {
+        if (this.imagesBase64.length > 0 ){
+          this.mascotasService.addMascotas(mascota).then(response => {
+          if (response) {
+            this.router.navigate(["/admin/ver-todas-mascotas"]);
+          }
+          this.loading = false;
+        });
         }
-        this.loading = false;
-      })
+        
+      }
     }
+
   }
 
 }
