@@ -1,23 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
+import { DonacionMonetaria } from '../../../shared/model/donacion-monetaria';
 
 @Component({
   selector: 'app-lista-acordeon',
   templateUrl: './lista-acordeon.component.html',
-  styleUrl: './lista-acordeon.component.css'
+  styleUrls: ['./lista-acordeon.component.css']
 })
 export class ListaAcordeonComponent {
+  @Input() datosAgrupados: any[] = [];
+  @Output() clickedItem = new EventEmitter<string>();
 
-
-  @Input({ required: true})
-  datosAgrupados: { fecha: string; tipo: string; items: any[] }[] = [];
-
- @Output()
-clickedItem: EventEmitter<SolicitudAdopcion> = new EventEmitter();
-
-emitirEvento(item: SolicitudAdopcion) {
-  this.clickedItem.emit(item);
-}
-
-
+  emitirEvento(valor: string) {
+    this.clickedItem.emit(valor);
+  }
 }

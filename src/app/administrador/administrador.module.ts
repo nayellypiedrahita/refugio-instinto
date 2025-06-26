@@ -4,7 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdministradorComponent } from './administrador.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { AdminHomeComponent } from './pages/admin-home/admin-home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TitleComponent } from './components/title/title.component';
 import { SolicitudEnEspecieComponent } from './pages/solicitud-en-especie/solicitud-en-especie.component';
 import { DetalleComponent } from './pages/detalle/detalle.component';
@@ -21,13 +21,12 @@ import { ListadoMascotasComponent } from './components/listado-mascotas/listado-
 import { VerTodasMascotasComponent } from './pages/ver-todas-mascotas/ver-todas-mascotas.component';
 import { OlvidoSuContrasenaComponent } from './pages/olvido_su_contrasena/olvido_su_contrasena.component';
 import { ActualizarContrasenaComponent } from './pages/actualizar_contrasena/actualizar_contrasena.component';
-import { FormsModule } from '@angular/forms';
 import { ListaAcordeonComponent } from './components/lista-acordeon/lista-acordeon.component';
 import { SolicitudesVoluntariadoComponent } from './pages/solicitudes-voluntariado/solicitudes-voluntariado.component';
 import { SolicitudApadrinamientoComponent } from './pages/solicitud-apadrinamiento/solicitud-apadrinamiento.component';
 import { SolicitudAdopcionComponent } from './pages/solicitud-adopcion/solicitud-adopcion.component';
 import { DetalleSolicitudComponent } from './components/detalle-solicitud/detalle-solicitud.component';
-
+import { AddTestimonioComponent } from './pages/add-testimonio/add-testimonio.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +53,14 @@ import { DetalleSolicitudComponent } from './components/detalle-solicitud/detall
     SolicitudAdopcionComponent,
     OlvidoSuContrasenaComponent,
     ActualizarContrasenaComponent,
-    DetalleSolicitudComponent
+    DetalleSolicitudComponent,
+    AddTestimonioComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule
   ],
 })
 export class AdministradorModule { }

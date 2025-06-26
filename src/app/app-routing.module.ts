@@ -41,6 +41,7 @@ import { SolicitudApadrinamientoComponent } from './administrador/pages/solicitu
 import { SolicitudAdopcionComponent } from './administrador/pages/solicitud-adopcion/solicitud-adopcion.component';
 import { OlvidoSuContrasenaComponent } from './administrador/pages/olvido_su_contrasena/olvido_su_contrasena.component';
 import { ActualizarContrasenaComponent } from './administrador/pages/actualizar_contrasena/actualizar_contrasena.component';
+import { AddTestimonioComponent } from './administrador/pages/add-testimonio/add-testimonio.component';
 
 
 const routes: Routes = [
@@ -92,6 +93,7 @@ const routes: Routes = [
       { path: "solicitudes-voluntariado", component: SolicitudesVoluntariadoComponent},
       { path: "solicitud-apadrinamiento", component: SolicitudApadrinamientoComponent},
       { path: "solicitudes-adopcion", component: SolicitudAdopcionComponent},
+      { path: "agregar-testimonio", component: AddTestimonioComponent },
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },
