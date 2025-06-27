@@ -11,20 +11,23 @@
              
                 <div class="card" (click)="toComprobanteDonacion()">
                     <img src="assets\paypal_donaciones_monetarias.png" alt="Paypal" class="img-fixed" >
-                    <h3>Paypal</h3>
-                    <p>refugioinstintor7 &#64;gmail.com</p>
+                    <h3>{{pasarela1?.nombreCuenta}}</h3>
+                    <p>{{pasarela1?.tipoCuenta}}</p>
+                    <p>{{pasarela1?.numeroCuenta}}</p>
                 </div>
     
                 <div class="card" (click)="toComprobanteDonacion()">
                     <img src="\assets\nequi_daviplata_donaciones_monetarias.png" alt="nequi_daviplata" class="img-fixed" >
-                    <h3>Nequi o Daviplata</h3>
-                    <p>3206981098</p>
+                    <h3>{{pasarela2?.nombreCuenta}}</h3>
+                    <p>{{pasarela2?.tipoCuenta}}</p>
+                    <p>{{pasarela2?.numeroCuenta}}</p>
                 </div>
     
                 <div class="card" (click)="toComprobanteDonacion()">
                     <img src="\assets\cuentadeahorros_davievienda-donaciones_monetarias.png" alt="davivienda" class="img-fixed" >
-                    <h3>Cuenta de ahorros Davivienda</h3>
-                    <p>488403923813</p>
+                    <h3>{{pasarela3?.nombreCuenta}}</h3>
+                    <p>{{pasarela3?.tipoCuenta}}</p>
+                    <p>{{pasarela3?.numeroCuenta}}</p>
                 </div>
     
                 <div class="card">

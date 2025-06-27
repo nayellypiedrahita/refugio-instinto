@@ -81,6 +81,26 @@ h4{text-align: center;
 .card {
     cursor: pointer;
     margin-bottom: 40px; 
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card h3 {
+    font-size: 1.8rem;
+    margin: 15px 0 10px;
+    color: #333;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 1.4rem;
+    margin: 8px 0;
+    color: #555;
+    line-height: 1.4;
 }
 
 .card img{
@@ -89,9 +109,9 @@ h4{text-align: center;
 }
 
 .card .img-fixed {
-    width: 200px;  /* Ancho fijo */
-    height: 200px; /* Alto fijo */
-    object-fit: cover; /* Ajusta sin deformar */
-    border-radius: 10px; /* Opcional: bordes redondeados */
+    width: 220px;  
+    height: 220px; 
+    object-fit: contain; 
+    border-radius: 10px; 
   }
   
