@@ -17,7 +17,6 @@ export class SolicitudAdopcionComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-
   ngOnInit(): void {
     this.obtenerSolicitudesAdopcion();
   }
@@ -54,6 +53,8 @@ export class SolicitudAdopcionComponent implements OnInit {
   }
 
   redireccionarADetalle(item: any) {
-    this.router.navigate(['/admin/detalles'], { state: { solicitud: item } });
+    const detalle = { tipo: "solicitud-adopcion", objeto: item as SolicitudAdopcion }
+    localStorage.setItem("detalle", JSON.stringify(detalle))
+    this.router.navigate(['admin/detalles']);
   }
 }
