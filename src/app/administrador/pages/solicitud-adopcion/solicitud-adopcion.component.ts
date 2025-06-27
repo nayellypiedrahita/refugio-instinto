@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
 import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
 import { from, groupBy, map, mergeMap, toArray } from 'rxjs';
 import { Router } from '@angular/router';
+import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
 
 @Component({
   selector: 'app-solicitud-adopcion',
