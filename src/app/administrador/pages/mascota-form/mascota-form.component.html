@@ -13,7 +13,7 @@
       <div class="form-columns">
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" placeholder="Manzanita" formControlName="nombre">
+          <input type="text" id="nombre" placeholder="Nombre" formControlName="nombre">
           <div class="error-msg">
             <p *ngIf="this.mascotaForm.controls['nombre'].touched && this.mascotaForm.controls['nombre'].errors && this.mascotaForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
           </div>
@@ -21,7 +21,7 @@
 
         <div class="form-group">
           <label for="raza">Raza</label>
-          <input type="text" id="raza" placeholder="Criolla" formControlName="raza">
+          <input type="text" id="raza" placeholder="Raza" formControlName="raza">
           <div class="error-msg">
             <p *ngIf="this.mascotaForm.controls['raza'].touched && this.mascotaForm.controls['raza'].errors && this.mascotaForm.controls['raza'].errors!['required']">El campo raza es obligatorio</p>
           </div>
