@@ -1,50 +1,162 @@
+<app-title titleText="PASARELAS DE PAGO"></app-title>
 
-<h1>ARTÍCULOS DE DONACIÓN</h1>
-<div class="text-box1">
-    <a href="/admin/comprobantes-y-pasarelas" class="hover-text">
-        <h3><i class="fa-solid fa-chevron-left"></i> Volver</h3>
-    </a>
-</div>
-<div class="container">
-    
-  <div class="input-group">
-      <h2>PayPal:</h2>
-      <input type="text" value="refugioinstintor7@gmail.com" disabled>
-      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
+<!-- Alerta de límite de cuentas -->
+<div class="container mt-3" *ngIf="mostrarAlertaLimite">
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    Has alcanzado el límite máximo de {{ maxCuentas }} cuentas permitidas.
+    <button type="button" class="btn-close" (click)="mostrarAlertaLimite = false" aria-label="Cerrar"></button>
   </div>
-
-  <div class="input-group">
-      <h2>Nequi o Daviplata:</h2>
-      <input type="text" value="3206981098" disabled>
-      <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
-  </div>
-  <div class="input-group">
-    <h2>Cta ahorros de davivienda:</h2>
-    <input type="text" value="3206981098" disabled>
-    <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
-</div>
-<div class="input-group">
-    <h2>Cta ahorros de Bancolombia:</h2>
-    <input type="text" value="3206981098" disabled>
-    <button class="status-button aprobado" (click)="cambiarEstadoBoton($event)">Habilitado</button>
-</div>
-  <input type="checkbox" id="toggleCheckbox">
-        
-    
-  <div class="input-group" id="newItemGroup">
-      <h2>Nombre de la cuenta:</h2>
-      <input type="text" placeholder="Numero de la cuenta">
-      <button class="status-button rechazado"  (click)="cambiarEstadoBoton($event)">Deshabilitado</button>  
-  </div>
-
-  <div class="button-container">
-      <label for="toggleCheckbox" class="round-button">+</label>
-  </div>
-
-  <div class="alerta" [ngStyle]="{ 'display': mostrarAlerta ? 'block' : 'none' }">
-    <h1>🎉 ¡Artículo creado exitosamente!</h1>
-  </div>
-
-  <button class="add-button" (click)="cambiarEstadoAlerta()">HECHO</button> 
 </div>
 
+<!-- Alerta de campos vacíos -->
+<div class="container mt-3" *ngIf="mostrarAlertaCamposVacios">
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    Por favor completa todos los campos obligatorios.
+    <button type="button" class="btn-close" (click)="mostrarAlertaCamposVacios = false" aria-label="Cerrar"></button>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <!-- Formulario para agregar/editar cuentas -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h3>{{ editandoId !== null ? 'Editar Cuenta' : 'Agregar Nueva Cuenta' }}</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="cuentaForm" (ngSubmit)="guardarCuenta()">
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="nombre" class="form-label required">Nombre de la Cuenta</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [ngClass]="{'is-invalid': cuentaForm.get('nombreCuenta')?.invalid && (cuentaForm.get('nombreCuenta')?.touched || cuentaForm.get('nombreCuenta')?.dirty)}"
+              formControlName="nombreCuenta"
+              placeholder="Ej: PayPal, Bancolombia, etc."
+              (input)="onInputChange('nombreCuenta')"
+            >
+            <div class="invalid-feedback" *ngIf="cuentaForm.get('nombreCuenta')?.touched && cuentaForm.get('nombreCuenta')?.invalid">
+              {{ getValidationMessage('nombreCuenta') }}
+            </div>
+            <!-- Validación asíncrona silenciosa -->
+          </div>
+          
+          <div class="col-md-2 mb-3">
+            <label for="tipoCuenta" class="form-label required">Tipo de Cuenta</label>
+            <select 
+              class="form-control" 
+              id="tipoCuenta" 
+              formControlName="tipoCuenta"
+              [ngClass]="{'is-invalid': cuentaForm.get('tipoCuenta')?.invalid && (cuentaForm.get('tipoCuenta')?.touched || cuentaForm.get('tipoCuenta')?.dirty)}">
+              <option value="Ahorros">Ahorros</option>
+              <option value="Corriente">Corriente</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="cuentaForm.get('tipoCuenta')?.touched && cuentaForm.get('tipoCuenta')?.invalid">
+              {{ getValidationMessage('tipoCuenta') }}
+            </div>
+          </div>
+          
+          <div class="col-md-5 mb-3">
+            <label for="numero" class="form-label required">Número de Cuenta</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              [ngClass]="{'is-invalid': cuentaForm.get('numeroCuenta')?.invalid && (cuentaForm.get('numeroCuenta')?.touched || cuentaForm.get('numeroCuenta')?.dirty)}"
+              formControlName="numeroCuenta"
+              placeholder="Número de cuenta o referencia"
+              (input)="onInputChange('numeroCuenta')"
+            >
+            <div class="invalid-feedback" *ngIf="cuentaForm.get('numeroCuenta')?.touched && cuentaForm.get('numeroCuenta')?.invalid">
+              {{ getValidationMessage('numeroCuenta') }}
+            </div>
+            <!-- Validación asíncrona silenciosa -->
+          </div>
+          <div class="col-md-2 d-flex align-items-end mb-3">
+            <button 
+              type="submit" 
+              class="btn btn-primary me-2"
+              [disabled]="cuentaForm.invalid">
+             Agregar
+            </button>
+            <button 
+              *ngIf="editandoId !== null"
+              type="button" 
+              class="btn btn-secondary"
+              (click)="cancelarEdicion()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </form>
+      
+      <div class="text-end mt-2">
+        <small class="text-muted">Máximo {{maxCuentas}} cuentas permitidas</small>
+      </div>
+      
+      <!-- Alerta de límite de cuentas -->
+      <div *ngIf="mostrarAlertaLimite" class="alert alert-warning mt-3">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        Solo se permiten un máximo de {{ maxCuentas }} cuentas. Por favor, elimina una cuenta existente para agregar una nueva.
+      </div>
+    </div>
+  </div>
+
+  <!-- Lista de cuentas -->
+  <div class="card">
+    <div class="card-header">
+      <h3>Cuentas Registradas ({{ pasarelas.length }}/{{ maxCuentas }})</h3>
+    </div>
+    <div class="card-body">
+      <div *ngIf="pasarelas.length === 0" class="text-center py-4 text-muted">
+        No hay cuentas registradas. Agrega una nueva cuenta usando el formulario superior.
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0" *ngIf="pasarelas.length > 0">
+          <thead class="table-light">
+            <tr>
+              <th class="ps-3 w-50">Cuenta</th>
+              <th class="w-25">Tipo</th>
+              <th class="w-25">Número</th>
+              <th class="text-start ps-3">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cuenta of pasarelas" class="align-middle">
+              <td class="fw-medium ps-3">{{ cuenta.nombreCuenta }}</td>
+              <td>{{ cuenta.tipoCuenta }}</td>
+              <td class="font-monospace">{{ cuenta.numeroCuenta }}</td>
+              <td class="text-start ps-3">
+                <div class="d-flex gap-2">
+                  <button 
+                    class="btn btn-sm btn-outline-primary"
+                    (click)="editarCuenta(cuenta)"
+                    title="Editar">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button 
+                    class="btn btn-sm btn-outline-danger"
+                    (click)="mostraralerta()"
+                    title="Eliminar">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div class="dialog-container" *ngIf="alertaeliminar">
+                  <div class="dialog-box">
+                    <div class="dialog-header">¿Está seguro que quiere eliminar esta cuenta?</div>
+                    <div class="dialog-actions">
+                      <button class="cancel-button" routerLink="/admin/pasarelas" (click)="eliminarCuenta(cuenta.idPasarela!)">CONFIRMAR</button>
+                      <button class="accept-button" (click)="ocultaralerta()">CANCELAR</button>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
