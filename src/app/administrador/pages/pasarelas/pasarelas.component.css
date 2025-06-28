@@ -1,165 +1,537 @@
-.text-box1 {
-    margin-left: 30px;
-    margin-top: 20px;
-    width: fit-content;
-  }
-  
-  .text-box1 h3 {
-    font-size: 16px;
-    height: 20px;
-    margin-bottom: 10px;
-    color: #c7a17a;
-    line-height: 1.5;
-    cursor: pointer;
-  }
-  
-  .hover-text {
-    text-decoration: none;
-  }
-  
-      body {
-          font-family: Arial, sans-serif;
-          background-color: #f7f1e9;
-          text-align: center;
-          margin: 0;
-          padding: 0;
-      }
-
-      .container {
-  width: 50%;
-  margin: 50px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-height: 400px; 
-  overflow-y: auto;
+/* Estilos para el diálogo de confirmación de eliminación */
+.dialog-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
 }
 
+.dialog-box {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+  animation: dialogFadeIn 0.3s ease-out;
+  text-align: center;
+}
 
-      h1 {
-          background-color: #c69c6d;
-          padding: 15px;
-          color: black;
-          border-radius: 10px 10px 0 0;
-          margin-top: 40px;
-      }
+.dialog-header {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
 
-      .input-group {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 15px;
-          gap: 10px;
-      }
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
 
-      h2 {
-          font-size: 11px;
-          font-weight: bold;
-          color: #5a3e2b;
-          margin: 0;
-          flex: 0 0 120px;
-          text-align: left;
-      }
+.dialog-actions button {
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+  text-align: center;
+}
 
-      input {
-          flex: 1;
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-      }
+.dialog-actions .cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
 
-      .status-button {
-          padding: 5px 0;
-          border-radius: 25px;
-          color: white;
-          font-size: 10px;
-          width: 70px;
-          text-align: center;
-          border: none;
-          cursor: pointer;
-      }
+.dialog-actions .cancel-button:hover {
+  background-color: #c82333;
+}
 
-      .aprobado { background-color: green; }
-      .rechazado { background-color: red; }
+.dialog-actions .accept-button {
+  background-color: #6c757d;
+  color: white;
+}
 
-      .add-button {
-          background-color: black;
-          color: white;
-          padding: 10px;
-          border: none;
-          cursor: pointer;
-          width: 100%;
-          border-radius: 5px;
-          margin-top: 20px;
-      }
+.dialog-actions .accept-button:hover {
+  background-color: #5a6268;
+}
 
-      .round-button {
-          width: 40px;
-          height: 40px;
-          background-color: #F9F5F0;
-          color: black;
-          font-size: 24px;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-          margin-right: 10px;
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-      }
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-      .button-container {
-          display: flex;
-          justify-content: flex-end;
-          margin-top: 10px;
-      }
+/* Estilos para la alerta de límite de cuentas */
+.alert {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-      #newItemGroup {
-          display: none;
-      }
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
 
-     
-      #toggleCheckbox:checked ~ #newItemGroup {
-          display: flex;
-      }
+.btn-close:focus {
+  box-shadow: none;
+}
 
-   
-      #toggleCheckbox {
-          display: none;
-      }
+/* Estilos para mensajes de validación */
+.invalid-feedback {
+  color: #dc3545 !important;
+  font-size: 0.875em;
+  margin-top: 0.25rem;
+}
 
-   
-      label[for="toggleCheckbox"] {
-          cursor: pointer;
-      }
+/* Estilos para campos requeridos */
+.form-label.required::after {
+  content: "*";
+  color: #dc3545;
+  margin-left: 0.25rem;
+  font-weight: bold;
+}
 
-      .alerta {
-        position: fixed;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center; 
-        display: flex;
-        align-items: center;
-        justify-content: center; 
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-        width: auto; 
-        max-width: 80%; 
-        min-width: 250px; 
-        height: 170px; 
-    }
-    
-    .alerta.hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
-    
-    
-    
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
 
+/* Contenedor principal */
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* Tarjetas */
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: none;
+}
+
+.card-header {
+  background-color: #f9f5f0;
+  border-bottom: 1px solid #eaeaea;
+  padding: 1rem 1.25rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Formularios */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Botones */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #c7a17a;
+  border-color: #c7a17a;
+}
+
+.btn-primary:hover {
+  background-color: #b08a63;
+  border-color: #a57f58;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-outline-primary {
+  color: #007bff;
+  background-color: transparent;
+  background-image: none;
+  border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  background-color: transparent;
+  background-image: none;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+/* Tablas */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.bg-success {
+  background-color: #28a745 !important;
+}
+
+.bg-secondary {
+  background-color: #6c757d !important;
+}
+
+/* Alertas */
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+/* Utilidades */
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Estilos para el contador de cuentas */
+.counter-badge {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+/* Efecto hover en los botones de acción */
+.btn-action {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-action:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* Estilos para el botón de estado */
+.status-toggle {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.35em 0.65em;
+  border-radius: 0.25rem;
+  font-size: 0.75em;
+  font-weight: 700;
+  border: none;
+  color: white;
+}
+
+.status-toggle:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Estilos para el botón de agregar */
+.add-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+/* Estilos para el botón de cancelar */
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* Estilos para la alerta de éxito */
+.alert-success {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 0.75rem 1.25rem;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+  border-radius: 0.25rem;
+  z-index: 1050;
+  display: none;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .btn {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .table td, .table th {
+    padding: 0.5rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .col-md-5, .col-md-2 {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Estilos para el botón de agregar */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Estilos para el botón de agregar */
+.add-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+/* Estilos para el botón de cancelar */
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-button:hover {
+  background-color: #5a6268;
+}
+
+/* Estilos para la alerta */
+.alerta {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: 80%;
+  min-width: 250px;
+  height: 170px;
+}
+
+.alerta.hidden {
+  opacity: 0;
+  visibility: hidden;
+}

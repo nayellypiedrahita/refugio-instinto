@@ -86,7 +86,7 @@ const routes: Routes = [
       { path: "testimonios", component:TestimoniosComponent,},   
       { path: "perfil-del-paciente", component: PerfilDelPacienteComponent},
       { path: "bajo-cuidado", component: BajoCuidadoComponent},
-      { path: "Pasarelas", component: PasarelasComponent},
+      { path: "pasarelas", component: PasarelasComponent},
       { path: "adopciones", component: AdopcionesComponent},
       { path: "add-mascota", component: MascotaFormComponent},
       { path: "ver-todas-mascotas", component: VerTodasMascotasComponent},
