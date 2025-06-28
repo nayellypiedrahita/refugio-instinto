@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, CollectionReference, Firestore, getDocs } from '@angular/fire/firestore';
+import { addDoc, collection, CollectionReference, deleteDoc, doc, Firestore, getDocs } from '@angular/fire/firestore';
 import { SolicitudDonaciones } from '../../model/solicitud-donaciones';
 import { from, map } from 'rxjs';
 
@@ -35,5 +35,8 @@ export class SolicitudDonacionService {
         })
       )
     );
+  }
+  eliminarSolicitudDonacion(solicitudId: string) {
+    return deleteDoc(doc(this.firestore, this.solicitudDonacionCollection.path, solicitudId));
   }
 }

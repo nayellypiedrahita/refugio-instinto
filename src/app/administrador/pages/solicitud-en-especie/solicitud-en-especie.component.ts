@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SolicitudDonacionService } from '../../../shared/services/solicitud-donacion/solicitud-donacion.service';
 import { SolicitudDonaciones } from '../../../shared/model/solicitud-donaciones';
 import { filter, from, groupBy, map, mergeMap, toArray } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitud-en-especie',
@@ -13,6 +14,12 @@ export class SolicitudEnEspecieComponent implements OnInit {
   mostrarLoading: boolean = false;
   solicitudesDonaciones: { fecha: string; tipo: string; items: SolicitudDonaciones[] }[] = [];
   donacionService: SolicitudDonacionService = inject(SolicitudDonacionService);
+
+  constructor(
+    private router: Router
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.obtenerSolicitudesDonaciones();
@@ -50,8 +57,10 @@ export class SolicitudEnEspecieComponent implements OnInit {
 }
 
 
-  redireccionarADetalle() {
-    console.log("Detalle de solicitud en especie");
+  redireccionarADetalle(item: any) {
+    const detalle = { tipo: "solicitud-especie", objeto: item as SolicitudDonaciones };
+    localStorage.setItem("detalle", JSON.stringify(detalle));
+    this.router.navigate(["/admin/detalles"]);
   }
 
 }
