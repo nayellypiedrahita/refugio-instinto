@@ -2,6 +2,8 @@ import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular
 import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
 import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
 import { Router } from '@angular/router';
+import { SolicitudVoluntariado } from '../../../shared/model/solicitud-voluntariado';
+import { SolicitudVoluntariadoService } from '../../../shared/services/solicitud-voluntariado/solicitud-voluntariado.service';
 
 @Component({
   selector: 'app-detalle-solicitud',
@@ -16,6 +18,7 @@ export class DetalleSolicitudComponent implements OnInit {
   detalle: { key: string; value: string }[] = [];
 
   solicitudAdopcionService: SolicitudAdopcionService = inject(SolicitudAdopcionService);
+  solicitudVoluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
   constructor(
     private route: Router
   ) {}
@@ -27,6 +30,10 @@ export class DetalleSolicitudComponent implements OnInit {
       switch(detalle.tipo) {
         case "solicitud-adopcion":
           objeto = detalle.objeto as SolicitudAdopcion;
+          this.solicitud = { tipo: detalle.tipo, id: objeto.idSolicitud! }
+          break;
+        case "solicitud-voluntariado":
+          objeto = detalle.objeto as SolicitudVoluntariado;
           this.solicitud = { tipo: detalle.tipo, id: objeto.idSolicitud! }
           break;
 
@@ -42,6 +49,11 @@ export class DetalleSolicitudComponent implements OnInit {
       case "solicitud-adopcion":
         this.solicitudAdopcionService.eliminarSolicitudAdopcion(this.solicitud.id);
         this.route.navigate(["/admin/solicitudes-adopcion"]);
+        break;
+      case "solicitud-voluntariado":
+        this.solicitudVoluntariadoService.eliminarSolicitudVoluntariado(this.solicitud.id)
+        this.route.navigate(["/admin/solicitudes-voluntariado"]);
+        break;
     } 
 
   }

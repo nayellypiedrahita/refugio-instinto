@@ -5,7 +5,7 @@
         <i class="fa-solid fa-spinner fa-spin fa-2xl"></i>
     </div>
     <ng-container *ngIf="!mostrarLoading">
-        <app-lista-acordeon (clickedItem)="redireccionarADetalle()"  [datosAgrupados]="solicitudesVoluntariado"></app-lista-acordeon>
+        <app-lista-acordeon (clickedItem)="redireccionarADetalle($event)"  [datosAgrupados]="solicitudesVoluntariado"></app-lista-acordeon>
     </ng-container>
     <div class="button-container">
         <a routerLink="/admin/Pasarelas" routerLinkActive="menu_active"  class="button"  href="" class="button">PASARELA</a>

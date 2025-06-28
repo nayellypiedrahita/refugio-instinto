@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SolicitudVoluntariadoService } from '../../../shared/services/solicitud-voluntariado/solicitud-voluntariado.service';
 import { from, groupBy, map, mergeMap, toArray } from 'rxjs';
 import { SolicitudVoluntariado } from '../../../shared/model/solicitud-voluntariado';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitudes-voluntariado',
@@ -13,6 +14,10 @@ export class SolicitudesVoluntariadoComponent implements OnInit {
   mostrarLoading: boolean = false;
   solicitudesVoluntariado: { fecha: string, tipo: string; items: SolicitudVoluntariado[] }[] = [];
   voluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
+  
+  constructor (private router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.getSolicitudesVoluntariado();
@@ -38,8 +43,10 @@ export class SolicitudesVoluntariadoComponent implements OnInit {
       });
   }
 
-  redireccionarADetalle() {
-    console.log("Ver detalle");
+  redireccionarADetalle(item: any) {
+    const detalle = { tipo: "solicitud-voluntariado", objeto: item as SolicitudVoluntariado};
+    localStorage.setItem('detalle', JSON.stringify(detalle));
+    this.router.navigate(['/admin/detalles']);
   }
 
 }
