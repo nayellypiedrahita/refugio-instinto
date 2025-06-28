@@ -10,4 +10,5 @@ export interface Mascotas {
     tamano: string,
     historia: string,
     imagenes: string[],
+    testimonio?: string,
 }

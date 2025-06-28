@@ -5,23 +5,38 @@
   </div>
 
   <div class="formulario">
-    <div class="logo">
-      <span>🐾 FUNDACIÓN INSTINTO</span>
+    <a href="#" class="btn-fundacion">
+    <div class="hover-text">
+    <i class="fas fa-paw"></i> Fundación Instinto
     </div>
+    </a>
 
-    <h2>Agregar Testimonio</h2>
-    
     <div class="campo">
       <textarea 
-        placeholder="Escribe tu testimonio aquí..."
+        placeholder="Agregar testimonio..."
         [(ngModel)]="testimonio"
         rows="6"
       ></textarea>
     </div>
 
     <div class="botones">
-      <button class="btn-enviar">ENVIAR</button>
-      <button class="btn-cancelar">CANCELAR</button>
+  <button class="btn-enviar" (click)="enviar()" routerLink="/admin/Testimonios">ENVIAR</button>
+  <button class="btn-cancelar" routerLink="/admin/home" (click)="cancelar()">CANCELAR</button>
+</div>
+
+<div class="action-buttons">
+    <button class="action-button delete" (click)="mostraralerta()">
+        <i class="fa-solid fa-trash"></i>
+    </button>
+</div>
+<div class="dialog-container" *ngIf="alertaeliminar">
+    <div class="dialog-box">
+      <div class="dialog-header">¿Está seguro que quiere eliminar esta mascota?</div>
+      <div class="dialog-actions">
+        <button class="cancel-button" routerLink="/admin/ver-todas-mascotas"  (click)="eliminarmascota()">CONFIRMAR</button>
+        <button class="accept-button" (click)="ocultaralerta()">CANCELAR</button>
+      </div>
     </div>
+</div>
   </div>
 </div>

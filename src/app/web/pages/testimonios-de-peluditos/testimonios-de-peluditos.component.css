@@ -40,18 +40,18 @@ h2{
 }
 
 .gallery .img-container img {
-    position: absolute;
-    display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     border-radius: 10px;
 }
+
 
 h3 {
     font-size: 2.0rem; 
 }
 p{
-    font-size: 1.1rem; 
+    font-size: 1.3rem; 
 }
 
 @media (max-width: 600px) {
@@ -69,3 +69,4 @@ p{
         align-self: center;
     }
 }
+

@@ -93,7 +93,7 @@ const routes: Routes = [
       { path: "solicitudes-voluntariado", component: SolicitudesVoluntariadoComponent},
       { path: "solicitud-apadrinamiento", component: SolicitudApadrinamientoComponent},
       { path: "solicitudes-adopcion", component: SolicitudAdopcionComponent},
-      { path: "agregar-testimonio", component: AddTestimonioComponent },
+      { path: "agregar-testimonio",  component: AddTestimonioComponent },
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

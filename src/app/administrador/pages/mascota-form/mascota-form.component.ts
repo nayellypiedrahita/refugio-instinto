@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
 import { Mascotas } from '../../../shared/model/mascotas';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mascota-form',
@@ -81,55 +82,78 @@ export class MascotaFormComponent implements OnInit {
   
   }
 
-  addMascota() {
-      if (
-      this.mascotaForm.controls.nombre.value != null &&
-      this.mascotaForm.controls.raza.value != null &&
-      this.mascotaForm.controls.edad.value != null &&
-      this.mascotaForm.controls.sexo.value != null &&
-      this.mascotaForm.controls.esterilizada.value != null &&
-      this.mascotaForm.controls.estado.value != null &&
-      this.mascotaForm.controls.condiciones.value != null &&
-      this.mascotaForm.controls.tamano.value != null &&
-      this.mascotaForm.controls.historia.value != null &&
-      !this.mascotaForm.invalid 
-      )
-      {
-      this.loading = true;
-      const mascota: Mascotas = {
-        nombre: this.mascotaForm.controls.nombre.value,
-        raza: this.mascotaForm.controls.raza.value,
-        edad: this.mascotaForm.controls.edad.value,
-        sexo: this.mascotaForm.controls.sexo.value,
-        esterilizada: true,//this.mascotaForm.controls.esterilizada.value,
-        estado: this.mascotaForm.controls.estado.value,
-        condiciones: this.mascotaForm.controls.condiciones.value,
-        tamano: this.mascotaForm.controls.tamano.value,
-        historia: this.mascotaForm.controls.historia.value,
-        imagenes: this.imagesBase64,
-      }
-       if(this.mascota) {
-        mascota.imagenes = this.mascota.imagenes;
-        this.mascotasService.actualizarMascota(mascota, this.mascota.idMascota!).then(response => {
-          sessionStorage.removeItem('perfil-paciente');
-          if (response) {
+ addMascota() {
+  if (
+    this.mascotaForm.valid &&
+    this.mascotaForm.controls.nombre.value &&
+    this.mascotaForm.controls.raza.value &&
+    this.mascotaForm.controls.edad.value &&
+    this.mascotaForm.controls.sexo.value &&
+    this.mascotaForm.controls.esterilizada.value &&
+    this.mascotaForm.controls.estado.value &&
+    this.mascotaForm.controls.condiciones.value &&
+    this.mascotaForm.controls.tamano.value &&
+    this.mascotaForm.controls.historia.value
+  ) {
+    this.loading = true;
+
+    const mascota: Mascotas = {
+      nombre: this.mascotaForm.controls.nombre.value,
+      raza: this.mascotaForm.controls.raza.value,
+      edad: this.mascotaForm.controls.edad.value,
+      sexo: this.mascotaForm.controls.sexo.value,
+      esterilizada: true,
+      estado: this.mascotaForm.controls.estado.value,
+      condiciones: this.mascotaForm.controls.condiciones.value,
+      tamano: this.mascotaForm.controls.tamano.value,
+      historia: this.mascotaForm.controls.historia.value,
+      imagenes: this.imagesBase64,
+    };
+
+    if (this.mascota) {
+      mascota.imagenes = this.mascota.imagenes;
+      this.mascotasService.actualizarMascota(mascota, this.mascota.idMascota!).then(response => {
+        sessionStorage.removeItem('perfil-paciente');
+        if (response) {
+          if (mascota.estado === 'adoptado') {
+            this.preguntarTestimonio();
+          } else {
             this.router.navigate(["/admin/ver-todas-mascotas"]);
           }
-          this.loading = false;
-        });
-      } else {
-        if (this.imagesBase64.length > 0 ){
-          this.mascotasService.addMascotas(mascota).then(response => {
-          if (response) {
-            this.router.navigate(["/admin/ver-todas-mascotas"]);
-          }
-          this.loading = false;
-        });
         }
-        
+        this.loading = false;
+      });
+    } else {
+      if (this.imagesBase64.length > 0) {
+        this.mascotasService.addMascotas(mascota).then(response => {
+          if (response) {
+            if (mascota.estado === 'adoptado') {
+              this.preguntarTestimonio();
+            } else {
+              this.router.navigate(["/admin/ver-todas-mascotas"]);
+            }
+          }
+          this.loading = false;
+        });
       }
     }
-
   }
-
+}
+preguntarTestimonio() {
+  Swal.fire({
+    title: '¿Quieres agregar un testimonio?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sí',
+    cancelButtonText: 'No'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      sessionStorage.setItem('infomascota', JSON.stringify(this.mascota));
+      this.router.navigate (['/admin/agregar-testimonio']);
+  
+    } else {
+      this.router.navigate(['/admin/ver-todas-mascotas']);
+    }
+  });
+}
 }

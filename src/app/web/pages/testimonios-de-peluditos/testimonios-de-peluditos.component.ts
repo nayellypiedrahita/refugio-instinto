@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
+import { Mascotas } from '../../../shared/model/mascotas';
 
 @Component({
   selector: 'app-testimonios-de-peluditos',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class TestimoniosDePeluditosComponent {
 
+mascotasConTestimonio: Mascotas[] = [];
+
+  constructor(private mascotasService: MascotasService) {}
+
+  ngOnInit(): void {
+    this.mascotasService.getMascotasConTestimonio().subscribe((mascotas) => {
+      this.mascotasConTestimonio = mascotas;
+    });
+  }
 }
