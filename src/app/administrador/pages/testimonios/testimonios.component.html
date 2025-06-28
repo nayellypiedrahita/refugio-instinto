@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fundación Instinto</title>
- 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-             
+   
           <div class="content-container2">
           
             <div class="sub-title-box">
@@ -16,38 +6,15 @@
             </div>
           
           <div class="container1">
-            <div class="box">
-              <div class="img">
-                <img src="\assets\max_testimodios_de_adoptados.png" alt="">
-                <a class="hover-text" href="#"><i class="fa-solid fas fa-paw"></i> Apadrinar</a>
-              </div>
-              <div class="details pink-box">
-                <h2 class="card-title ">Max</h2>
-                <p class="custom-font-size" >Max, un perrito mestizo abandonado, fue rescatado y llevado a un refugio. La familia Pérez lo adoptó, y aunque al principio era tímido, pronto se adaptó y se convirtió en el mejor amigo del hijo. Ahora disfruta de una vida llena de amor y juegos, dejando atrás su vida de abandono.</p>
-              </div>
-            </div>
-          
-            <div class="box">
-              <div class="img">
-                <img src="\assets\paco_testimonios_de_adoptados.jpg" alt="">
-                <a class="hover-text" href="#"><i class="fa-solid fas fa-paw"></i> Apadrinar</a>
-              </div>
-              <div class="details pink-box">
-                <h2 class="card-title">Paco</h2>
-                <p class="custom-font-size2" >Paco, un gato callejero rescatado, se recuperó en un refugio y mostró ser cariñoso. La familia Rodríguez lo adoptó; inicialmente tímido, Paco se adaptó rápidamente. Ahora disfruta de amor, juegos y un hogar cálido, dejando atrás su vida en las calles.</p>
-              </div>
-            </div>
-          
-            <div class="box ">
-              <div class="img">
-                <img src="\assets\tomi_testimonios_de_adoptados.png" alt="">
-                <a href="#"><div class="hover-text"><i class="fa-solid fas fa-paw"></i> Apadrinar</div></a>
-              </div>
-              <div class="details pink-box">
-                <h2 class="card-title">Tomi</h2>
-                <p class="custom-font-size1" >Tomi era gato callejero, abandonado y solo, fue rescatado por una amable familia. Lo llevaron a su hogar, donde recibió amor, comida y cuidados. Con el tiempo, el gato floreció y se convirtió en el miembro más querido de la familia.</p>
-              </div>
-            </div>
-          </div> 
+           <div class="box" *ngFor="let mascota of mascotasConTestimonio">
+          <div class="img">
+          <img [src]="mascota.imagenes[0]" alt="Imagen" (click)="redireccionartestimonio(mascota)">
+          </div>
+          <div class="details pink-box">
+          <h2 class="card-title">{{ mascota.nombre }}</h2>
+          <p class="custom-font-size">{{ mascota.testimonio }}</p>
+     </div>
+      
 
-          
+          </div>
+          </div>  

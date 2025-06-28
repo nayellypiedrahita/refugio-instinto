@@ -76,4 +76,30 @@ export class MascotasService {
     }
     return false;
   }
+
+  getMascotasConTestimonio(): Observable<Mascotas[]> {
+  const q = query(this.mascotasCollection, where('testimonio', '!=', ''));
+  return from(getDocs(q)).pipe(
+    map((snapshot) =>
+      snapshot.docs.map((element) => {
+        const datosMascota = element.data();
+        return {
+          idMascota: element.id,
+          nombre: datosMascota['nombre'],
+          raza: datosMascota['raza'],
+          edad: datosMascota['edad'],
+          sexo: datosMascota['sexo'],
+          esterilizada: datosMascota['esterilizada'],
+          estado: datosMascota['estado'],
+          condiciones: datosMascota['condiciones'],
+          tamano: datosMascota['tamano'],
+          historia: datosMascota['historia'],
+          imagenes: datosMascota['imagenes'],
+          testimonio: datosMascota['testimonio'], // Asegúrate de que esto se guarde al agregarlo
+        } as Mascotas;
+      })
+    )
+  );
+}
+
 }
