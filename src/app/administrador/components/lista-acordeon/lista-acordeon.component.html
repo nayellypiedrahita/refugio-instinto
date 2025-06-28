@@ -25,7 +25,7 @@
 
    <ng-container *ngIf="datos.tipo == 'donaciones'">
   <ng-container *ngFor="let item of datos.items; let i = index">
-    <li (click)="emitirEvento(item?.nombreCompleto)">
+    <li (click)="emitirEvento(item)">
       <span class="list-number">{{ i + 1 }}.</span>
       <strong> {{ item?.nombreCompleto }}</strong><br>
     </li>

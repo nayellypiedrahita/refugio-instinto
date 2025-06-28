@@ -6,6 +6,8 @@ import { SolicitudVoluntariado } from '../../../shared/model/solicitud-voluntari
 import { SolicitudVoluntariadoService } from '../../../shared/services/solicitud-voluntariado/solicitud-voluntariado.service';
 import { SolicitudApadrinamiento } from '../../../shared/model/solicitud-apadrinamiento';
 import { SolicitudApadrinamientoService } from '../../../shared/services/solicitud-apadrinamiento/solicitud-apadrinamiento.service';
+import { SolicitudDonaciones } from '../../../shared/model/solicitud-donaciones';
+import { SolicitudDonacionService } from '../../../shared/services/solicitud-donacion/solicitud-donacion.service';
 
 @Component({
   selector: 'app-detalle-solicitud',
@@ -22,6 +24,7 @@ export class DetalleSolicitudComponent implements OnInit {
   solicitudAdopcionService: SolicitudAdopcionService = inject(SolicitudAdopcionService);
   solicitudVoluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
   solcitudApadrinamientoservice:  SolicitudApadrinamientoService = inject(SolicitudApadrinamientoService);
+  solicitudDonacionService: SolicitudDonacionService = inject(SolicitudDonacionService);
   constructor(
     private route: Router
   ) {}
@@ -41,6 +44,10 @@ export class DetalleSolicitudComponent implements OnInit {
           break;
         case "solicitud-voluntariado":
           objeto = detalle.objeto as SolicitudVoluntariado;
+          this.solicitud = { tipo: detalle.tipo, id: objeto.idSolicitud! }
+          break;
+        case "solicitud-especie":
+          objeto = detalle.objeto as SolicitudDonaciones;
           this.solicitud = { tipo: detalle.tipo, id: objeto.idSolicitud! }
           break;
 
@@ -64,6 +71,10 @@ export class DetalleSolicitudComponent implements OnInit {
       case "solicitud-apadrinamiento":
         this.solcitudApadrinamientoservice.eliminarSolicitudApadrinamiento(this.solicitud.id);
         this.route.navigate(["/admin/solicitud-apadrinamiento"]);
+        break;
+      case "solicitud-especie":
+        this.solicitudDonacionService.eliminarSolicitudDonacion(this.solicitud.id);
+        this.route.navigate(["/admin/solicitud-en-especie"]);
         break;
     } 
 
