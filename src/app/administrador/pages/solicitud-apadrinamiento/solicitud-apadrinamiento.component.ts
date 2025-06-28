@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SolicitudApadrinamientoService } from '../../../shared/services/solicitud-apadrinamiento/solicitud-apadrinamiento.service';
 import { SolicitudApadrinamiento } from '../../../shared/model/solicitud-apadrinamiento';
 import { from, groupBy, map, mergeMap, toArray, filter } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-solicitud-apadrinamiento',
@@ -13,6 +14,12 @@ export class SolicitudApadrinamientoComponent implements OnInit {
   mostrarLoading: boolean = false;
   solicitudesApadrinamiento: { fecha: string; tipo: string; items: SolicitudApadrinamiento[] }[] = [];
   apadrinamientoService: SolicitudApadrinamientoService = inject(SolicitudApadrinamientoService);
+
+  constructor(
+    private router:Router
+    ){
+
+  }
 
   ngOnInit(): void {
     this.obtenerSolicitudesApadrinamiento();
@@ -49,8 +56,10 @@ export class SolicitudApadrinamientoComponent implements OnInit {
       });
   }
 
-  redireccionarADetalle() {
-    console.log("Detalle de solicitud de apadrinamiento");
+  redireccionarADetalle(item:any) {
+  const detalle = { tipo: "solicitud-apadrinamiento", objeto: item as SolicitudApadrinamiento };
+  localStorage.setItem("detalle", JSON.stringify(detalle));
+  this.router.navigate(["/admin/detalles"]);
   }
 }
 
