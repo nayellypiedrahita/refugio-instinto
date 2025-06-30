@@ -18,9 +18,22 @@
             class="form-control"
             formControlName="nombreCompleto" 
             placeholder="Ingresa tu nombre completo"
+            (input)="onNombreInput($event)"
             [class.is-invalid]="donacionForm.get('nombreCompleto')?.invalid && donacionForm.get('nombreCompleto')?.touched">
-          <div class="invalid-feedback" *ngIf="donacionForm.get('nombreCompleto')?.errors?.['required'] && donacionForm.get('nombreCompleto')?.touched">
-            Por favor ingresa tu nombre completo
+          <div class="invalid-feedback" *ngIf="donacionForm.get('nombreCompleto')?.errors">
+            <div *ngIf="donacionForm.get('nombreCompleto')?.errors?.['required'] && donacionForm.get('nombreCompleto')?.touched">
+              Por favor ingresa tu nombre completo
+            </div>
+            <div *ngIf="donacionForm.get('nombreCompleto')?.errors?.['minlength']">
+              El nombre debe tener al menos 3 caracteres
+            </div>
+            <div *ngIf="donacionForm.get('nombreCompleto')?.errors?.['maxlength']">
+              El nombre no puede tener más de 20 caracteres
+            </div>
+            <div *ngIf="donacionForm.get('nombreCompleto')?.errors?.['pattern']">
+              Solo se permiten letras y espacios
+            </div>
+
           </div>
         </div>
 
@@ -31,10 +44,22 @@
               type="text" 
               class="form-control"
               formControlName="whatsapp" 
+              (input)="onWhatsAppInput($event)"
               placeholder="Ingresa tu número de WhatsApp"
               [class.is-invalid]="donacionForm.get('whatsapp')?.invalid && donacionForm.get('whatsapp')?.touched">
-            <div class="invalid-feedback" *ngIf="donacionForm.get('whatsapp')?.errors?.['required'] && donacionForm.get('whatsapp')?.touched">
-              Por favor ingresa tu número de WhatsApp
+            <div class="invalid-feedback" *ngIf="donacionForm.get('whatsapp')?.errors">
+              <div *ngIf="donacionForm.get('whatsapp')?.errors?.['required'] && donacionForm.get('whatsapp')?.touched">
+                Por favor ingresa tu número de WhatsApp
+              </div>
+              <div *ngIf="donacionForm.get('whatsapp')?.errors?.['pattern']">
+                Solo se permiten números
+              </div>
+              <div *ngIf="donacionForm.get('whatsapp')?.errors?.['minlength']">
+                El número debe tener al menos 6 dígitos
+              </div>
+              <div *ngIf="donacionForm.get('whatsapp')?.errors?.['maxlength']">
+                El número no puede tener más de 12 dígitos
+              </div>
             </div>
           </div>
           
