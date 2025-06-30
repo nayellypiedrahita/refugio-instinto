@@ -22,7 +22,7 @@
     <div class="name-status-container">
         <p class="pet-name">{{mascota.nombre}}</p>
         <div class="status-container">
-            <div class="status-circle"></div>
+          <div class="status-circle" [ngClass]="getEstadoClase(mascota.estado)"></div>
             <p class="status-text">{{mascota.estado}}</p>
         </div>
     </div>

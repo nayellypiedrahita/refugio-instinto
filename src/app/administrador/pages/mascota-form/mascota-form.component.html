@@ -58,19 +58,19 @@
         </div>
 
         <div class="form-group">
-  <label for="estado-urgencia">Estado de urgencia</label>
-  <select id="estado-urgencia" formControlName="estado" class="estado-select">
-    <option value="critico" class="critico">🔴 Estado crítico</option>
-    <option value="urgente" class="urgente">🔵 Estado urgente</option>
-    <option value="leve" class="leve">🟡 Estado leve</option>
-    <option value="disponible" class="disponible">🟢 Disponible</option>
-    <option value="adoptado" class="adoptado">🟠 Adoptado</option>
-    <option value="no disponible" class="nodisponible">⚪ No disponible</option>
-  </select>
-  <div class="error-msg">
-    <p *ngIf="this.mascotaForm.controls['estado'].touched && this.mascotaForm.controls['estado'].errors && this.mascotaForm.controls['estado'].errors!['required']">El campo estado es obligatorio</p>
-  </div>
-</div>
+        <label for="estado-urgencia">Estado de urgencia</label>
+        <select id="estado-urgencia" formControlName="estado" class="estado-select">
+          <option value="critico" class="critico">🔴 Estado crítico</option>
+          <option value="urgente" class="urgente">🔵 Estado urgente</option>
+          <option value="leve" class="leve">🟡 Estado leve</option>
+          <option value="disponible" class="disponible">🟢 Disponible</option>
+          <option value="adoptado" class="adoptado">🟠 Adoptado</option>
+          <option value="no disponible" class="nodisponible">⚪ No disponible</option>
+        </select>
+        <div class="error-msg">
+          <p *ngIf="this.mascotaForm.controls['estado'].touched && this.mascotaForm.controls['estado'].errors && this.mascotaForm.controls['estado'].errors!['required']">El campo estado es obligatorio</p>
+        </div>
+        </div>
 
 
         <div class="form-group">

@@ -22,7 +22,7 @@ export class AddTestimonioComponent {
   this.testimonio = mascota.testimonio ? mascota.testimonio : "";
 }
 
-errorTestimonio: string = ''; // Agrega esta propiedad en tu componente
+errorTestimonio: string = ''; 
 async enviar() {
   const texto = this.testimonio.trim();
 
@@ -47,7 +47,7 @@ async enviar() {
     console.log('Testimonio guardado correctamente');
     this.testimonio = '';
     this.errorTestimonio = '';
-    this.router.navigate(['/admin/enviado-testimonio']); // ⬅ redirección aquí
+    this.router.navigate(['/admin/enviado-testimonio']); 
   } else {
     console.error('Error al guardar el testimonio');
   }

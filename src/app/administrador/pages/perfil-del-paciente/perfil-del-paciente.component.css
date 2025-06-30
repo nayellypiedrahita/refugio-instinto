@@ -109,7 +109,7 @@
 
 
 .status-circle {
-    background-color: red;
+   
     width: 15px; 
     height: 15px; 
     border-radius: 50%;
@@ -216,3 +216,28 @@
     color: white;
   }
   
+  
+
+.estado-critico {
+  background-color: red;
+}
+
+.estado-urgente {
+  background-color: blue;
+}
+
+.estado-leve {
+  background-color: yellow;
+}
+
+.estado-disponible {
+  background-color: #79d70f;
+}
+
+.estado-adoptado {
+  background-color: orange;
+}
+
+.estado-nodisponible {
+  background-color: gray;
+}

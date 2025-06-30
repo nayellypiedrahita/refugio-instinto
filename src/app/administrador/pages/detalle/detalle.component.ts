@@ -22,22 +22,7 @@ export class DetalleComponent {
     this.parentComponent = getTipo.tipo;
   }
 
-  redirectToParent() {
-    switch(this.parentComponent) {
-      case "solicitud-adopcion":
-        this.route.navigate(["/admin/solicitudes-adopcion"]);
-        break;
-      case "solicitud-voluntariado":
-        this.route.navigate(["/admin/solicitudes-voluntariado"]);
-        break;
-      case "solicitud-apadrinamiento":
-        this.route.navigate(["/admin/solicitud-apadrinamiento"]);
-        break;
-      case "solicitud-especie":
-        this.route.navigate(["/admin/solicitud-en-especie"]);
-        break;
-    }
-  }
+
 
 }
 

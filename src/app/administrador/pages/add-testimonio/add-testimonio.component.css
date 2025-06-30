@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +16,7 @@
   margin-top: 50px;
 }
 
-/* Sección de la imagen */
+
 .imagen-placeholder {
   background-color: #CCA27A;
   color: white;
@@ -251,4 +251,19 @@ textarea {
 	color: #c7a17a;
 	cursor: pointer;
     
+}
+
+
+.action-buttons.inline {
+  position: static; 
+  bottom: auto;
+  right: auto;
+  display: flex;
+  align-items: center;
+}
+
+.action-buttons.inline .action-button {
+  width: 50px;
+  height: 50px;
+  margin-left: 250px;
 }

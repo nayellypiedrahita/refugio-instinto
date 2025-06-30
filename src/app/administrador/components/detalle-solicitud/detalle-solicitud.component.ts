@@ -20,6 +20,7 @@ export class DetalleSolicitudComponent implements OnInit {
   datosAgrupados: any;
   solicitud: { tipo: string; id: string} | null = null; 
   detalle: { key: string; value: string }[] = [];
+  parentComponent: string = "";
 
   solicitudAdopcionService: SolicitudAdopcionService = inject(SolicitudAdopcionService);
   solicitudVoluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
@@ -29,10 +30,13 @@ export class DetalleSolicitudComponent implements OnInit {
     private route: Router
   ) {}
 
+  
+
   ngOnInit(): void {
     if (this.datosAgrupados) {
       const detalle = JSON.parse(this.datosAgrupados) as { tipo: string; objeto: any};
       let objeto = null;
+      this.parentComponent = detalle.tipo;
       switch(detalle.tipo) {
         case "solicitud-adopcion":
           objeto = detalle.objeto as SolicitudApadrinamiento;
@@ -78,6 +82,23 @@ export class DetalleSolicitudComponent implements OnInit {
         break;
     } 
 
+  }
+
+    redirectToParent() {
+    switch(this.parentComponent) {
+      case "solicitud-adopcion":
+        this.route.navigate(["/admin/solicitudes-adopcion"]);
+        break;
+      case "solicitud-voluntariado":
+        this.route.navigate(["/admin/solicitudes-voluntariado"]);
+        break;
+      case "solicitud-apadrinamiento":
+        this.route.navigate(["/admin/solicitud-apadrinamiento"]);
+        break;
+      case "solicitud-especie":
+        this.route.navigate(["/admin/solicitud-en-especie"]);
+        break;
+    }
   }
 
 }

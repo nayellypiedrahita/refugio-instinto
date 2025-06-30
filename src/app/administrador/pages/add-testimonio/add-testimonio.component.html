@@ -30,13 +30,12 @@
     <div class="botones">
 <button class="btn-enviar" (click)="enviar()">ENVIAR</button>
   <button class="btn-cancelar" routerLink="/admin/home" (click)="cancelar()">CANCELAR</button>
-</div>
 
-<div class="action-buttons">
+<div class="action-buttons inline">
     <button class="action-button delete" (click)="mostraralerta()">
-        <i class="fa-solid fa-trash"></i>
+      <i class="fa-solid fa-trash"></i>
     </button>
-</div>
+  </div>
 <div class="dialog-container" *ngIf="alertaeliminar">
     <div class="dialog-box">
       <div class="dialog-header">¿Está seguro que quiere eliminar esta mascota?</div>
@@ -46,5 +45,7 @@
       </div>
     </div>
 </div>
+</div>
+
   </div>
 </div>

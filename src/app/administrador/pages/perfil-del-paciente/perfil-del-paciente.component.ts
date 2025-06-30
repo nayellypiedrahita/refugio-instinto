@@ -79,4 +79,23 @@ export class PerfilDelPacienteComponent {
       }
     }
   }
+  getEstadoClase(estado: string): string {
+  switch (estado.toLowerCase()) {
+    case 'critico':
+      return 'estado-critico';
+    case 'urgente':
+      return 'estado-urgente';
+    case 'leve':
+      return 'estado-leve';
+    case 'disponible':
+      return 'estado-disponible';
+    case 'adoptado':
+      return 'estado-adoptado';
+    case 'nodisponible':
+      return 'estado-nodisponible';
+    default:
+      return '';
+  }
+}
+
 }
