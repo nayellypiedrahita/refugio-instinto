@@ -186,5 +186,9 @@ preguntarTestimonio() {
   });
 }
 
+volver() {
+  sessionStorage.removeItem('perfil-paciente');
+  this.router.navigate(["/admin/ver-todas-mascotas"]);
+}
 
 }

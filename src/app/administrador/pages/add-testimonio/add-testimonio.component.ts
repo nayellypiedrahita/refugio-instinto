@@ -38,6 +38,7 @@ async enviar() {
 
   const mascotaActualizada: Mascotas = {
     ...this.mascota,
+    fechaNacimiento: new Date(this.mascota.fechaNacimiento),
     testimonio: texto
   };
 
