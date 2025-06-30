@@ -1,0 +1,10 @@
+<app-title titleText="CONTRATO DE ADOPCION"></app-title>
+<div class="container">
+    <ng-container *ngIf="base64Contrato">
+        <iframe [src]="base64Contrato" height="100%" width="70%" scrolling="auto"></iframe>
+    </ng-container>
+    <div class="form-group">
+        <input type="file" #fileselector (change)="selectedFile($event)">
+        <button (click)="updateFile()">ACTUALIZAR CONTRATO</button>
+    </div>
+</div>

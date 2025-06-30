@@ -35,4 +35,9 @@ export class PerfilDelPacienteComponent {
   ocultaralerta(){
     this.alertaeliminar = false;
   }
+
+  volver() {
+    sessionStorage.removeItem('perfil-paciente');
+    this.route.navigate(["/admin/ver-todas-mascotas"]);
+  }
 }
