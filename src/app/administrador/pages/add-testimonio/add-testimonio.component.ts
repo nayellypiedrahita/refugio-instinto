@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Mascotas } from '../../../shared/model/mascotas';
 import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-testimonio',
@@ -15,29 +15,45 @@ export class AddTestimonioComponent {
 
     alertaeliminar: boolean = false;
 
-  constructor(private mascotasService: MascotasService) {
-    const mascotastring = sessionStorage.getItem('infomascota');
-    const mascota = JSON.parse(mascotastring!) as Mascotas;
-    this.mascota=mascota;
-    this.testimonio=mascota.testimonio?mascota.testimonio:"";
+ constructor(private mascotasService: MascotasService, private router: Router) {
+  const mascotastring = sessionStorage.getItem('infomascota');
+  const mascota = JSON.parse(mascotastring!) as Mascotas;
+  this.mascota = mascota;
+  this.testimonio = mascota.testimonio ? mascota.testimonio : "";
+}
+
+errorTestimonio: string = ''; // Agrega esta propiedad en tu componente
+async enviar() {
+  const texto = this.testimonio.trim();
+
+  if (texto === '') {
+    this.errorTestimonio = 'El testimonio no puede estar vacío';
+    return;
   }
 
-  async enviar() {
-      if (this.testimonio.trim() !=""){
-          const mascotaActualizada: Mascotas = {
-        ...this.mascota,
-        testimonio: this.testimonio
-      };
+  if (texto.length > 300) {
+    this.errorTestimonio = 'El testimonio no debe superar los 300 caracteres';
+    return;
+  }
+
+  const mascotaActualizada: Mascotas = {
+    ...this.mascota,
+    testimonio: texto
+  };
+
   const result = await this.mascotasService.actualizarMascota(mascotaActualizada, this.mascota.idMascota!);
   if (result) {
-   console.log('Testimonio guardado correctamente');
+    console.log('Testimonio guardado correctamente');
     this.testimonio = '';
-    } else {
+    this.errorTestimonio = '';
+    this.router.navigate(['/admin/enviado-testimonio']); // ⬅ redirección aquí
+  } else {
     console.error('Error al guardar el testimonio');
-    }
-
-      }
   }
+}
+
+
+
 
   cancelar() {
     this.testimonio = '';
@@ -47,10 +63,21 @@ export class AddTestimonioComponent {
     this.alertaeliminar = true;
   }
 
-  eliminarmascota (){
-    this.mascotasService.eliminarMascota(this.mascota.idMascota!)
-    this.route.navigate(["/admin/testimonios"]);
-  }
+ eliminarmascota() {
+  const mascotaSinTestimonio: Mascotas = {
+    ...this.mascota,
+    testimonio: '' 
+  };
+
+  this.mascotasService.actualizarMascota(mascotaSinTestimonio, this.mascota.idMascota!)
+    .then(() => {
+      this.route.navigate(['/admin/testimonios']);
+    })
+    .catch((error) => {
+      console.error('Error al quitar el testimonio:', error);
+    });
+}
+
 
    ocultaralerta(){
     this.alertaeliminar = false;

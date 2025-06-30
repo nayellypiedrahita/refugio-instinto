@@ -27,6 +27,7 @@ import { SolicitudApadrinamientoComponent } from './pages/solicitud-apadrinamien
 import { SolicitudAdopcionComponent } from './pages/solicitud-adopcion/solicitud-adopcion.component';
 import { DetalleSolicitudComponent } from './components/detalle-solicitud/detalle-solicitud.component';
 import { AddTestimonioComponent } from './pages/add-testimonio/add-testimonio.component';
+import { EnviadoTestimonioComponent } from './pages/enviado-testimonio/enviado-testimonio.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AddTestimonioComponent } from './pages/add-testimonio/add-testimonio.co
     OlvidoSuContrasenaComponent,
     ActualizarContrasenaComponent,
     DetalleSolicitudComponent,
-    AddTestimonioComponent
+    AddTestimonioComponent,
+    EnviadoTestimonioComponent
   ],
   imports: [
     CommonModule,

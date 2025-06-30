@@ -11,7 +11,7 @@
     </ng-container>
     <form (submit)="solicitudAdopcion()" [formGroup]="adopcionForm" *ngIf="!loadingForm">
 
-        <label for="email">Nombre Completo: *</label>
+        <label for="email">Nombre Completo y apellidos: *</label>
         <input type="text" id="Nombre" placeholder="Nombre Completo..." formControlName="nombre">
         <div class="error-msg">
           <p *ngIf="this.adopcionForm.controls['nombre'].touched && this.adopcionForm.controls['nombre'].errors && this.adopcionForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>

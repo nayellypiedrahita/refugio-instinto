@@ -24,8 +24,11 @@
                         <p class="error-msg" *ngIf="form.controls['usuario'].touched && form.controls['usuario'].errors && form.controls['usuario'].errors!['pattern']">Este campo es alfanumerico.</p>
                     </div>
                     <div>
-                        <input type="password" placeholder="Contraseña" formControlName="clave" #claveInput (keydown.enter)="login()">
-                        <p class="error-msg" *ngIf="form.controls['clave'].touched && form.controls['clave'].errors && form.controls['clave'].errors!['required']">Este campo es requerido.</p>
+                    <div class="input-password-wrapper">
+                    <input  [type]="mostrarClave ? 'text' : 'password'" placeholder="Contraseña" formControlName="clave" #claveInput   (keydown.enter)="login()" class="input-password">
+                    <i [ngClass]="['fa-solid', mostrarClave ? 'fa-eye-slash' : 'fa-eye']" (click)="mostrarClave = !mostrarClave" class="toggle-password-icon" [title]="mostrarClave ? 'Ocultar contraseña' : 'Mostrar contraseña'"></i>
+                    </div>
+                    <p class="error-msg" *ngIf="form.controls['clave'].touched && form.controls['clave'].errors && form.controls['clave'].errors!['required']"> Este campo es requerido.</p>
                     </div>
                     <div class="recuperar_clave">
                         <a routerLink="/olvido-contrasena">¿Olvidaste tu contraseña?</a>

@@ -1,3 +1,7 @@
+<div class="text-box1">
+    <a class="hover-text" routerLink="/admin/testimonios"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
+</div>
+
 <div class="testimonio-container">
   <div class="imagen-placeholder">
     <p>TESTIMONIO DE UNA<br>MASCOTA FELIZ</p>
@@ -12,15 +16,19 @@
     </a>
 
     <div class="campo">
-      <textarea 
-        placeholder="Agregar testimonio..."
-        [(ngModel)]="testimonio"
-        rows="6"
-      ></textarea>
-    </div>
+  <textarea 
+    placeholder="Agregar testimonio..."
+    [(ngModel)]="testimonio"
+    rows="6"
+    maxlength="300"
+  ></textarea>
+  <p class="contador">{{ testimonio.length }}/300 caracteres</p>
+  <p class="error-msg" *ngIf="errorTestimonio">{{ errorTestimonio }}</p>
+</div>
+
 
     <div class="botones">
-  <button class="btn-enviar" (click)="enviar()" routerLink="/admin/Testimonios">ENVIAR</button>
+<button class="btn-enviar" (click)="enviar()">ENVIAR</button>
   <button class="btn-cancelar" routerLink="/admin/home" (click)="cancelar()">CANCELAR</button>
 </div>
 
@@ -33,7 +41,7 @@
     <div class="dialog-box">
       <div class="dialog-header">¿Está seguro que quiere eliminar esta mascota?</div>
       <div class="dialog-actions">
-        <button class="cancel-button" routerLink="/admin/ver-todas-mascotas"  (click)="eliminarmascota()">CONFIRMAR</button>
+        <button class="cancel-button" routerLink="/admin/testimonios"  (click)="eliminarmascota()">CONFIRMAR</button>
         <button class="accept-button" (click)="ocultaralerta()">CANCELAR</button>
       </div>
     </div>

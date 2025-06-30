@@ -50,6 +50,33 @@ export class MascotaFormComponent implements OnInit {
       this.mascotaForm.controls["historia"].setValue(this.mascota.historia);
     }else {this.mascota = null}
 
+let estadoAnterior = this.mascotaForm.controls['estado'].value;
+
+this.mascotaForm.controls['estado'].valueChanges.subscribe(nuevoEstado => {
+  if (nuevoEstado === 'no disponible' && this.mascota) {
+    Swal.fire({
+      title: '¿Deseas eliminar esta mascota?',
+      text: 'Esta acción no se puede deshacer',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.mascotasService.eliminarMascota(this.mascota!.idMascota!).then(() => {
+          Swal.fire('Eliminada', 'La mascota ha sido eliminada correctamente', 'success');
+          sessionStorage.removeItem('perfil-paciente');
+          this.router.navigate(['/admin/ver-todas-mascotas']);
+        });
+      } else {
+        this.mascotaForm.controls['estado'].setValue(estadoAnterior, { emitEvent: false });
+      }
+    });
+  } else {
+    estadoAnterior = nuevoEstado;
+  }
+});
+
   }
 
   imagesSelected(event: any) {
@@ -156,4 +183,6 @@ preguntarTestimonio() {
     }
   });
 }
+
+
 }

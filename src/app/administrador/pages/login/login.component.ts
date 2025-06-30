@@ -55,5 +55,7 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+  
+mostrarClave: boolean = false;
 
 }

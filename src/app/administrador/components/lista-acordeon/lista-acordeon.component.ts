@@ -8,9 +8,9 @@ import { DonacionMonetaria } from '../../../shared/model/donacion-monetaria';
 })
 export class ListaAcordeonComponent {
   @Input() datosAgrupados: any[] = [];
-  @Output() clickedItem = new EventEmitter<string>();
+  @Output() clickedItem = new EventEmitter<any>();
 
-  emitirEvento(valor: string) {
+  emitirEvento(valor: any) {
     this.clickedItem.emit(valor);
   }
 }

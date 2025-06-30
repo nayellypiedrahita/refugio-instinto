@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 export class FormularioDeApadrinamientoComponent {
 
    apadrinamientoForm: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]{3,50}')]),
+    nombre: new FormControl('', [Validators.required, Validators.minLength(3),Validators.maxLength(50),Validators.pattern('[a-zA-Z ]{3,50}')]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    celular: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+    celular: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{7,15}$")]),
     notificacion: new FormControl(''),
   });
   loading: boolean = false;

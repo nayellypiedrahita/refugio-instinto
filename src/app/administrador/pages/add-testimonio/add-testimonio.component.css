@@ -227,3 +227,28 @@ textarea {
     color: white;
   }
   
+  
+.text-box1 .hover-text h3:hover {
+    font-size: 1.8rem;
+}
+
+.hover-text{
+	text-decoration: none;
+}
+
+.text-box1 {
+    margin-left: 30px;
+	width: fit-content;
+
+}
+
+.text-box1 h3 {
+    font-size: 16px;
+	height: 20px;
+    margin-bottom: 10px; 
+    color: #2b2b2b; 
+	line-height: 1.5;
+	color: #c7a17a;
+	cursor: pointer;
+    
+}

@@ -12,8 +12,8 @@ import { SolicitudDonacionService } from '../../../shared/services/solicitud-don
 export class FormularioDeDonacionesComponent {
 
   donacionForm: FormGroup = new FormGroup({
-    nombreCompleto: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{5,50}')]),
-    numeroCelular: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$")]),
+    nombreCompleto: new FormControl("", [Validators.required,Validators.minLength(3),Validators.maxLength(50), Validators.pattern('[a-zA-Z ]{5,50}')]),
+    numeroCelular: new FormControl("", [Validators.required, Validators.pattern("^[0-9]{7,15}$")]),
     alimentoGatos: new FormControl(""),
     alimentoPerros: new FormControl(""),
     peine: new FormControl(""),
@@ -23,7 +23,7 @@ export class FormularioDeDonacionesComponent {
     collares: new FormControl(""),
     limpieza: new FormControl(""),
     jaulas: new FormControl(""),
-    otro: new FormControl(""),
+    otro: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{5,50}')]),
   });
   loadingForm: boolean = false;
   private solicitudDonacionService: SolicitudDonacionService = inject(SolicitudDonacionService);

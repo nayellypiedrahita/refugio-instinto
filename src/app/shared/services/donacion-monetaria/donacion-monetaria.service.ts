@@ -3,17 +3,28 @@ import { addDoc, collection, CollectionReference, Firestore, getDocs, Timestamp 
 import { DonacionMonetaria } from '../../model/donacion-monetaria';
 import { from, groupBy, lastValueFrom, map, Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { deleteDoc, doc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DonacionMonetariaService {
+export class DonacionMonetariaService{ 
 
   private firestore: Firestore = inject(Firestore);
   private donacionMonetariaCollection: CollectionReference;
 
   constructor() {
     this.donacionMonetariaCollection = collection(this.firestore, 'donaciones-monetarias');
+  }
+
+
+ 
+  async eliminarcomprobante(id: string): Promise<boolean> {
+    if (id) {
+      await deleteDoc(doc(this.firestore, this.donacionMonetariaCollection.path, id));
+      return true;
+    }
+    return false;
   }
 
   async addDonacion(base64: string, nombreCompleto: string, whatsapp: number) {
