@@ -13,53 +13,72 @@
       <div class="form-columns">
         <div class="form-group">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" placeholder="Nombre" formControlName="nombre">
+          <input type="text" id="nombre" placeholder="Nombre" formControlName="nombre" (keydown)="soloLetras($event)" (blur)="onNombreBlur()">
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['nombre'].touched && this.mascotaForm.controls['nombre'].errors && this.mascotaForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
+            <p *ngIf="mascotaForm.get('nombre')?.touched && mascotaForm.get('nombre')?.errors">
+              <span *ngIf="mascotaForm.get('nombre')?.errors?.['required']">El campo nombre es obligatorio</span>
+              <span *ngIf="mascotaForm.get('nombre')?.errors?.['pattern']">Solo se permiten letras y espacios</span>
+              <span *ngIf="mascotaForm.get('nombre')?.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</span>
+              <span *ngIf="mascotaForm.get('nombre')?.errors?.['maxlength']">El nombre no puede tener más de 12 caracteres</span>
+            </p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="raza">Raza</label>
-          <input type="text" id="raza" placeholder="Raza" formControlName="raza">
+          <input type="text" id="raza" placeholder="Raza" formControlName="raza" (keydown)="soloLetras($event)" (blur)="onRazaBlur()">
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['raza'].touched && this.mascotaForm.controls['raza'].errors && this.mascotaForm.controls['raza'].errors!['required']">El campo raza es obligatorio</p>
+            <p *ngIf="mascotaForm.get('raza')?.touched && mascotaForm.get('raza')?.errors">
+              <span *ngIf="mascotaForm.get('raza')?.errors?.['required']">El campo raza es obligatorio</span>
+              <span *ngIf="mascotaForm.get('raza')?.errors?.['pattern']">Solo se permiten letras y espacios</span>
+              <span *ngIf="mascotaForm.get('raza')?.errors?.['minlength']">La raza debe tener al menos 3 caracteres</span>
+              <span *ngIf="mascotaForm.get('raza')?.errors?.['maxlength']">La raza no puede tener más de 20 caracteres</span>
+            </p>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="nacimiento">Fecha naciiento</label>
+          <label for="nacimiento">Fecha nacimiento</label>
           <input type="date" id="nacimiento" placeholder="Edad" formControlName="fechaNacimiento">
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['fechaNacimiento'].touched && this.mascotaForm.controls['fechaNacimiento'].errors && this.mascotaForm.controls['fechaNacimiento'].errors!['required']">El campo edad es obligatorio</p>
+            <p *ngIf="mascotaForm.get('fechaNacimiento')?.touched && mascotaForm.get('fechaNacimiento')?.errors">
+              <span *ngIf="mascotaForm.get('fechaNacimiento')?.errors?.['required']">La fecha de nacimiento es obligatoria</span>
+            </p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="sexo">Sexo</label>
           <select id="sexo" formControlName="sexo">
+            <option value="">Seleccione una opción</option>
             <option value="Hembra">Hembra</option>
             <option value="Macho">Macho</option>
           </select>
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['sexo'].touched && this.mascotaForm.controls['sexo'].errors && this.mascotaForm.controls['sexo'].errors!['required']">El campo sexo es obligatorio</p>
+            <p *ngIf="mascotaForm.get('sexo')?.touched && mascotaForm.get('sexo')?.errors">
+              <span *ngIf="mascotaForm.get('sexo')?.errors?.['required']">El campo sexo es obligatorio</span>
+            </p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="esterilizada">Esterilizada</label>
           <select id="esterilizada" formControlName="esterilizada">
+            <option value="">Seleccione una opción</option>
             <option value="Sí">Sí</option>
             <option value="No">No</option>
           </select>
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['esterilizada'].touched && this.mascotaForm.controls['esterilizada'].errors && this.mascotaForm.controls['esterilizada'].errors!['required']">El campo esterilizada es obligatorio</p>
+            <p *ngIf="mascotaForm.get('esterilizada')?.touched && mascotaForm.get('esterilizada')?.errors">
+              <span *ngIf="mascotaForm.get('esterilizada')?.errors?.['required']">El campo esterilización es obligatorio</span>
+            </p>
           </div>
         </div>
 
         <div class="form-group">
   <label for="estado-urgencia">Estado de urgencia</label>
   <select id="estado-urgencia" formControlName="estado" class="estado-select">
+    <option value="">Seleccione un estado</option>
     <option value="critico" class="critico">🔴 Estado crítico</option>
     <option value="urgente" class="urgente">🔵 Estado urgente</option>
     <option value="leve" class="leve">🟡 Estado leve</option>
@@ -68,39 +87,50 @@
     <option value="no disponible" class="nodisponible">⚪ No disponible</option>
   </select>
   <div class="error-msg">
-    <p *ngIf="this.mascotaForm.controls['estado'].touched && this.mascotaForm.controls['estado'].errors && this.mascotaForm.controls['estado'].errors!['required']">El campo estado es obligatorio</p>
+    <p *ngIf="mascotaForm.get('estado')?.touched && mascotaForm.get('estado')?.errors">
+      <span *ngIf="mascotaForm.get('estado')?.errors?.['required']">El campo estado es obligatorio</span>
+    </p>
   </div>
 </div>
 
 
         <div class="form-group">
           <label for="condiciones">Condiciones especiales</label>
-          <select id="sexo" formControlName="condiciones">
-            <option>Si</option>
-            <option>No</option>
+          <select id="condiciones" formControlName="condiciones">
+            <option value="">Seleccione una opción</option>
+            <option value="Si">Sí</option>
+            <option value="No">No</option>
           </select>
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['condiciones'].touched && this.mascotaForm.controls['condiciones'].errors && this.mascotaForm.controls['condiciones'].errors!['required']">El campo condiciones es obligatorio</p>
+            <p *ngIf="mascotaForm.get('condiciones')?.touched && mascotaForm.get('condiciones')?.errors">
+              <span *ngIf="mascotaForm.get('condiciones')?.errors?.['required']">El campo condiciones es obligatorio</span>
+            </p>
           </div>
         </div>
 
         <div class="form-group">
           <label for="tamaño">Tamaño</label>
           <select id="tamano" formControlName="tamano">
-            <option>Pequeño</option>
-            <option>Mediano</option>
-            <option>Grande</option>
-        </select>
-        <div class="error-msg">
-          <p *ngIf="this.mascotaForm.controls['tamano'].touched && this.mascotaForm.controls['tamano'].errors && this.mascotaForm.controls['tamano'].errors!['required']">El campo tamano es obligatorio</p>
-        </div>
+            <option value="">Seleccione un tamaño</option>
+            <option value="Pequeño">Pequeño</option>
+            <option value="Mediano">Mediano</option>
+            <option value="Grande">Grande</option>
+          </select>
+          <div class="error-msg">
+            <p *ngIf="mascotaForm.get('tamano')?.touched && mascotaForm.get('tamano')?.errors">
+              <span *ngIf="mascotaForm.get('tamano')?.errors?.['required']">El campo tamaño es obligatorio</span>
+            </p>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="historia">Historia</label>
           <textarea id="historia" placeholder="Breve descripción del animal..." formControlName="historia"></textarea>
           <div class="error-msg">
-            <p *ngIf="this.mascotaForm.controls['historia'].touched && this.mascotaForm.controls['historia'].errors && this.mascotaForm.controls['historia'].errors!['required']">El campo historia es obligatorio</p>
+            <p *ngIf="mascotaForm.get('historia')?.touched && mascotaForm.get('historia')?.errors">
+              <span *ngIf="mascotaForm.get('historia')?.errors?.['required']">El campo historia es obligatorio</span>
+              <span *ngIf="mascotaForm.get('historia')?.errors?.['minlength']">La historia debe tener al menos 10 caracteres</span>
+            </p>
           </div>
         </div>
 

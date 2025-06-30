@@ -13,16 +13,92 @@ import { formatDate } from '@angular/common';
 })
 export class MascotaFormComponent implements OnInit {
 
+  // Expresión regular que solo permite letras y espacios
+  soloLetrasRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+  // Función para formatear el texto con mayúsculas iniciales
+  formatearNombre(texto: string): string {
+    if (!texto) return '';
+    
+    // Primero normalizamos los espacios múltiples a un solo espacio
+    const textoNormalizado = texto.replace(/\s+/g, ' ').trim();
+    
+    // Convertimos a minúsculas y luego capitalizamos cada palabra
+    return textoNormalizado
+      .toLowerCase()
+      .split(' ')
+      .filter(palabra => palabra.length > 0) // Filtramos cadenas vacías
+      .map(palabra => {
+        // Para cada palabra, capitalizamos la primera letra
+        if (palabra.length === 0) return '';
+        return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+      })
+      .join(' ');
+  }
+
+  // Método para permitir solo letras, incluyendo vocales acentuadas y espacios
+  soloLetras(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const cursorPosition = input.selectionStart || 0;
+
+    // Si se presiona espacio al inicio del texto, prevenirlo
+    if (event.key === ' ' && cursorPosition === 0) {
+      event.preventDefault();
+      return;
+    }
+
+    // Permitir teclas de navegación y control
+    if ([
+      'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 
+      'Tab', ' ', 'Home', 'End', 'Enter'
+    ].includes(event.key)) {
+      return;
+    }
+
+    // Expresión regular que solo permite letras (incluyendo acentos) y espacios
+    const letrasAcentuadas = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]$/;
+    
+    // Si no es una letra, prevenir la entrada
+    if (!letrasAcentuadas.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+
   mascotaForm = new FormGroup({
-    'nombre': new FormControl('', [Validators.required]),
-    'raza': new FormControl('', [Validators.required]),
-    'fechaNacimiento': new FormControl('', [Validators.required]),
-    'sexo': new FormControl('', [Validators.required]),
-    'esterilizada': new FormControl('', [Validators.required]),
-    'estado': new FormControl('', [Validators.required]),
-    'condiciones': new FormControl('', [Validators.required]),
-    'tamano': new FormControl('', [Validators.required]),
-    'historia': new FormControl('', [Validators.required]),
+    'nombre': new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.soloLetrasRegex),
+      Validators.minLength(3),
+      Validators.maxLength(12)
+    ]),
+    'raza': new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.soloLetrasRegex),
+      Validators.minLength(3),
+      Validators.maxLength(20)
+    ]),
+    'fechaNacimiento': new FormControl('', [
+      Validators.required
+    ]),
+    'sexo': new FormControl('', [
+      Validators.required
+    ]),
+    'esterilizada': new FormControl('', [
+      Validators.required
+    ]),
+    'estado': new FormControl('', [
+      Validators.required
+    ]),
+    'condiciones': new FormControl('', [
+      Validators.required
+    ]),
+    'tamano': new FormControl('', [
+      Validators.required
+    ]),
+    'historia': new FormControl('', [
+      Validators.required,
+      Validators.minLength(10)
+    ]),
   });
   imagesBase64: string[] = [];
   loading: boolean = false;
@@ -110,7 +186,25 @@ this.mascotaForm.controls['estado'].valueChanges.subscribe(nuevoEstado => {
   
   }
 
- addMascota() {
+  // Maneja el evento blur del input para formatear el nombre
+  onNombreBlur() {
+    const nombreControl = this.mascotaForm.get('nombre');
+    if (nombreControl?.value) {
+      const nombreFormateado = this.formatearNombre(nombreControl.value);
+      nombreControl.setValue(nombreFormateado);
+    }
+  }
+
+  // Maneja el evento blur del input para formatear la raza
+  onRazaBlur() {
+    const razaControl = this.mascotaForm.get('raza');
+    if (razaControl?.value) {
+      const razaFormateada = this.formatearNombre(razaControl.value);
+      razaControl.setValue(razaFormateada);
+    }
+  }
+
+  addMascota() {
   if (
     this.mascotaForm.valid &&
     this.mascotaForm.controls.nombre.value &&
@@ -130,7 +224,7 @@ this.mascotaForm.controls['estado'].valueChanges.subscribe(nuevoEstado => {
       raza: this.mascotaForm.controls.raza.value,
       fechaNacimiento: new Date(this.mascotaForm.controls.fechaNacimiento.value),
       sexo: this.mascotaForm.controls.sexo.value,
-      esterilizada: true,
+      esterilizada: this.mascotaForm.controls.esterilizada.value === "Sí",
       estado: this.mascotaForm.controls.estado.value,
       condiciones: this.mascotaForm.controls.condiciones.value,
       tamano: this.mascotaForm.controls.tamano.value,
