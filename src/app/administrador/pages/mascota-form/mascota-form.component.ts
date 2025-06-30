@@ -4,6 +4,7 @@ import { MascotasService } from '../../../shared/services/mascotas/mascotas.serv
 import { Mascotas } from '../../../shared/model/mascotas';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-mascota-form',
@@ -15,7 +16,7 @@ export class MascotaFormComponent implements OnInit {
   mascotaForm = new FormGroup({
     'nombre': new FormControl('', [Validators.required]),
     'raza': new FormControl('', [Validators.required]),
-    'edad': new FormControl('', [Validators.required]),
+    'fechaNacimiento': new FormControl('', [Validators.required]),
     'sexo': new FormControl('', [Validators.required]),
     'esterilizada': new FormControl('', [Validators.required]),
     'estado': new FormControl('', [Validators.required]),
@@ -37,12 +38,12 @@ export class MascotaFormComponent implements OnInit {
     const mascotastring = sessionStorage.getItem('perfil-paciente');
    
     if (mascotastring){
-       const mascota = JSON.parse(mascotastring) as Mascotas;
+      const mascota = JSON.parse(mascotastring) as Mascotas;
       this.mascota=mascota; 
       this.mascotaForm.controls["nombre"].setValue(this.mascota.nombre);
       this.mascotaForm.controls["raza"].setValue(this.mascota.raza);
-      this.mascotaForm.controls["edad"].setValue(this.mascota.edad);
-      this.mascotaForm.controls["sexo"].setValue(this.mascota.sexo);
+      this.mascotaForm.controls["fechaNacimiento"].setValue(formatDate(this.mascota.fechaNacimiento,'yyyy-MM-dd','en'));
+      this.mascotaForm.controls["sexo"].setValue(this.mascota.sexo);2
       this.mascotaForm.controls["esterilizada"].setValue(this.mascota.esterilizada ? "Sí": "No");
       this.mascotaForm.controls["estado"].setValue(this.mascota.estado);
       this.mascotaForm.controls["condiciones"].setValue(this.mascota.condiciones);
@@ -87,7 +88,7 @@ export class MascotaFormComponent implements OnInit {
     this.mascotaForm.valid &&
     this.mascotaForm.controls.nombre.value &&
     this.mascotaForm.controls.raza.value &&
-    this.mascotaForm.controls.edad.value &&
+    this.mascotaForm.controls.fechaNacimiento.value &&
     this.mascotaForm.controls.sexo.value &&
     this.mascotaForm.controls.esterilizada.value &&
     this.mascotaForm.controls.estado.value &&
@@ -100,7 +101,7 @@ export class MascotaFormComponent implements OnInit {
     const mascota: Mascotas = {
       nombre: this.mascotaForm.controls.nombre.value,
       raza: this.mascotaForm.controls.raza.value,
-      edad: this.mascotaForm.controls.edad.value,
+      fechaNacimiento: new Date(this.mascotaForm.controls.fechaNacimiento.value),
       sexo: this.mascotaForm.controls.sexo.value,
       esterilizada: true,
       estado: this.mascotaForm.controls.estado.value,
@@ -139,6 +140,7 @@ export class MascotaFormComponent implements OnInit {
     }
   }
 }
+
 preguntarTestimonio() {
   Swal.fire({
     title: '¿Quieres agregar un testimonio?',

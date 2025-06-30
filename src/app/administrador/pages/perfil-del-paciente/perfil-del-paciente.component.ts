@@ -20,7 +20,7 @@ export class PerfilDelPacienteComponent {
   constructor(private route:Router) {
     const mascotastring = sessionStorage.getItem('perfil-paciente');
     const mascota = JSON.parse(mascotastring!) as Mascotas;
-    this.mascota=mascota;  
+    this.mascota= { ...mascota, fechaNacimiento: new Date(mascota.fechaNacimiento) };
   }
 
   mostraralerta (){
@@ -34,5 +34,49 @@ export class PerfilDelPacienteComponent {
 
   ocultaralerta(){
     this.alertaeliminar = false;
+  }
+
+  volver() {
+    sessionStorage.removeItem('perfil-paciente');
+    this.route.navigate(["/admin/ver-todas-mascotas"]);
+  }
+
+  calcularEdad() {
+    const hoy = new Date();
+    let anios = hoy.getFullYear() - this.mascota.fechaNacimiento.getFullYear();
+    const meses = hoy.getMonth() - this.mascota.fechaNacimiento.getMonth();
+    const dias = hoy.getDay() - this.mascota.fechaNacimiento.getDay();
+
+    if (meses < 0 || (meses === 0 && dias < 0)) {
+      anios--;
+    }
+
+     if (anios >= 1) {
+      return `${anios} años`;
+    }
+    
+    else {
+      let edadEnMeses = meses;
+      if (dias < 0) {
+        edadEnMeses--;
+      }
+      
+      if (edadEnMeses < 0) {
+          edadEnMeses += 12;
+      }
+
+      if(meses === 0 && dias === 0){
+        return 'Recién nacido';
+      }
+
+      if (edadEnMeses > 0) {
+          return `${edadEnMeses} ${edadEnMeses === 1 ? 'mes' : 'meses'}`;
+      }
+      else {
+          const diffTime = Math.abs(hoy.getTime() - this.mascota.fechaNacimiento.getTime());
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          return `${diffDays} ${diffDays === 1 ? 'día' : 'días'}`;
+      }
+    }
   }
 }

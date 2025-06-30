@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { addDoc, collection, collectionData, CollectionReference, deleteDoc, doc, Firestore, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
+import { addDoc, collection, collectionData, CollectionReference, deleteDoc, doc, Firestore, getDoc, getDocs, query, Timestamp, updateDoc, where } from '@angular/fire/firestore';
 import { from, map, Observable, of } from 'rxjs';
 import { Mascotas } from '../../model/mascotas';
 
@@ -24,7 +24,7 @@ export class MascotasService {
             idMascota: element.id,
             nombre: datosMascota['nombre'],
             raza: datosMascota['raza'],
-            edad: datosMascota['edad'],
+            fechaNacimiento: (datosMascota['fechaNacimiento'] as Timestamp).toDate(),
             sexo: datosMascota['sexo'],
             esterilizada: datosMascota['esterilizada'],
             estado: datosMascota['estado'],
@@ -45,7 +45,7 @@ export class MascotasService {
         idMascota: element.id,
         nombre: datosMascota['nombre'],
         raza: datosMascota['raza'],
-        edad: datosMascota['edad'],
+        fechaNacimiento: (datosMascota['fechaNacimiento'] as Timestamp).toDate(),
         sexo: datosMascota['sexo'],
         esterilizada: datosMascota['esterilizada'],
         estado: datosMascota['estado'],
@@ -58,12 +58,12 @@ export class MascotasService {
   }
 
   addMascotas(mascota: Mascotas) {
-    return addDoc(this.mascotasCollection, mascota);
+    return addDoc(this.mascotasCollection, { ...mascota, fechaNacimiento: Timestamp.fromDate(mascota.fechaNacimiento) });
   }
   
   async actualizarMascota(mascota:Mascotas , id: string): Promise<boolean> {
     if (id) {
-      await updateDoc(doc(this.firestore, this.mascotasCollection.path, id), { ...mascota });
+      await updateDoc(doc(this.firestore, this.mascotasCollection.path, id), { ...mascota, fechaNacimiento: Timestamp.fromDate(mascota.fechaNacimiento) });
       return true;
     }
     return false;
@@ -87,7 +87,7 @@ export class MascotasService {
           idMascota: element.id,
           nombre: datosMascota['nombre'],
           raza: datosMascota['raza'],
-          edad: datosMascota['edad'],
+          fechaNacimiento: (datosMascota['fechaNacimiento'] as Timestamp).toDate(),
           sexo: datosMascota['sexo'],
           esterilizada: datosMascota['esterilizada'],
           estado: datosMascota['estado'],

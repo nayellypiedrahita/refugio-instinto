@@ -34,11 +34,11 @@ export class AdoptaUnPeluditoComponent implements OnInit {
       const coincideTamanio = this.filtroTamanio ? m.tamano === this.filtroTamanio : true;
   
    
-      const coincideEdad = this.filtroEdad 
+      const coincideEdad = false /*this.filtroEdad 
         ? (m.edad === this.filtroEdad || `${m.edad} años` === this.filtroEdad) 
-        : true;
+        : true*/;
   
-      console.log('Mascota:', m.nombre, 'Tamaño:', m.tamano, 'Edad:', m.edad, 'Coincide Tamanio:', coincideTamanio, 'Coincide Edad:', coincideEdad);
+      console.log('Mascota:', m.nombre, 'Tamaño:', m.tamano, 'Edad:', m.fechaNacimiento, 'Coincide Tamanio:', coincideTamanio, 'Coincide Edad:', coincideEdad);
       return coincideTamanio && coincideEdad;
     });
   
