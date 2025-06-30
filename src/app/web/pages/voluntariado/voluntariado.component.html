@@ -74,32 +74,106 @@
           </div>
         <div class="form" *ngIf="!loading">
             <form [formGroup]="voluntariadoForm" (submit)="solicitudVoluntariado()">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" placeholder="Nombre..." formControlName="nombre">
-                <div class="error-msg">
-                    <p *ngIf="this.voluntariadoForm.controls['nombre'].touched && this.voluntariadoForm.controls['nombre'].errors && this.voluntariadoForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
-                    <p *ngIf="this.voluntariadoForm.controls['nombre'].touched && this.voluntariadoForm.controls['nombre'].errors && this.voluntariadoForm.controls['nombre'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+                <label for="nombre">Nombre:</label>
+                <input 
+                  type="text" 
+                  id="nombre" 
+                  name="nombre" 
+                  placeholder="Nombre..." 
+                  formControlName="nombre"
+                  (input)="onNombreInput($event, 'nombre')"
+                  [class.is-invalid]="voluntariadoForm.get('nombre')?.invalid && voluntariadoForm.get('nombre')?.touched">
+                <div class="error-msg" *ngIf="voluntariadoForm.get('nombre')?.errors">
+                  <p *ngIf="voluntariadoForm.get('nombre')?.errors?.['required'] && voluntariadoForm.get('nombre')?.touched">
+                    El nombre es obligatorio
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('nombre')?.errors?.['minlength']">
+                    El nombre debe tener al menos 3 caracteres
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('nombre')?.errors?.['maxlength']">
+                    El nombre no puede tener más de 15 caracteres
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('nombre')?.errors?.['pattern']">
+                    Solo se permiten letras y espacios
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('nombre')?.errors?.['espaciosAlInicio']">
+                    No se permiten espacios al inicio
+                  </p>
                 </div>
                 
                 <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" placeholder="Apellido..." formControlName="apellido">
-                <div class="error-msg">
-                    <p *ngIf="this.voluntariadoForm.controls['apellido'].touched && this.voluntariadoForm.controls['apellido'].errors && this.voluntariadoForm.controls['apellido'].errors!['required']">El campo apellido es obligatorio</p>
-                    <p *ngIf="this.voluntariadoForm.controls['apellido'].touched && this.voluntariadoForm.controls['apellido'].errors && this.voluntariadoForm.controls['apellido'].errors!['pattern']">El campo apellido solo acepta de 5 a 50 letras</p>
+                <input 
+                  type="text" 
+                  id="apellido" 
+                  name="apellido" 
+                  placeholder="Apellido..." 
+                  formControlName="apellido"
+                  (input)="onNombreInput($event, 'apellido')"
+                  [class.is-invalid]="voluntariadoForm.get('apellido')?.invalid && voluntariadoForm.get('apellido')?.touched">
+                <div class="error-msg" *ngIf="voluntariadoForm.get('apellido')?.errors">
+                  <p *ngIf="voluntariadoForm.get('apellido')?.errors?.['required'] && voluntariadoForm.get('apellido')?.touched">
+                    El apellido es obligatorio
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('apellido')?.errors?.['minlength']">
+                    El apellido debe tener al menos 3 caracteres
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('apellido')?.errors?.['maxlength']">
+                    El apellido no puede tener más de 15 caracteres
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('apellido')?.errors?.['pattern']">
+                    Solo se permiten letras y espacios
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('apellido')?.errors?.['espaciosAlInicio']">
+                    No se permiten espacios al inicio
+                  </p>
                 </div>
 
-                <label for="numero">Numero de celular:</label>
-                <input type="text" id="numero" name="numero" placeholder="WhatsApp..." formControlName="celular">
-                <div class="error-msg">
-                    <p *ngIf="this.voluntariadoForm.controls['celular'].touched && this.voluntariadoForm.controls['celular'].errors && this.voluntariadoForm.controls['celular'].errors!['required']">El campo celular es obligatorio</p>
-                    <p *ngIf="this.voluntariadoForm.controls['celular'].touched && this.voluntariadoForm.controls['celular'].errors && this.voluntariadoForm.controls['celular'].errors!['pattern']">El campo celular solo acepta de 5 a 50 letras</p>
+                <label for="celular">Número de WhatsApp: *</label>
+                <input 
+                  type="text" 
+                  id="celular" 
+                  name="celular" 
+                  placeholder="Número de WhatsApp..." 
+                  formControlName="celular"
+                  (input)="onCelularInput($event)"
+                  [class.is-invalid]="voluntariadoForm.get('celular')?.invalid && voluntariadoForm.get('celular')?.touched">
+                <div class="error-msg" *ngIf="voluntariadoForm.get('celular')?.errors">
+                  <p *ngIf="voluntariadoForm.get('celular')?.errors?.['required'] && voluntariadoForm.get('celular')?.touched">
+                    El número de WhatsApp es obligatorio
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('celular')?.errors?.['pattern']">
+                    Solo se permiten números
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('celular')?.errors?.['minlength']">
+                    El número debe tener al menos 6 dígitos
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('celular')?.errors?.['maxlength']">
+                    El número no puede tener más de 13 dígitos
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('celular')?.errors?.['espaciosAlInicio']">
+                    No se permiten espacios al inicio
+                  </p>
                 </div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Email..." formControlName="email">
-                <div class="error-msg">
-                    <p *ngIf="this.voluntariadoForm.controls['email'].touched && this.voluntariadoForm.controls['email'].errors && this.voluntariadoForm.controls['email'].errors!['required']">El campo email es obligatorio</p>
-                    <p *ngIf="this.voluntariadoForm.controls['email'].touched && this.voluntariadoForm.controls['email'].errors && this.voluntariadoForm.controls['email'].errors!['email']">El email no es correcto</p>
+                <label for="email">Correo electrónico: *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="correo@ejemplo.com" 
+                  formControlName="email"
+                  (input)="onEmailInput($event)"
+                  [class.is-invalid]="voluntariadoForm.get('email')?.invalid && voluntariadoForm.get('email')?.touched">
+                <div class="error-msg" *ngIf="voluntariadoForm.get('email')?.errors">
+                  <p *ngIf="voluntariadoForm.get('email')?.errors?.['required'] && voluntariadoForm.get('email')?.touched">
+                    El correo electrónico es obligatorio
+                  </p>
+                  <p *ngIf="(voluntariadoForm.get('email')?.errors?.['email'] || voluntariadoForm.get('email')?.errors?.['pattern']) && !voluntariadoForm.get('email')?.errors?.['required']">
+                    Por favor ingresa un correo electrónico válido (ejemplo: nombre&#64;dominio.com)
+                  </p>
+                  <p *ngIf="voluntariadoForm.get('email')?.errors?.['espaciosAlInicio']">
+                    No se permiten espacios al inicio
+                  </p>
                 </div>
                 <h3>
                     Elige la labor que deseas hacer como voluntariado
@@ -142,8 +216,34 @@
                     <div class="option">
                         <label for="Recaudacion"> Angel recaudador</label>
                         <input type="checkbox" id="Recaudacion" name="Recaudacion" value="Recaudacion" formControlName="angelRecaudador">
-                    </div>                      
+                    </div>
                 </div>
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label for="otro">Otra labor que desees realizar:</label>
+                    <textarea 
+                      id="otro" 
+                      name="otro" 
+                      class="form-control"
+                      placeholder="Describe aquí otra labor que te gustaría realizar (máx. 150 caracteres)" 
+                      rows="3"
+                      formControlName="otro"
+                      (input)="onOtroInput($event)"
+                      [class.is-invalid]="voluntariadoForm.get('otro')?.invalid && voluntariadoForm.get('otro')?.touched"
+                      style="resize: vertical;"></textarea>
+                    <div class="error-msg" *ngIf="voluntariadoForm.get('otro')?.errors">
+                      <p *ngIf="voluntariadoForm.get('otro')?.errors?.['required'] && voluntariadoForm.get('otro')?.touched">
+                        Por favor selecciona al menos una opción o describe otra labor
+                      </p>
+                      <p *ngIf="voluntariadoForm.get('otro')?.errors?.['maxlength']">
+                        El texto no puede tener más de 150 caracteres
+                      </p>
+                      <p *ngIf="voluntariadoForm.get('otro')?.errors?.['espaciosAlInicio']">
+                        No se permiten espacios al inicio
+                      </p>
+                    </div>
+                </div>
+                
                 <button type="submit">Enviar</button>
             </form>
         </div>

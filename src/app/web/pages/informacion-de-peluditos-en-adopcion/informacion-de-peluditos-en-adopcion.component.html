@@ -11,7 +11,7 @@
         <div class="text-box">
             <h2>{{ mascota.nombre }}</h2>
             <p>
-                Edad: {{ mascota.edad }} <br>
+                Edad: {{ calcularEdad() }} <br>
                 Tamaño: {{ mascota.tamano }} <br>
                 Sexo: Macho <br>
                 Raza: {{ mascota.raza }} <br>
@@ -19,11 +19,20 @@
                 <br>
                 {{ mascota.historia }}
             </p>
+            <div class="container-buttons">
+                <div class="button">
+                    <a routerLink="/web/formulario-de-adopcion/{{ idMascota }}">Adoptar</a>
+                </div>
 
-            <div class="button">
-                <a routerLink="/web/formulario-de-adopcion/{{ idMascota }}">Adoptar</a>
+                <div class="button">
+                    <a (click)="obtenerContrato()">{{ mostrarContrato ? 'Ocultar Contrato' : 'Ver Contrato' }}</a>
+                </div>
             </div>
-        
         </div>
     </ng-container>
 </div>
+<ng-container *ngIf="mostrarContrato">
+    <div class="contrato-container">
+        <iframe [src]="base64Contrato" height="100%" width="70%" scrolling="auto"></iframe>
+    </div>
+</ng-container>

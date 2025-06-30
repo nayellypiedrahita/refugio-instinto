@@ -10,12 +10,30 @@
       </div>
     </ng-container>
     <form (submit)="solicitudAdopcion()" [formGroup]="adopcionForm" *ngIf="!loadingForm">
-
-        <label for="email">Nombre Completo y apellidos: *</label>
-        <input type="text" id="Nombre" placeholder="Nombre Completo..." formControlName="nombre">
-        <div class="error-msg">
-          <p *ngIf="this.adopcionForm.controls['nombre'].touched && this.adopcionForm.controls['nombre'].errors && this.adopcionForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
-          <p *ngIf="this.adopcionForm.controls['nombre'].touched && this.adopcionForm.controls['nombre'].errors && this.adopcionForm.controls['nombre'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+        <label for="nombre">Nombre Completo: *</label>
+        <input 
+          type="text" 
+          id="nombre" 
+          placeholder="Nombre Completo..." 
+          formControlName="nombre"
+          (input)="onNombreInput($event)"
+          [class.is-invalid]="adopcionForm.get('nombre')?.invalid && adopcionForm.get('nombre')?.touched">
+        <div class="error-msg" *ngIf="adopcionForm.get('nombre')?.errors">
+          <p *ngIf="adopcionForm.get('nombre')?.errors?.['required'] && adopcionForm.get('nombre')?.touched">
+            El campo nombre es obligatorio
+          </p>
+          <p *ngIf="adopcionForm.get('nombre')?.errors?.['minlength']">
+            El nombre debe tener al menos 3 caracteres
+          </p>
+          <p *ngIf="adopcionForm.get('nombre')?.errors?.['maxlength']">
+            El nombre no puede tener más de 50 caracteres
+          </p>
+          <p *ngIf="adopcionForm.get('nombre')?.errors?.['pattern']">
+            Solo se permiten letras y espacios
+          </p>
+          <p *ngIf="adopcionForm.get('nombre')?.errors?.['espaciosAlInicio']">
+            No se permiten espacios al inicio
+          </p>
         </div>
 
         <label for="tipo-documento">Tipo y número de documento: *</label>
@@ -28,25 +46,67 @@
             <div class="error-msg">
               <p *ngIf="this.adopcionForm.controls['tipoDocumento'].touched && this.adopcionForm.controls['tipoDocumento'].errors && this.adopcionForm.controls['tipoDocumento'].errors!['required']">El campo tipo de documento es obligatorio</p>
             </div>
-            <input type="text" id="numero-documento" placeholder="Número de documento" formControlName="numeroDocumento">
-            <div class="error-msg">
-              <p *ngIf="this.adopcionForm.controls['numeroDocumento'].touched && this.adopcionForm.controls['numeroDocumento'].errors && this.adopcionForm.controls['numeroDocumento'].errors!['required']">El campo numero de documento es obligatorio</p>
-              <p *ngIf="this.adopcionForm.controls['numeroDocumento'].touched && this.adopcionForm.controls['numeroDocumento'].errors && this.adopcionForm.controls['numeroDocumento'].errors!['pattern']">El campo numero de documento solo acepta números</p>
+            <input 
+              type="text" 
+              id="numero-documento" 
+              placeholder="Número de documento" 
+              formControlName="numeroDocumento"
+              (input)="onDocumentoInput($event)"
+              [class.is-invalid]="adopcionForm.get('numeroDocumento')?.invalid && adopcionForm.get('numeroDocumento')?.touched">
+            <div class="error-msg" *ngIf="adopcionForm.get('numeroDocumento')?.errors">
+              <p *ngIf="adopcionForm.get('numeroDocumento')?.errors?.['required'] && adopcionForm.get('numeroDocumento')?.touched">
+                El número de documento es obligatorio
+              </p>
+              <p *ngIf="adopcionForm.get('numeroDocumento')?.errors?.['pattern']">
+                Solo se permiten números
+              </p>
+              <p *ngIf="adopcionForm.get('numeroDocumento')?.errors?.['minlength']">
+                El documento debe tener al menos 6 dígitos
+              </p>
+              <p *ngIf="adopcionForm.get('numeroDocumento')?.errors?.['maxlength']">
+                El documento no puede tener más de 12 dígitos
+              </p>
             </div>
         </div>
     
         <label for="email">Correo electrónico: *</label>
-        <input type="email" id="email" placeholder="Correo Electrónico..." formControlName="correo">
-        <div class="error-msg">
-          <p *ngIf="this.adopcionForm.controls['correo'].touched && this.adopcionForm.controls['correo'].errors && this.adopcionForm.controls['correo'].errors!['required']">El campo correo de documento es obligatorio</p>
-          <p *ngIf="this.adopcionForm.controls['correo'].touched && this.adopcionForm.controls['correo'].errors && this.adopcionForm.controls['correo'].errors!['email']">Este campo no parece un correo</p>
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="Correo Electrónico..." 
+          formControlName="correo"
+          (input)="onEmailInput($event)"
+          [class.is-invalid]="adopcionForm.get('correo')?.invalid && adopcionForm.get('correo')?.touched">
+        <div class="error-msg" *ngIf="adopcionForm.get('correo')?.errors">
+          <p *ngIf="adopcionForm.get('correo')?.errors?.['required'] && adopcionForm.get('correo')?.touched">
+            El correo electrónico es obligatorio
+          </p>
+          <p *ngIf="adopcionForm.get('correo')?.errors?.['email'] || adopcionForm.get('correo')?.errors?.['pattern']">
+            Por favor ingresa un correo electrónico válido (ejemplo: nombre&#64;dominio.com)
+          </p>
         </div>
 
-        <label for="telefono">Número celular: *</label>
-        <input type="tel" id="telefono" placeholder="Número celular..." formControlName="celular">
-        <div class="error-msg">
-          <p *ngIf="this.adopcionForm.controls['celular'].touched && this.adopcionForm.controls['celular'].errors && this.adopcionForm.controls['celular'].errors!['required']">El campo telefono es obligatorio</p>
-          <p *ngIf="this.adopcionForm.controls['celular'].touched && this.adopcionForm.controls['celular'].errors && this.adopcionForm.controls['celular'].errors!['pattern']">El campo telefono solo acepta numeros</p>
+        <label for="celular">Número celular: *</label>
+        <input 
+          type="tel" 
+          id="celular" 
+          placeholder="Número celular..." 
+          formControlName="celular"
+          (input)="onCelularInput($event)"
+          [class.is-invalid]="adopcionForm.get('celular')?.invalid && adopcionForm.get('celular')?.touched">
+        <div class="error-msg" *ngIf="adopcionForm.get('celular')?.errors">
+          <p *ngIf="adopcionForm.get('celular')?.errors?.['required'] && adopcionForm.get('celular')?.touched">
+            El número de celular es obligatorio
+          </p>
+          <p *ngIf="adopcionForm.get('celular')?.errors?.['pattern']">
+            Solo se permiten números
+          </p>
+          <p *ngIf="adopcionForm.get('celular')?.errors?.['minlength']">
+            El número debe tener al menos 6 dígitos
+          </p>
+          <p *ngIf="adopcionForm.get('celular')?.errors?.['maxlength']">
+            El número no puede tener más de 12 dígitos
+          </p>
         </div>
 
         <label for="departamento">Departamento: *</label>

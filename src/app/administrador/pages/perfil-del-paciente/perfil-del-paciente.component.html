@@ -1,16 +1,15 @@
 <div class="text-box1">
-    <a class="hover-text" routerLink="/admin/ver-todas-mascotas"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
+    <a class="hover-text" (click)="volver()"><h3> <i class="fa-solid fa-chevron-left"></i> Volver</h3></a>
 </div>
 
-<app-title titleText="PERFIL PACIENTE"></app-title>
+<app-title titleText="PERFIL MASCOTA"></app-title>
 <div class="content-container2">
     <div class="image-container">
         <img [src]="mascota.imagenes[0]" alt="Descripción de la imagen" class="testimonios-image">
         
         <div class="info-boxes">>
             <div class="info-box">
-                <p>Fecha de registro: 10/11/2024</p>
-                <p>Meses-Años: {{ mascota.edad }}</p>
+                <p>Edad: {{ calcularEdad() }}</p>
                 <p>sexo: {{mascota.sexo}}</p>
             </div>
             <div class="info-box">

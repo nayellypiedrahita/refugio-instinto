@@ -43,6 +43,8 @@ import { OlvidoSuContrasenaComponent } from './administrador/pages/olvido_su_con
 import { ActualizarContrasenaComponent } from './administrador/pages/actualizar_contrasena/actualizar_contrasena.component';
 import { AddTestimonioComponent } from './administrador/pages/add-testimonio/add-testimonio.component';
 import { EnviadoTestimonioComponent } from './administrador/pages/enviado-testimonio/enviado-testimonio.component';
+import { ContratoAdopcionComponent } from './administrador/pages/contrato-adopcion/contrato-adopcion.component';
+
 
 const routes: Routes = [
   { 
@@ -95,6 +97,7 @@ const routes: Routes = [
       { path: "solicitudes-adopcion", component: SolicitudAdopcionComponent},
       { path: "agregar-testimonio",  component: AddTestimonioComponent },
       { path: "enviado-testimonio",  component: EnviadoTestimonioComponent },
+      { path: "contrato-adopcion",  component: ContratoAdopcionComponent },
       { path: '**', pathMatch: 'full', redirectTo: '/admin/home' }
     ]
   },

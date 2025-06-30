@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators, ValidationErrors } from '@angular/forms';
 import { SolicitudVoluntariadoService } from '../../../shared/services/solicitud-voluntariado/solicitud-voluntariado.service';
 import { SolicitudVoluntariado } from '../../../shared/model/solicitud-voluntariado';
 import { Router } from '@angular/router';
@@ -15,11 +15,44 @@ export class VoluntariadoComponent implements OnInit {
 
   currentSlide: number = 0;
 
+  // Validador personalizado para espacios al inicio
+  noEspaciosAlInicio(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const value = control.value;
+      if (value && value.trim() !== '' && value.startsWith(' ')) {
+        return {'espaciosAlInicio': true};
+      }
+      return null;
+    };
+  }
+
   voluntariadoForm: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]{3,50}')]),
-    apellido: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z ]{3,50}')]),
-    celular: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+    nombre: new FormControl('', [
+      Validators.required, 
+      Validators.minLength(3),
+      Validators.maxLength(15),
+      Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$'),
+      this.noEspaciosAlInicio()
+    ]),
+    apellido: new FormControl('', [
+      Validators.required, 
+      Validators.minLength(3),
+      Validators.maxLength(15),
+      Validators.pattern('^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$'),
+      this.noEspaciosAlInicio()
+    ]),
+    celular: new FormControl('', [
+      Validators.required, 
+      Validators.pattern('^[0-9]*$'),
+      Validators.minLength(6),
+      Validators.maxLength(13),
+      this.noEspaciosAlInicio()
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'),
+      this.noEspaciosAlInicio()
+    ]),
     paseadorPerros: new FormControl(''),
     hadaGatuna: new FormControl(''),
     heroeBaño: new FormControl(''),
@@ -27,19 +60,144 @@ export class VoluntariadoComponent implements OnInit {
     embajadorAdopciones: new FormControl(''),
     heroeLimpieza: new FormControl(''),
     voluntarioVirtual: new FormControl(''),
-    angelRecaudador: new FormControl(''), 
+    angelRecaudador: new FormControl(''),
+    otro: new FormControl('', [
+      Validators.maxLength(150),
+      this.noEspaciosAlInicio()
+    ]),
   });
   loading: boolean = false;
-  private solicitudVoluntariadoService: SolicitudVoluntariadoService = inject(SolicitudVoluntariadoService);
 
   constructor(
+    private solicitudVoluntariadoService: SolicitudVoluntariadoService,
     private router: Router
-  ){}
+  ) {}
+
+  // Maneja la entrada del campo de correo electrónico
+  onEmailInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value.trim();
+    
+    // Convertir a minúsculas para consistencia
+    value = value.toLowerCase();
+    
+    // Actualizar el valor en el input y en el formulario
+    if (input.value !== value) {
+      input.value = value;
+      this.voluntariadoForm.get('email')?.setValue(value);
+    }
+  }
+
+  // Maneja la entrada del campo de WhatsApp
+  onCelularInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+    
+    // Eliminar cualquier caracter que no sea número
+    value = value.replace(/[^0-9]/g, '');
+    
+    // Limitar a 13 caracteres
+    if (value.length > 13) {
+      value = value.substring(0, 13);
+    }
+    
+    // Actualizar el valor en el input y en el formulario
+    if (input.value !== value) {
+      input.value = value;
+      this.voluntariadoForm.get('celular')?.setValue(value);
+    }
+  }
+
+  // Maneja la entrada del campo 'otro'
+  onOtroInput(event: any) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+    
+    // Eliminar espacios al inicio
+    value = value.trimStart();
+    
+    // Actualizar el valor en el input y en el formulario
+    if (input.value !== value) {
+      input.value = value;
+      this.voluntariadoForm.get('otro')?.setValue(value);
+    }
+  }
+
+  // Maneja la entrada de texto para nombre y apellido
+  onNombreInput(event: any, field: string) {
+    const input = event.target as HTMLInputElement;
+    let value = input.value;
+    
+    // Eliminar cualquier número o carácter especial
+    value = value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/g, '');
+    
+    // Eliminar espacios al inicio
+    value = value.trimStart();
+    
+    // Convertir a minúsculas primero
+    value = value.toLowerCase();
+    
+    // Capitalizar la primera letra de cada palabra
+    value = value.replace(/\b\w/g, (char) => char.toUpperCase());
+    
+    // Actualizar el valor en el input y en el formulario
+    if (input.value !== value) {
+      input.value = value;
+      this.voluntariadoForm.get(field)?.setValue(value);
+    }
+  }
 
   ngOnInit(): void {
     this.javascript();
     
+    // Suscribirse a cambios en los checkboxes
+    const checkboxes = [
+      'paseadorPerros', 'hadaGatuna', 'heroeBaño', 'chefAnimal',
+      'embajadorAdopciones', 'heroeLimpieza',
+      'voluntarioVirtual', 'angelRecaudador'
+    ];
+    
+    // Observar cambios en los checkboxes
+    checkboxes.forEach(checkbox => {
+      this.voluntariadoForm.get(checkbox)?.valueChanges.subscribe(() => {
+        this.updateOtroValidation();
+      });
+    });
+    
+    // Validación inicial
+    this.updateOtroValidation();
   }
+  
+  // Actualiza la validación del campo 'otro' basado en los checkboxes seleccionados
+  private updateOtroValidation() {
+    const otroControl = this.voluntariadoForm.get('otro');
+    const anyCheckboxSelected = [
+      this.voluntariadoForm.get('paseadorPerros')?.value,
+      this.voluntariadoForm.get('hadaGatuna')?.value,
+      this.voluntariadoForm.get('heroeBaño')?.value,
+      this.voluntariadoForm.get('chefAnimal')?.value,
+      this.voluntariadoForm.get('embajadorAdopciones')?.value,
+      this.voluntariadoForm.get('heroeLimpieza')?.value,
+      this.voluntariadoForm.get('voluntarioVirtual')?.value,
+      this.voluntariadoForm.get('angelRecaudador')?.value
+    ].some(value => value === true);
+    
+    if (anyCheckboxSelected) {
+      otroControl?.clearValidators();
+      otroControl?.setValidators([
+        Validators.maxLength(150),
+        this.noEspaciosAlInicio()
+      ]);
+    } else {
+      otroControl?.setValidators([
+        Validators.required,
+        Validators.maxLength(150),
+        this.noEspaciosAlInicio()
+      ]);
+    }
+    
+    otroControl?.updateValueAndValidity();
+  }  
 
   solicitudVoluntariado() {
     if (!this.voluntariadoForm.invalid) {
