@@ -21,6 +21,9 @@ export class VerTodasMascotasComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMascotas();
+    this.mascotasService.getmascotasfrombacken().subscribe(response=>{
+      console.log(response)
+    })
   }
 
   getMascotas() {

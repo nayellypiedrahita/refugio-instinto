@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, CollectionReference, deleteDoc, doc, Firestore, getDoc, getDocs, query, Timestamp, updateDoc, where } from '@angular/fire/firestore';
 import { from, map, Observable, of } from 'rxjs';
 import { Mascotas } from '../../model/mascotas';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class MascotasService {
 
   private firestore: Firestore = inject(Firestore);
   private mascotasCollection: CollectionReference;
+  private client:HttpClient=inject(HttpClient);
 
   constructor() {
     this.mascotasCollection = collection(this.firestore, 'mascotas');
@@ -114,11 +116,14 @@ export class MascotasService {
           tamano: datosMascota['tamano'],
           historia: datosMascota['historia'],
           imagenes: datosMascota['imagenes'],
-          testimonio: datosMascota['testimonio'], // Asegúrate de que esto se guarde al agregarlo
+          testimonio: datosMascota['testimonio'], 
         } as Mascotas;
       })
     )
   );
 }
 
+getmascotasfrombacken(){
+  return this.client.get("http://localhost:8080/mascotas");
+}
 }
