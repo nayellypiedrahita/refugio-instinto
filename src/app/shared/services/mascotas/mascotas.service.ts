@@ -77,12 +77,12 @@ export class MascotasService {
   }
 
   addMascotas(mascota: Mascotas) {
-    return addDoc(this.mascotasCollection, { ...mascota, fechaNacimiento: Timestamp.fromDate(mascota.fechaNacimiento) });
+    return addDoc(this.mascotasCollection, { ...mascota, fechaNacimiento: Timestamp.fromDate(new Date(mascota.fechaNacimiento)) });
   }
   
   async actualizarMascota(mascota:Mascotas , id: string): Promise<boolean> {
     if (id) {
-      await updateDoc(doc(this.firestore, this.mascotasCollection.path, id), { ...mascota, fechaNacimiento: Timestamp.fromDate(mascota.fechaNacimiento) });
+      await updateDoc(doc(this.firestore, this.mascotasCollection.path, id), { ...mascota, fechaNacimiento: Timestamp.fromDate(new Date(mascota.fechaNacimiento)) });
       return true;
     }
     return false;

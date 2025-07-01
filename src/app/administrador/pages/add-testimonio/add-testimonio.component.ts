@@ -16,7 +16,7 @@ export class AddTestimonioComponent {
     alertaeliminar: boolean = false;
 
  constructor(private mascotasService: MascotasService, private router: Router) {
-  const mascotastring = sessionStorage.getItem('infomascota');
+  const mascotastring = localStorage.getItem('infomascota');
   const mascota = JSON.parse(mascotastring!) as Mascotas;
   this.mascota = mascota;
   this.testimonio = mascota.testimonio ? mascota.testimonio : "";
@@ -47,7 +47,7 @@ async enviar() {
     console.log('Testimonio guardado correctamente');
     this.testimonio = '';
     this.errorTestimonio = '';
-    this.router.navigate(['/admin/enviado-testimonio']); 
+    this.router.navigate(['/admin/testimonios']); 
   } else {
     console.error('Error al guardar el testimonio');
   }

@@ -249,6 +249,7 @@ this.mascotaForm.controls['estado'].valueChanges.subscribe(nuevoEstado => {
       if (this.imagesBase64.length > 0) {
         this.mascotasService.addMascotas(mascota).then(response => {
           if (response) {
+            this.mascota = { ...mascota, idMascota: response.id };
             if (mascota.estado === 'adoptado') {
               this.preguntarTestimonio();
             } else {
@@ -271,7 +272,7 @@ preguntarTestimonio() {
     cancelButtonText: 'No'
   }).then((result) => {
     if (result.isConfirmed) {
-      sessionStorage.setItem('infomascota', JSON.stringify(this.mascota));
+      localStorage.setItem('infomascota', JSON.stringify(this.mascota));
       this.router.navigate (['/admin/agregar-testimonio']);
   
     } else {

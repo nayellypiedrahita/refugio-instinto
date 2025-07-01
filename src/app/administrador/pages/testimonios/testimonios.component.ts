@@ -20,7 +20,7 @@ export class TestimoniosComponent implements OnInit {
   }
 
  redireccionartestimonio(mascota:Mascotas){
- sessionStorage.setItem("infomascota",JSON.stringify(mascota));
+ localStorage.setItem("infomascota",JSON.stringify(mascota));
 
  this.router.navigate(["/admin/agregar-testimonio"]);
  }
