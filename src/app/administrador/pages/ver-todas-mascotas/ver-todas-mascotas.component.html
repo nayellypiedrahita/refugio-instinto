@@ -1,3 +1,3 @@
 <app-title titleText="LISTADO DE MASCOTAS"></app-title>
-<a id="buscar-btn" routerLink="/admin/add-mascota">+</a>
+<a id="buscar-btn" (click)="redirectToComponent()">+</a>
 <app-listado-mascotas [mascotas]="mascotas" [loading]="loading"></app-listado-mascotas>
