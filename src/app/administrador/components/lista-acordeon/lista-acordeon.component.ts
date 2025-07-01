@@ -11,7 +11,6 @@ export class ListaAcordeonComponent implements OnInit {
   @Output() clickedItem = new EventEmitter<any>();
 
   ngOnInit(): void {
-    
   }
 
   emitirEvento(valor: any) {
