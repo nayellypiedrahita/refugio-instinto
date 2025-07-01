@@ -9,20 +9,21 @@
   </div>
   <form (submit)="toSolicitudEnviada()" [formGroup]="donacionForm" *ngIf="!loadingForm">
       <label for="nombre">Nombre completo y Apellidos:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" formControlName="nombreCompleto">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" formControlName="nombreCompleto" (input)="onInput($event)">
       <div class="error-msg">
-        <p *ngIf="donacionForm.get('nombreCompleto')?.errors?.['minlength']">Mínimo 3 caracteres.</p>
-        <p *ngIf="donacionForm.get('nombreCompleto')?.errors?.['maxlength']">Máximo 50 caracteres.</p>
-        <p *ngIf="this.donacionForm.controls['nombreCompleto'].touched && this.donacionForm.controls['nombreCompleto'].errors && this.donacionForm.controls['nombreCompleto'].errors!['required']">El campo nombre es obligatorio</p>
-        <p *ngIf="this.donacionForm.controls['nombreCompleto'].touched && this.donacionForm.controls['nombreCompleto'].errors && this.donacionForm.controls['nombreCompleto'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+        <p *ngIf="donacionForm.get('nombreCompleto')?.errors?.['required'] && donacionForm.get('nombreCompleto')?.touched">El nombre es obligatorio</p>
+        <p *ngIf="donacionForm.get('nombreCompleto')?.errors?.['minlength']">El nombre debe tener al menos 8 caracteres</p>
+        <p *ngIf="donacionForm.get('nombreCompleto')?.errors?.['maxlength']">El nombre no puede tener más de 35 caracteres</p>
+        <p *ngIf="donacionForm.get('nombreCompleto')?.errors?.['startsWithSpace']">El nombre no puede comenzar con espacio</p>
       </div>
       
-      <label for="numeroc">Número de celular:</label>
-      <input type="tel" id="numeroc" name="numeroc" placeholder="WhatsApp" formControlName="numeroCelular">
+      <label for="numeroc">Número de WhatsApp:</label>
+      <input type="tel" id="numeroc" name="numeroc" placeholder="Número de teléfono" formControlName="numeroCelular" inputmode="numeric">
       <div class="error-msg">
-        <p *ngIf="donacionForm.get('numeroCelular')?.errors?.['pattern']">Solo se permiten números de 7 a 15 dígitos.</p>
-        <p *ngIf="this.donacionForm.controls['numeroCelular'].touched && this.donacionForm.controls['numeroCelular'].errors && this.donacionForm.controls['numeroCelular'].errors!['required']">El campo numero de celular es obligatorio</p>
-        <p *ngIf="this.donacionForm.controls['numeroCelular'].touched && this.donacionForm.controls['numeroCelular'].errors && this.donacionForm.controls['numeroCelular'].errors!['pattern']">El campo numero de celular solo acepta numero</p>
+        <p *ngIf="donacionForm.get('numeroCelular')?.errors?.['required'] && donacionForm.get('numeroCelular')?.touched">El número de WhatsApp es obligatorio</p>
+        <p *ngIf="donacionForm.get('numeroCelular')?.errors?.['pattern']">Solo se permiten números</p>
+        <p *ngIf="donacionForm.get('numeroCelular')?.errors?.['minlength']">El número debe tener al menos 6 dígitos</p>
+        <p *ngIf="donacionForm.get('numeroCelular')?.errors?.['maxlength']">El número no puede tener más de 13 dígitos</p>
       </div>
 
       <p class="donacion">Donación:</p>
@@ -58,10 +59,10 @@
       </div>
 
       <label for="otro">Otro:</label>
-      <input type="text" id="otro" name="otro" placeholder="Otro..." formControlName="otro">
+      <input type="text" id="otro" name="otro" placeholder="Especificar otro" formControlName="otro" [class.error]="donacionForm.get('otro')?.invalid && donacionForm.get('otro')?.touched">
       <div class="error-msg">
-        <p *ngIf="this.donacionForm.controls['otro'].touched && this.donacionForm.controls['otro'].errors && this.donacionForm.controls['otro'].errors!['required']">El campo otro es obligatorio</p>
-          <p *ngIf="this.donacionForm.controls['otro'].touched && this.donacionForm.controls['otro'].errors && this.donacionForm.controls['otro'].errors!['pattern']">El campo otro solo acepta de 5 a 50 letras</p>
+        <p *ngIf="donacionForm.get('otro')?.errors?.['required'] && donacionForm.get('otro')?.touched">Debes especificar un artículo o seleccionar de la lista</p>
+        <p *ngIf="donacionForm.get('otro')?.errors?.['pattern']">El artículo debe contener entre 5 y 50 letras</p>
       </div>
 
       <input type="submit" value="Enviar" >

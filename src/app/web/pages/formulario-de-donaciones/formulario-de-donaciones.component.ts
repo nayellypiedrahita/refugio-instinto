@@ -12,8 +12,27 @@ import { SolicitudDonacionService } from '../../../shared/services/solicitud-don
 export class FormularioDeDonacionesComponent {
 
   donacionForm: FormGroup = new FormGroup({
-    nombreCompleto: new FormControl("", [Validators.required,Validators.minLength(3),Validators.maxLength(50), Validators.pattern('[a-zA-Z ]{5,50}')]),
-    numeroCelular: new FormControl("", [Validators.required, Validators.pattern("^[0-9]{7,15}$")]),
+    nombreCompleto: new FormControl("", {
+      validators: [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(35),
+        (control) => {
+          const value = control.value;
+          if (value && value.startsWith(' ')) {
+            return { startsWithSpace: true };
+          }
+          return null;
+        }
+      ],
+      updateOn: 'blur' // Solo validar al salir del campo
+    }),
+    numeroCelular: new FormControl("", [
+      Validators.required, 
+      Validators.pattern('^[0-9]+$'),
+      Validators.minLength(6),
+      Validators.maxLength(13)
+    ]),
     alimentoGatos: new FormControl(""),
     alimentoPerros: new FormControl(""),
     peine: new FormControl(""),
@@ -23,15 +42,118 @@ export class FormularioDeDonacionesComponent {
     collares: new FormControl(""),
     limpieza: new FormControl(""),
     jaulas: new FormControl(""),
-    otro: new FormControl("", [Validators.required, Validators.pattern('[a-zA-Z ]{5,50}')]),
+    otro: new FormControl(""),
   });
   loadingForm: boolean = false;
   private solicitudDonacionService: SolicitudDonacionService = inject(SolicitudDonacionService);
 
+  // Maneja la entrada de texto para capitalizar la primera letra de cada palabra
+  onInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const cursorPosition = input.selectionStart || 0;
+    const value = input.value;
+    
+    // Capitalizar la primera letra de cada palabra
+    const words = value.split(' ');
+    const capitalizedWords = words.map(word => {
+      if (!word) return ''; // Saltar palabras vacías
+      return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    });
+    
+    const newValue = capitalizedWords.join(' ');
+    
+    // Actualizar el valor solo si hubo cambios
+    if (newValue !== value) {
+      this.donacionForm.get('nombreCompleto')?.setValue(newValue, { emitEvent: false });
+      
+      // Restaurar la posición del cursor
+      setTimeout(() => {
+        input.setSelectionRange(cursorPosition, cursorPosition);
+      });
+    }
+  }
+
+  // Maneja el pegado de texto para limpiar espacios al inicio
+  onPaste(event: ClipboardEvent) {
+    const input = event.target as HTMLInputElement;
+    const clipboardData = event.clipboardData?.getData('text/plain') || '';
+    const selectionStart = input.selectionStart || 0;
+    
+    // Si se está pegando al inicio del campo
+    if (selectionStart === 0) {
+      const cleanText = clipboardData.trimStart();
+      
+      // Si el texto pegado comienza con espacios, prevenimos el pegado normal
+      // y lo hacemos manualmente
+      if (cleanText !== clipboardData) {
+        event.preventDefault();
+        const currentValue = input.value || '';
+        const newValue = cleanText + currentValue.substring(input.selectionEnd || 0);
+        this.donacionForm.get('nombreCompleto')?.setValue(newValue);
+        
+        // Posicionamos el cursor al final del texto pegado
+        setTimeout(() => {
+          input.setSelectionRange(cleanText.length, cleanText.length);
+        });
+      }
+    }
+  }
+
   constructor(
     private router: Router
-  ){
+  ) {
+    // Suscribirse a cambios en los checkboxes para actualizar la validación del campo 'otro'
+    const checkboxes = ['alimentoGatos', 'alimentoPerros', 'peine', 'medicamentos', 'camas', 'arena', 'collares', 'jaulas'];
+    
+    // Función para verificar si hay al menos un checkbox seleccionado
+    const checkIfAnyCheckboxSelected = () => {
+      return checkboxes.some(checkbox => this.donacionForm.get(checkbox)?.value);
+    };
 
+    // Actualizar validación del campo 'otro' cuando cambia cualquier checkbox
+    checkboxes.forEach(checkbox => {
+      this.donacionForm.get(checkbox)?.valueChanges.subscribe(() => {
+        const otroControl = this.donacionForm.get('otro');
+        if (checkIfAnyCheckboxSelected()) {
+          // Si hay algún checkbox seleccionado, hacer que 'otro' no sea obligatorio
+          otroControl?.clearValidators();
+          otroControl?.setValue('');
+        } else {
+          // Si no hay checkboxes seleccionados, hacer que 'otro' sea obligatorio
+          otroControl?.setValidators([Validators.required, Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{5,50}')]);
+        }
+        otroControl?.updateValueAndValidity();
+      });
+    });
+    // Suscribirse a cambios en el campo numeroCelular para limpiar caracteres no numéricos
+    this.donacionForm.get('numeroCelular')?.valueChanges.subscribe(value => {
+      if (value) {
+        // Eliminar cualquier carácter que no sea número
+        const cleanValue = value.replace(/[^0-9]/g, '');
+        if (cleanValue !== value) {
+          this.donacionForm.get('numeroCelular')?.setValue(cleanValue, { emitEvent: false });
+        }
+      }
+    });
+    // Suscribirse a cambios en el campo nombreCompleto para limpiar espacios al inicio
+    this.donacionForm.get('nombreCompleto')?.valueChanges.subscribe(value => {
+      if (value && value.startsWith(' ')) {
+        const cleanValue = value.trimStart();
+        this.donacionForm.get('nombreCompleto')?.setValue(cleanValue, { emitEvent: false });
+      }
+    });
+  }
+
+  // Función para capitalizar la primera letra de cada palabra
+  private capitalizeWords(str: string): string {
+    if (!str) return str;
+    
+    return str
+      .toLowerCase()
+      .split(' ')
+      .filter(word => word.length > 0) // Filtrar palabras vacías
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   toSolicitudEnviada(){

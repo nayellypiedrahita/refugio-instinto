@@ -258,7 +258,7 @@ export class PasarelasComponent implements OnInit {
   }
 
   cancelarEdicion(){
-
+    this.cuentaForm.reset()
   }
 
   toggleEstado(cuenta: string){

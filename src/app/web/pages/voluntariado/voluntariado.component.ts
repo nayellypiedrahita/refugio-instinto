@@ -147,57 +147,88 @@ export class VoluntariadoComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    this.javascript();
-    
-    // Suscribirse a cambios en los checkboxes
-    const checkboxes = [
-      'paseadorPerros', 'hadaGatuna', 'heroeBaño', 'chefAnimal',
-      'embajadorAdopciones', 'heroeLimpieza',
-      'voluntarioVirtual', 'angelRecaudador'
+  // Verifica si algún checkbox está seleccionado
+  private checkAnyCheckboxSelected(): boolean {
+    const checkboxControls = [
+      'paseadorPerros',
+      'hadaGatuna',
+      'heroeBaño',
+      'chefAnimal',
+      'embajadorAdopciones',
+      'heroeLimpieza',
+      'voluntarioVirtual',
+      'angelRecaudador'
     ];
     
-    // Observar cambios en los checkboxes
-    checkboxes.forEach(checkbox => {
-      this.voluntariadoForm.get(checkbox)?.valueChanges.subscribe(() => {
-        this.updateOtroValidation();
-      });
+    return checkboxControls.some(control => {
+      return this.voluntariadoForm.get(control)?.value === true;
     });
-    
-    // Validación inicial
-    this.updateOtroValidation();
   }
-  
+
   // Actualiza la validación del campo 'otro' basado en los checkboxes seleccionados
-  private updateOtroValidation() {
+  private updateOtroValidation(): void {
     const otroControl = this.voluntariadoForm.get('otro');
-    const anyCheckboxSelected = [
-      this.voluntariadoForm.get('paseadorPerros')?.value,
-      this.voluntariadoForm.get('hadaGatuna')?.value,
-      this.voluntariadoForm.get('heroeBaño')?.value,
-      this.voluntariadoForm.get('chefAnimal')?.value,
-      this.voluntariadoForm.get('embajadorAdopciones')?.value,
-      this.voluntariadoForm.get('heroeLimpieza')?.value,
-      this.voluntariadoForm.get('voluntarioVirtual')?.value,
-      this.voluntariadoForm.get('angelRecaudador')?.value
-    ].some(value => value === true);
+    const hasAnyCheckboxSelected = this.checkAnyCheckboxSelected();
     
-    if (anyCheckboxSelected) {
-      otroControl?.clearValidators();
-      otroControl?.setValidators([
-        Validators.maxLength(150),
-        this.noEspaciosAlInicio()
-      ]);
-    } else {
+    if (!hasAnyCheckboxSelected) {
+      // Si no hay checkboxes seleccionados, hacer el campo 'otro' requerido
       otroControl?.setValidators([
         Validators.required,
         Validators.maxLength(150),
         this.noEspaciosAlInicio()
       ]);
+      
+      // Mostrar mensaje de error si el campo está vacío
+      if (otroControl?.value === '') {
+        otroControl.markAsTouched();
+      }
+    } else {
+      // Si hay al menos un checkbox seleccionado, quitar el validador requerido
+      otroControl?.clearValidators();
+      otroControl?.setValidators([
+        Validators.maxLength(150),
+        this.noEspaciosAlInicio()
+      ]);
+      
+      // Limpiar errores si el campo no es requerido
+      if (otroControl?.errors?.['required']) {
+        otroControl.setErrors(null);
+      }
     }
     
+    // Actualizar el estado de validación
     otroControl?.updateValueAndValidity();
-  }  
+  }
+
+  // Suscribirse a cambios en los checkboxes
+  private subscribeToCheckboxChanges(): void {
+    const checkboxControls = [
+      'paseadorPerros',
+      'hadaGatuna',
+      'heroeBaño',
+      'chefAnimal',
+      'embajadorAdopciones',
+      'heroeLimpieza',
+      'voluntarioVirtual',
+      'angelRecaudador'
+    ];
+    
+    checkboxControls.forEach(controlName => {
+      this.voluntariadoForm.get(controlName)?.valueChanges.subscribe(() => {
+        this.updateOtroValidation();
+      });
+    });
+  }
+
+  ngOnInit(): void {
+    this.javascript();
+    
+    // Inicializar la validación del campo 'otro'
+    this.updateOtroValidation();
+    
+    // Suscribirse a cambios en los checkboxes
+    this.subscribeToCheckboxChanges();
+  }
 
   solicitudVoluntariado() {
     if (!this.voluntariadoForm.invalid) {

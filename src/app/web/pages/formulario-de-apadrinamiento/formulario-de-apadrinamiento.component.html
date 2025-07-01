@@ -9,11 +9,18 @@
       <label for="nombre">Nombre completo y Apellidos:</label>
       <input type="text" id="nombre" name="nombre" placeholder="Nombre completo..." formControlName="nombre">
       <div class="error-msg">
-        
-        <p *ngIf="this.apadrinamientoForm.controls['nombre'].touched && this.apadrinamientoForm.controls['nombre'].errors && this.apadrinamientoForm.controls['nombre'].errors!['required']">El campo nombre es obligatorio</p>
-        <p *ngIf="apadrinamientoForm.get('nombre')?.errors?.['minlength']">Mínimo 3 caracteres.</p>
-        <p *ngIf="apadrinamientoForm.get('nombre')?.errors?.['maxlength']">Máximo 50 caracteres.</p>
-        <p *ngIf="this.apadrinamientoForm.controls['nombre'].touched && this.apadrinamientoForm.controls['nombre'].errors && this.apadrinamientoForm.controls['nombre'].errors!['pattern']">El campo nombre solo acepta de 5 a 50 letras</p>
+        <p *ngIf="apadrinamientoForm.get('nombre')?.errors?.['required'] && apadrinamientoForm.get('nombre')?.touched">
+          El nombre es obligatorio
+        </p>
+        <p *ngIf="apadrinamientoForm.get('nombre')?.errors?.['minlength']">
+          El nombre debe tener al menos 3 caracteres
+        </p>
+        <p *ngIf="apadrinamientoForm.get('nombre')?.errors?.['maxlength']">
+          El nombre no puede tener más de 50 caracteres
+        </p>
+        <p *ngIf="apadrinamientoForm.get('nombre')?.errors?.['pattern']">
+          Solo se permiten letras y espacios, y no puede comenzar con espacio
+        </p>
       </div>
 
       <label for="correo">Correo Electronico:</label>
@@ -22,11 +29,15 @@
         <p *ngIf="this.apadrinamientoForm.controls['email'].touched && this.apadrinamientoForm.controls['email'].errors && this.apadrinamientoForm.controls['email'].errors!['required']">El campo email es obligatorio</p>
         <p *ngIf="this.apadrinamientoForm.controls['email'].touched && this.apadrinamientoForm.controls['email'].errors && this.apadrinamientoForm.controls['email'].errors!['email']">El email no es correcto</p>
       </div>
-      <label for="numeroc">Número de celular:</label>
-      <input type="tel" id="numeroc" name="numeroc" placeholder="WhatsApp..." formControlName="celular">
+      <label for="numeroc">Número de celular (WhatsApp):</label>
+      <input type="tel" id="numeroc" name="numeroc" placeholder="Ej: 3203547865" formControlName="celular" maxlength="13">
       <div class="error-msg">
-        <p *ngIf="this.apadrinamientoForm.controls['celular'].touched && this.apadrinamientoForm.controls['celular'].errors && this.apadrinamientoForm.controls['celular'].errors!['required']">El campo celular es obligatorio</p>
-        <p *ngIf="this.apadrinamientoForm.controls['celular'].touched && this.apadrinamientoForm.controls['celular'].errors && this.apadrinamientoForm.controls['celular'].errors!['pattern']">El campo celular solo acepta numeros</p>
+        <p *ngIf="apadrinamientoForm.get('celular')?.errors?.['required'] && apadrinamientoForm.get('celular')?.touched">
+          El número de WhatsApp es obligatorio
+        </p>
+        <p *ngIf="apadrinamientoForm.get('celular')?.errors?.['pattern'] || apadrinamientoForm.get('celular')?.errors?.['minlength']">
+          El número debe tener entre 6 y 13 dígitos
+        </p>
       </div>
 
 
