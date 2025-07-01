@@ -57,6 +57,25 @@ export class MascotasService {
     }));
   }
 
+  getMascotaByIdPromise(idMascota: string): Promise<Mascotas | null>{
+    return getDoc(doc(this.mascotasCollection, idMascota)).then(element => {
+      const datosMascota = element.data()!;
+      return {
+        idMascota: element.id,
+        nombre: datosMascota['nombre'],
+        raza: datosMascota['raza'],
+        fechaNacimiento: (datosMascota['fechaNacimiento'] as Timestamp).toDate(),
+        sexo: datosMascota['sexo'],
+        esterilizada: datosMascota['esterilizada'],
+        estado: datosMascota['estado'],
+        condiciones: datosMascota['condiciones'],
+        tamano: datosMascota['tamano'],
+        historia: datosMascota['historia'],
+        imagenes: datosMascota['imagenes'], 
+      } as Mascotas;
+    });
+  }
+
   addMascotas(mascota: Mascotas) {
     return addDoc(this.mascotasCollection, { ...mascota, fechaNacimiento: Timestamp.fromDate(mascota.fechaNacimiento) });
   }
