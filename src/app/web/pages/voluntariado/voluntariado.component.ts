@@ -245,6 +245,7 @@ export class VoluntariadoComponent implements OnInit {
       const heroeLimpieza = this.voluntariadoForm.controls['heroeLimpieza'].value;
       const voluntarioVirtual = this.voluntariadoForm.controls['voluntarioVirtual'].value;
       const angelRecaudador = this.voluntariadoForm.controls['angelRecaudador'].value;
+      const otro = this.voluntariadoForm.controls['otro'].value;
 
       const actividades: string[] = [];
 
@@ -286,6 +287,7 @@ export class VoluntariadoComponent implements OnInit {
         email,
         fecha: formatDate(Timestamp.now().toDate(), 'yyyy-MM-dd', 'en-US'),
         actividades,
+        otro,
         isNew: true
       };
 

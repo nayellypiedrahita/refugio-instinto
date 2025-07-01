@@ -5,6 +5,7 @@ export interface SolicitudVoluntariado {
     celular: string;
     email: string;
     fecha: string;
-    actividades: string[];
+    actividades: string[];  
+    otro:string;
     isNew: boolean
 }

@@ -43,7 +43,8 @@ export class SolicitudVoluntariadoService {
             email: datosMascota['email'],
             fecha: datosMascota['fecha'],
             isNew: datosMascota['isNew'],
-            // actividades: datosMascota['fecha'],
+            actividades: datosMascota['actividades'] as string[],
+            otro:datosMascota['otro'],
           } as SolicitudVoluntariado;
         })
       )
