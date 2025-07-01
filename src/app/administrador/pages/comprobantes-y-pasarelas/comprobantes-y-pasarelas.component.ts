@@ -44,6 +44,9 @@ export class ComprobantesYPasarelasComponent implements OnInit {
 
 mostrarDetalleComprobante(items:any) {
   const comprobante=items as DonacionMonetaria;
+  this.donacionMonetariaService.noNewComprobante(comprobante.idDonacionMonetaria!).then(response => {
+    this.getDonacionesMonetarias();
+  });
   Swal.fire({
     html: `<img src="${comprobante.base64}" style="max-width: 700px; max-height: 700px; object-fit: cover">`,
     width: 750,

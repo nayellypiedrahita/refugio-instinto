@@ -4,5 +4,6 @@ export interface SolicitudDonaciones {
   numeroCelular: string;
   articulos: string[];
   otro: string;
-  fecha: string; 
+  fecha: string;
+  isNew: boolean;
 }

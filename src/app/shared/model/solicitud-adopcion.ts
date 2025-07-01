@@ -9,4 +9,5 @@ export interface SolicitudAdopcion {
     departamento: string;
     mascota: string;
     fecha: string;
+    isNew: boolean;
 }

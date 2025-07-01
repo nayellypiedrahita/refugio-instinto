@@ -54,6 +54,9 @@ export class SolicitudAdopcionComponent implements OnInit {
 
   redireccionarADetalle(item: any) {
     const detalle = { tipo: "solicitud-adopcion", objeto: item as SolicitudAdopcion }
+    this.adopcionService.noNewSolicitudAdopcion(detalle.objeto.idSolicitud!).then(response => {
+      this.obtenerSolicitudesAdopcion();
+    })
     localStorage.setItem("detalle", JSON.stringify(detalle))
     this.router.navigate(['admin/detalles']);
   }

@@ -5,4 +5,5 @@ export interface SolicitudApadrinamiento {
     celular: string;
     notificacion: boolean;
     fecha: string;
+    isNew: boolean
 }
