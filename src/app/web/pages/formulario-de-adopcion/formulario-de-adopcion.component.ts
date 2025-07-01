@@ -94,7 +94,8 @@ export class FormularioDeAdopcionComponent implements OnInit {
         ciudad,
         departamento,
         mascota: this.idMascota as string,
-        fecha: new Date().toISOString().slice(0, 10)
+        fecha: new Date().toISOString().slice(0, 10),
+        isNew: true
       };
 
       this.solicitudAdopcionService.addSolicitudAdopcion(solicitudAdopcion).then(response => {

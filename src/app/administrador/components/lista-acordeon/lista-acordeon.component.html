@@ -4,6 +4,7 @@
         <label for="{{ 'item-'+i }}">
             {{ datos.fecha.toString() }}
             <span class="arrow">▶</span>
+            <span class="mini-point" *ngIf="countNewByDate(datos.items) > 0"></span>
         </label>
         <ul>
             <ng-container *ngIf="datos.tipo == 'comprobantes-pasarelas'">
@@ -11,6 +12,7 @@
                     <li  (click)="emitirEvento(item)">
                         <span class="list-number">{{ i+1 }}.</span>
                         N. {{ item?.consecutivo }}
+                        <span class="mini-point" *ngIf="item?.isNew"></span>
                     </li>
                 </ng-container>
             </ng-container>
@@ -19,6 +21,7 @@
                     <li  (click)="emitirEvento(item)">
                         <span class="list-number">{{ i+1 }}.</span>
                         {{ item?.nombre + " " + item?.apellido }}
+                        <span class="mini-point" *ngIf="item?.isNew"></span>
                     </li>
                 </ng-container>
             </ng-container>
@@ -28,6 +31,7 @@
     <li (click)="emitirEvento(item)">
       <span class="list-number">{{ i + 1 }}.</span>
       <strong> {{ item?.nombreCompleto }}</strong><br>
+      <span class="mini-point" *ngIf="item?.isNew"></span>
     </li>
   </ng-container>
 </ng-container>
@@ -37,7 +41,7 @@
     <li (click)="emitirEvento(item)">
       <span class="list-number">{{ i + 1 }}.</span>
       <strong> {{ item?.nombre }}</strong><br>
-
+      <span class="mini-point" *ngIf="item?.isNew"></span>
     </li>
   </ng-container>
 </ng-container>
@@ -47,6 +51,7 @@
    <li (click)="emitirEvento(item)">
   <span class="list-number">{{ i + 1 }}.</span>
   <strong>{{ item?.nombre }}</strong>
+  <span class="mini-point" *ngIf="item?.isNew"></span>
 </li>
   </ng-container>
 </ng-container>

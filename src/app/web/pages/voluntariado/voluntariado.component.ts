@@ -254,7 +254,8 @@ export class VoluntariadoComponent implements OnInit {
         celular,
         email,
         fecha: formatDate(Timestamp.now().toDate(), 'yyyy-MM-dd', 'en-US'),
-        actividades
+        actividades,
+        isNew: true
       };
 
       this.solicitudVoluntariadoService.addSolicitudVoluntariado(solicitudVoluntariado).then(response => {

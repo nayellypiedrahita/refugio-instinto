@@ -59,6 +59,7 @@ export class SolicitudEnEspecieComponent implements OnInit {
 
   redireccionarADetalle(item: any) {
     const detalle = { tipo: "solicitud-especie", objeto: item as SolicitudDonaciones };
+    this.donacionService.noNewSolicitudComprobante(detalle.objeto.idSolicitud!)
     localStorage.setItem("detalle", JSON.stringify(detalle));
     this.router.navigate(["/admin/detalles"]);
   }

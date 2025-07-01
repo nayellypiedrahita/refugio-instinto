@@ -48,13 +48,28 @@
                 </li>
                 <li>
                     <input type="checkbox" id="donaciones" hidden>
-                    <label for="donaciones">DONACIONES <span class="arrow">▶</span></label>
+                    <label for="donaciones">
+                        <div class="notificacion-group">
+                            DONACIONES
+                            <span class="point" *ngIf="
+                                countDonaciones +
+                                 countSolicitudDonacion > 0
+                                ">{{ countDonaciones + countSolicitudDonacion }}</span>
+                        </div>
+                        <span class="arrow">▶</span>
+                    </label>
                     <ul class="nav-child">
                         <li routerLink="/admin/comprobantes-y-pasarelas" routerLinkActive="menu_active">
-                            Comprobantes de pago
+                            <div class="notificacion-group">
+                                Comprobantes de pago
+                                <span class="point" *ngIf="countDonaciones>0">{{ countDonaciones }}</span>
+                            </div>
                         </li>
                         <li routerLink="/admin/solicitud-en-especie" routerLinkActive="menu_active">
-                            Solicitudes en especie
+                            <div class="notificacion-group">
+                                Solicitudes en especie
+                                <span class="point" *ngIf="countSolicitudDonacion>0">{{ countSolicitudDonacion }}</span>
+                            </div>
                         </li>
                         <li routerLink="/admin/pasarelas" routerLinkActive="menu_active">
                             Pasarelas de pago
@@ -63,16 +78,35 @@
                 </li>
                 <li>
                     <input type="checkbox" id="solicitudes" hidden>
-                    <label for="solicitudes">SOLICITUDES <span class="arrow">▶</span></label>
+                    <label for="solicitudes"> 
+                        <div class="notificacion-group">
+                            SOLICITUDES
+                            <span class="point" *ngIf="
+                                countSolicitudesAdopcion +
+                                countSolicitudesVoluntariado +
+                                countSolicitudesApadrinamiento > 0
+                                ">{{ countSolicitudesAdopcion + countSolicitudesVoluntariado + countSolicitudesApadrinamiento }}</span>
+                        </div>
+                        <span class="arrow">▶</span>
+                    </label>
                     <ul class="nav-child">
                         <li routerLink="/admin/solicitudes-adopcion" routerLinkActive="menu_active">
-                            Adopción
+                            <div class="notificacion-group">
+                                Adopción
+                                <span class="point" *ngIf="countSolicitudesAdopcion>0">{{ countSolicitudesAdopcion }}</span>
+                            </div>
                         </li>
                         <li routerLink="/admin/solicitudes-voluntariado" routerLinkActive="menu_active">
-                            Voluntariado
+                            <div class="notificacion-group">
+                                Voluntariado
+                                <span class="point" *ngIf="countSolicitudesVoluntariado>0">{{ countSolicitudesVoluntariado }}</span>
+                            </div>
                         </li>
                         <li routerLink="/admin/solicitud-apadrinamiento" routerLinkActive="menu_active">
-                            Apadrinamiento
+                            <div class="notificacion-group">
+                                Apadrinamiento
+                                <span class="point" *ngIf="countSolicitudesApadrinamiento>0">{{ countSolicitudesApadrinamiento }}</span>
+                            </div>
                         </li>
                     </ul>
                 </li>

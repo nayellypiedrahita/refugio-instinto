@@ -21,7 +21,7 @@ ul li {
 }
 
 .date-box input:checked + label + ul li {
-    display: block;
+    display: flex;
 }
 
 .date-box input:checked + label {
@@ -59,8 +59,26 @@ li {
     color: black;
     text-decoration: none;
     font-weight: 500;
+    display: flex;
+    align-items: center;
 }
-.list-number {
-    display: inline-block;
-    width: 20px;
+
+.point {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.mini-point {
+    width: 7px;
+    height: 7px;
+    background-color: red;
+    border-radius: 100%;
 }

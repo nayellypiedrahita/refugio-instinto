@@ -45,6 +45,7 @@ export class SolicitudesVoluntariadoComponent implements OnInit {
 
   redireccionarADetalle(item: any) {
     const detalle = { tipo: "solicitud-voluntariado", objeto: item as SolicitudVoluntariado};
+    this.voluntariadoService.noNewSolicitudVoluntariado(detalle.objeto.idSolicitud!)
     localStorage.setItem('detalle', JSON.stringify(detalle));
     this.router.navigate(['/admin/detalles']);
   }

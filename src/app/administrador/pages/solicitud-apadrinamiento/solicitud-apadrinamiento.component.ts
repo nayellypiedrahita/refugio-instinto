@@ -58,6 +58,7 @@ export class SolicitudApadrinamientoComponent implements OnInit {
 
   redireccionarADetalle(item:any) {
   const detalle = { tipo: "solicitud-apadrinamiento", objeto: item as SolicitudApadrinamiento };
+  this.apadrinamientoService.noNewSolicitudApadrinamiento(detalle.objeto.idSolicitud!);
   localStorage.setItem("detalle", JSON.stringify(detalle));
   this.router.navigate(["/admin/detalles"]);
   }

@@ -118,7 +118,7 @@ aside .main-nav li .nav-child {
 }
 
 aside .main-nav li .nav-child li {
-    padding: 15px 30px;
+    padding: 15px 20px;
     background-color: #fff9f3;
     cursor: pointer;
 }
@@ -146,4 +146,23 @@ aside .main-nav li input:checked + label + ul {
 
 .menu_active {
     background-color: white !important;
+}
+
+.notificacion-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.point {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }

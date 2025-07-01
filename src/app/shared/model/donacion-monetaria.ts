@@ -5,4 +5,5 @@ export interface DonacionMonetaria {
     nombreCompleto: string;
     whatsapp: number;
     fecha: string;
+    isNew: boolean;
 }
