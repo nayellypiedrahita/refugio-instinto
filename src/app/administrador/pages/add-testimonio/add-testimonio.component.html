@@ -31,7 +31,7 @@
 <button class="btn-enviar" (click)="enviar()">ENVIAR</button>
   <button class="btn-cancelar" routerLink="/admin/home" (click)="cancelar()">CANCELAR</button>
 
-<div class="action-buttons inline">
+<div class="action-buttons inline" *ngIf="this.testimonio != ''">
     <button class="action-button delete" (click)="mostraralerta()">
       <i class="fa-solid fa-trash"></i>
     </button>

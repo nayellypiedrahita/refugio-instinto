@@ -4,7 +4,7 @@ import { Departamento } from '../../model/departamento';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { SolicitudAdopcion } from '../../../shared/model/solicitud-adopcion';
 import { SolicitudAdopcionService } from '../../../shared/services/solicitud-adopcion/solicitud-adopcion.service';
-import { DepartamentoService } from '../../services/departamento/departamento.service';
+import { DepartamentoService } from '../../../shared/services/departamento/departamento.service';
 
 @Component({
   selector: 'app-formulario-de-adopcion',

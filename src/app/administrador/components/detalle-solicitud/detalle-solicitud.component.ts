@@ -8,6 +8,8 @@ import { SolicitudApadrinamiento } from '../../../shared/model/solicitud-apadrin
 import { SolicitudApadrinamientoService } from '../../../shared/services/solicitud-apadrinamiento/solicitud-apadrinamiento.service';
 import { SolicitudDonaciones } from '../../../shared/model/solicitud-donaciones';
 import { SolicitudDonacionService } from '../../../shared/services/solicitud-donacion/solicitud-donacion.service';
+import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
+import { DepartamentoService } from '../../../shared/services/departamento/departamento.service';
 
 @Component({
   selector: 'app-detalle-solicitud',
@@ -27,23 +29,37 @@ export class DetalleSolicitudComponent implements OnInit {
   solcitudApadrinamientoservice:  SolicitudApadrinamientoService = inject(SolicitudApadrinamientoService);
   solicitudDonacionService: SolicitudDonacionService = inject(SolicitudDonacionService);
   constructor(
-    private route: Router
+    private route: Router,
+    private mascotaservice: MascotasService,
+    private departamentoservice: DepartamentoService,
+    
   ) {}
 
   
 
-  ngOnInit(): void {
+  async ngOnInit() {
     if (this.datosAgrupados) {
       const detalle = JSON.parse(this.datosAgrupados) as { tipo: string; objeto: any};
       let objeto = null;
       this.parentComponent = detalle.tipo;
       switch(detalle.tipo) {
-        case "solicitud-adopcion":
+        case "solicitud-apadrinamiento":
           objeto = detalle.objeto as SolicitudApadrinamiento;
+          await this.mascotaservice.getMascotaByIdPromise(objeto.mascota).then(response=>{
+            detalle.objeto = { ...detalle.objeto, mascota: response!.nombre } as SolicitudApadrinamiento;
+          });
+          objeto = { ...detalle.objeto } as SolicitudApadrinamiento;
           this.solicitud = { tipo: detalle.tipo, id: objeto.idSolicitud! }
           break;
-        case "solicitud-apadrinamiento":
+        case "solicitud-adopcion":
           objeto = detalle.objeto as SolicitudAdopcion;
+          await this.mascotaservice.getMascotaByIdPromise(objeto.mascota).then(response=>{
+            detalle.objeto = { ...detalle.objeto, mascota: response!.nombre } as SolicitudAdopcion;
+          });
+          await this.departamentoservice.getDepartamentosByIdPromise(objeto.departamento).then(response=>{
+            detalle.objeto = { ...detalle.objeto, departamento: response!.nombre } as SolicitudAdopcion;
+          });
+          objeto = { ...detalle.objeto } as SolicitudAdopcion; 
           this.solicitud = { tipo: detalle.tipo, id: objeto.idSolicitud! }
           break;
         case "solicitud-voluntariado":

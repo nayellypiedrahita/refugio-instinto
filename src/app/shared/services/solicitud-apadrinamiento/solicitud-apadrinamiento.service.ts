@@ -43,7 +43,8 @@ getSolicitudesApadrinamiento() {
           celular: data['celular'],
           notificacion: data['notificacion'],
           fecha: data['fecha'],
-          isNew: data['isNew'],
+          mascota: data['mascota'],
+          isNew: data['isNew']
         } as SolicitudApadrinamiento;
       })
     )
