@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SolicitudApadrinamientoService } from '../../../shared/services/solicitud-apadrinamiento/solicitud-apadrinamiento.service';
 import { SolicitudApadrinamiento } from '../../../shared/model/solicitud-apadrinamiento';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './formulario-de-apadrinamiento.component.html',
   styleUrl: './formulario-de-apadrinamiento.component.css'
 })
-export class FormularioDeApadrinamientoComponent {
+export class FormularioDeApadrinamientoComponent implements OnInit {
 
    apadrinamientoForm: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(3),Validators.maxLength(50),Validators.pattern('[a-zA-Z ]{3,50}')]),
@@ -21,10 +21,15 @@ export class FormularioDeApadrinamientoComponent {
   loading: boolean = false;
   private solicitudApadrinamientoservice:SolicitudApadrinamientoService = inject(SolicitudApadrinamientoService);
 
- 
+ idmascota: string | null= null;
+
  constructor(
-    private router: Router
+    private router: Router,
+    private activatedroute: ActivatedRoute
   ) {
+  }
+  ngOnInit(): void {
+    this.idmascota = this.activatedroute.snapshot.paramMap.get('idmascota');
   }
 solicitudApadrinamiento(){
 if (!this.apadrinamientoForm.invalid){
@@ -40,6 +45,7 @@ if (!this.apadrinamientoForm.invalid){
   celular,
   notificacion,
   fecha: new Date().toISOString().slice(0, 10),
+  mascota: this.idmascota!,
   isNew: true
   };
 

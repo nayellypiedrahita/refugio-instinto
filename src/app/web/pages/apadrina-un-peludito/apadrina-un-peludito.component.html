@@ -11,7 +11,7 @@
     <div class="box" *ngFor="let mascota of mascotas">
       <div class="img">
         <img src="{{ mascota.imagenes[0] }}" alt="">
-        <a routerLink='/web/texto-apadrinar' class="hover-text"><i class="fa-solid fas fa-paw"></i> Apadrinar</a>
+        <a routerLink='/web/texto-apadrinar/{{mascota.idMascota}}' class="hover-text"><i class="fa-solid fas fa-paw"></i> Apadrinar</a>
 
       </div>
       <div class="details">

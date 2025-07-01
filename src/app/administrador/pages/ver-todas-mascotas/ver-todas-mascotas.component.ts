@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MascotasService } from '../../../shared/services/mascotas/mascotas.service';
 import { Mascotas } from '../../../shared/model/mascotas';
 import { EstadosTodos } from '../../../shared/enum/estados.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ver-todas-mascotas',
@@ -14,6 +15,9 @@ export class VerTodasMascotasComponent implements OnInit {
   loading: boolean = false;
   private mascotasService: MascotasService = inject(MascotasService);
 
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getMascotas();
@@ -28,6 +32,11 @@ export class VerTodasMascotasComponent implements OnInit {
       this.mascotas = mascotas;
       this.loading = false;
     });
+  }
+  
+  redirectToComponent() {
+    sessionStorage.removeItem("perfil-paciente");
+    this.router.navigate(["/admin/add-mascota"]);
   }
 
 }
